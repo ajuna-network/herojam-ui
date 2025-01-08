@@ -1,3 +1,5 @@
+"use client";
+
 import { type PolkadotSigner } from "polkadot-api";
 import {
   connectInjectedExtension,
@@ -27,29 +29,36 @@ export const PolkadotExtensionProvider = ({
   children: React.ReactNode;
 }) => {
   const [installedExtensions, setInstalledExtensions] = useState<string[]>([]);
-
   const [accounts, setAccounts] = useState<InjectedPolkadotAccount[]>([]);
   const [activeSigner, setActiveSigner] = useState<PolkadotSigner | null>(null);
-
-  const [selectedExtensionName, _setSelectedExtensionName] = useState<
+  const [selectedExtensionName, setSelectedExtensionName] = useState<
     string | undefined
-  >(localStorage.getItem("selectedExtensionName") || undefined);
-  const [selectedAccountIndex, _setSelectedAccountIndex] = useState<number>(
-    Number(localStorage.getItem("selectedAccountIndex"))
-  );
+  >(undefined);
+  const [selectedAccountIndex, setSelectedAccountIndex] = useState<number>(0);
 
-  const setSelectedExtensionName = (name: string | undefined) => {
+  useEffect(() => {
+    // client only
+    const storedExtensionName =
+      localStorage.getItem("selectedExtensionName") || undefined;
+    const storedAccountIndex =
+      Number(localStorage.getItem("selectedAccountIndex")) || 0;
+
+    setSelectedExtensionName(storedExtensionName);
+    setSelectedAccountIndex(storedAccountIndex);
+  }, []);
+
+  const handleSetSelectedExtensionName = (name: string | undefined) => {
     if (name) {
       localStorage.setItem("selectedExtensionName", name);
     } else {
       localStorage.removeItem("selectedExtensionName");
     }
-    _setSelectedExtensionName(name);
+    setSelectedExtensionName(name);
   };
 
-  const setSelectedAccountIndex = (index: number) => {
+  const handleSetSelectedAccountIndex = (index: number) => {
     localStorage.setItem("selectedAccountIndex", index.toString());
-    _setSelectedAccountIndex(index);
+    setSelectedAccountIndex(index);
   };
 
   async function connect() {
@@ -81,10 +90,10 @@ export const PolkadotExtensionProvider = ({
       value={{
         installedExtensions,
         selectedExtensionName,
-        setSelectedExtensionName,
+        setSelectedExtensionName: handleSetSelectedExtensionName,
         accounts,
         selectedAccountIndex,
-        setSelectedAccountIndex,
+        setSelectedAccountIndex: handleSetSelectedAccountIndex,
         activeSigner,
       }}
     >

@@ -11,8 +11,8 @@ export function Wallets() {
   const wallets = useWallets();
   const connectedWallets = useConnectedWallets();
 
-  const [_, connectWallet] = useWalletConnector();
-  const [__, disconnectWallet] = useWalletDisconnector();
+  const [, connectWallet] = useWalletConnector();
+  const [, disconnectWallet] = useWalletDisconnector();
 
   return (
     <section>
@@ -28,7 +28,7 @@ export function Wallets() {
               <div>
                 {connectedWallets.includes(wallet) ? (
                   <button onClick={() => disconnectWallet(wallet)}>
-                    Disconnect
+                    Disconnectw
                   </button>
                 ) : (
                   <button onClick={() => connectWallet(wallet)}>Connect</button>

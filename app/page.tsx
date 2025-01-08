@@ -1,5 +1,3 @@
-import { Accounts } from "@/components/account-papi/accounts";
-import { Wallets } from "@/components/account-papi/wallets";
 import Image from "next/image";
 
 export default function Home() {
