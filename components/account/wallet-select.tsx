@@ -20,12 +20,13 @@ export function WalletSelect() {
     selectedAccountIndex,
     setSelectedExtensionName,
     setSelectedAccountIndex,
+    initiateConnection,
   } = usePolkadotExtension();
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="default" onClick={initiateConnection}>
           <Wallet className="w-4 h-4" />
           {accounts[selectedAccountIndex]?.name}
         </Button>
@@ -65,28 +66,34 @@ export function WalletSelect() {
             </>
           ) : (
             <>
-              {accounts.map((account, index) => (
-                <DialogClose asChild key={index}>
-                  <Button
-                    variant="outline"
-                    className="w-full flex flex-row h-auto justify-start items-center gap-0 [&_svg]:size-auto"
-                    onClick={() => setSelectedAccountIndex(index)}
-                  >
-                    <Identicon
-                      className="w-[32px] h-[32px] mr-2 [&>svg>circle:first-child]:fill-transparent"
-                      value={account.address}
-                      size={32}
-                      theme="polkadot"
-                    />
-                    <div className="flex flex-col justify-start items-start gap-0">
-                      <span className="font-bold">{account.name}</span>
-                      {account.address && (
-                        <div>{trimAddress(account.address)}</div>
-                      )}
-                    </div>
-                  </Button>
-                </DialogClose>
-              ))}
+              {accounts.length > 0 ? (
+                accounts.map((account, index) => (
+                  <DialogClose asChild key={index}>
+                    <Button
+                      variant="outline"
+                      className="w-full flex flex-row h-auto justify-start items-center gap-0 [&_svg]:size-auto"
+                      onClick={() => setSelectedAccountIndex(index)}
+                    >
+                      <Identicon
+                        className="w-[32px] h-[32px] mr-2 [&>svg>circle:first-child]:fill-transparent"
+                        value={account.address}
+                        size={32}
+                        theme="polkadot"
+                      />
+                      <div className="flex flex-col justify-start items-start gap-0">
+                        <span className="font-bold">{account.name}</span>
+                        {account.address && (
+                          <div>{trimAddress(account.address)}</div>
+                        )}
+                      </div>
+                    </Button>
+                  </DialogClose>
+                ))
+              ) : (
+                <div>
+                  Please allow the site to access your extension accounts
+                </div>
+              )}
             </>
           )}
         </div>

@@ -17,6 +17,7 @@ interface PolkadotExtensionContextType {
   selectedAccountIndex: number;
   setSelectedAccountIndex: (index: number) => void;
   activeSigner: PolkadotSigner | null;
+  initiateConnection: () => void;
 }
 
 export const PolkadotExtensionContext = createContext<
@@ -28,6 +29,7 @@ export const PolkadotExtensionProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [userWantsToConnect, setUserWantsToConnect] = useState<boolean>(false);
   const [installedExtensions, setInstalledExtensions] = useState<string[]>([]);
   const [accounts, setAccounts] = useState<InjectedPolkadotAccount[]>([]);
   const [activeSigner, setActiveSigner] = useState<PolkadotSigner | null>(null);
@@ -37,15 +39,26 @@ export const PolkadotExtensionProvider = ({
   const [selectedAccountIndex, setSelectedAccountIndex] = useState<number>(0);
 
   useEffect(() => {
-    // client only
+    const extensions = getInjectedExtensions();
+    setInstalledExtensions(extensions);
+  }, []);
+
+  useEffect(() => {
     const storedExtensionName =
       localStorage.getItem("selectedExtensionName") || undefined;
     const storedAccountIndex =
       Number(localStorage.getItem("selectedAccountIndex")) || 0;
+    const storedUserWantsToConnect =
+      localStorage.getItem("userWantsToConnect") || false;
 
     setSelectedExtensionName(storedExtensionName);
     setSelectedAccountIndex(storedAccountIndex);
+    setUserWantsToConnect(!!storedUserWantsToConnect);
   }, []);
+
+  useEffect(() => {
+    connect();
+  }, [selectedExtensionName]);
 
   const handleSetSelectedExtensionName = (name: string | undefined) => {
     if (name) {
@@ -61,14 +74,27 @@ export const PolkadotExtensionProvider = ({
     setSelectedAccountIndex(index);
   };
 
+  const initiateConnection = () => {
+    localStorage.setItem("userWantsToConnect", "true");
+    setUserWantsToConnect(true);
+  };
+
   async function connect() {
+    if (!selectedExtensionName) {
+      return;
+    }
+
     const extensions: string[] = getInjectedExtensions();
     setInstalledExtensions(extensions);
     console.log("extensions", extensions);
 
     const selectedExtension: InjectedExtension = await connectInjectedExtension(
-      extensions[0]
+      selectedExtensionName
     );
+
+    if (!selectedExtension) {
+      return;
+    }
 
     console.log("selectedExtension", selectedExtension);
 
@@ -82,8 +108,10 @@ export const PolkadotExtensionProvider = ({
   }
 
   useEffect(() => {
-    connect();
-  }, []);
+    if (userWantsToConnect) {
+      connect();
+    }
+  }, [userWantsToConnect]);
 
   return (
     <PolkadotExtensionContext.Provider
@@ -95,6 +123,7 @@ export const PolkadotExtensionProvider = ({
         selectedAccountIndex,
         setSelectedAccountIndex: handleSetSelectedAccountIndex,
         activeSigner,
+        initiateConnection,
       }}
     >
       {children}

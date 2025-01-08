@@ -28,7 +28,7 @@ export function Wallets() {
               <div>
                 {connectedWallets.includes(wallet) ? (
                   <button onClick={() => disconnectWallet(wallet)}>
-                    Disconnectw
+                    Disconnect
                   </button>
                 ) : (
                   <button onClick={() => connectWallet(wallet)}>Connect</button>

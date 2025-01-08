@@ -129,8 +129,8 @@ export function MenuTop() {
           </NavigationMenu>
         </div>
         <div className="flex flex-row items-center gap-2">
-          <WalletSelect />
           <ThemeToggle />
+          <WalletSelect />
         </div>
       </div>
     </div>
