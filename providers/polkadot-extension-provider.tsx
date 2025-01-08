@@ -18,6 +18,7 @@ interface PolkadotExtensionContextType {
   setSelectedAccountIndex: (index: number) => void;
   activeSigner: PolkadotSigner | null;
   initiateConnection: () => void;
+  selectedAccount: InjectedPolkadotAccount | null;
 }
 
 export const PolkadotExtensionContext = createContext<
@@ -37,6 +38,8 @@ export const PolkadotExtensionProvider = ({
     string | undefined
   >(undefined);
   const [selectedAccountIndex, setSelectedAccountIndex] = useState<number>(0);
+  const [selectedAccount, setSelectedAccount] =
+    useState<InjectedPolkadotAccount | null>(null);
 
   useEffect(() => {
     const extensions = getInjectedExtensions();
@@ -65,6 +68,12 @@ export const PolkadotExtensionProvider = ({
   useEffect(() => {
     connect();
   }, [selectedExtensionName]);
+
+  useEffect(() => {
+    if (accounts.length > 0) {
+      setSelectedAccount(accounts[selectedAccountIndex]);
+    }
+  }, [accounts, selectedAccountIndex]);
 
   const handleSetSelectedExtensionName = (name: string | undefined) => {
     if (name) {
@@ -119,6 +128,7 @@ export const PolkadotExtensionProvider = ({
         setSelectedAccountIndex: handleSetSelectedAccountIndex,
         activeSigner,
         initiateConnection,
+        selectedAccount,
       }}
     >
       {children}

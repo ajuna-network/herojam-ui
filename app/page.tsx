@@ -1,23 +1,17 @@
+import { ChainInfo } from "@/components/chain/chain-info";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start min-h-[200vh]">
-        <h1>HeroJam</h1>
+        <h1 className="capitalize text-[200px] font-bold whitespace-break-spaces max-w-44 text-center">
+          H e r o J a m
+        </h1>
         {/* accounts:
         <Accounts />
         wallets:
         <Wallets /> */}
-        <p>HeroJam is a platform for creating and sharing hero stories.</p>
-        <p>
-          HeroJam is a platform for creating and sharing hero stories. It is
-          built with Next.js, Tailwind CSS, and TypeScript.
-        </p>
-        <p>
-          HeroJam is a platform for creating and sharing hero stories. It is
-          built with Next.js, Tailwind CSS, and TypeScript.
-        </p>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
@@ -66,6 +60,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <ChainInfo />
     </div>
   );
 }

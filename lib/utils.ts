@@ -16,3 +16,9 @@ export function capitalizeFirstLetter(str: string) {
 export function deslugify(str: string) {
   return str.replace(/-/g, " ").split(" ").map(capitalizeFirstLetter).join(" ");
 }
+
+export function stringifyWithBigInt(value: any) {
+  return JSON.stringify(value, (key, value) =>
+    typeof value === "bigint" ? value.toString() : value
+  );
+}
