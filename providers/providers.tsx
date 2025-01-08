@@ -2,12 +2,15 @@
 
 import { ThemeProvider } from "./theme-provider";
 import { PolkadotExtensionProvider } from "./polkadot-extension-provider";
+import { ChainProvider } from "./chain-provider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <PolkadotExtensionProvider>
-      <ThemeProvider>{children}</ThemeProvider>
-    </PolkadotExtensionProvider>
+    <ThemeProvider>
+      <PolkadotExtensionProvider>
+        <ChainProvider>{children}</ChainProvider>
+      </PolkadotExtensionProvider>
+    </ThemeProvider>
   );
 
   //   return (
