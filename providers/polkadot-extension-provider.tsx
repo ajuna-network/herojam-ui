@@ -44,6 +44,12 @@ export const PolkadotExtensionProvider = ({
   }, []);
 
   useEffect(() => {
+    if (userWantsToConnect) {
+      connect();
+    }
+  }, [userWantsToConnect]);
+
+  useEffect(() => {
     const storedExtensionName =
       localStorage.getItem("selectedExtensionName") || undefined;
     const storedAccountIndex =
@@ -86,7 +92,6 @@ export const PolkadotExtensionProvider = ({
 
     const extensions: string[] = getInjectedExtensions();
     setInstalledExtensions(extensions);
-    console.log("extensions", extensions);
 
     const selectedExtension: InjectedExtension = await connectInjectedExtension(
       selectedExtensionName
@@ -96,22 +101,12 @@ export const PolkadotExtensionProvider = ({
       return;
     }
 
-    console.log("selectedExtension", selectedExtension);
-
     const accounts: InjectedPolkadotAccount[] = selectedExtension.getAccounts();
     setAccounts(accounts);
-
-    console.log("accounts", accounts);
 
     const polkadotSigner = accounts[0].polkadotSigner;
     setActiveSigner(polkadotSigner);
   }
-
-  useEffect(() => {
-    if (userWantsToConnect) {
-      connect();
-    }
-  }, [userWantsToConnect]);
 
   return (
     <PolkadotExtensionContext.Provider
