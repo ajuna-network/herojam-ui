@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ThemeToggle } from "./theme-toggle";
+import { WalletSelect } from "../account/wallet-select";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -127,7 +128,10 @@ export function MenuTop() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <ThemeToggle />
+        <div className="flex flex-row items-center gap-2">
+          <WalletSelect />
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );

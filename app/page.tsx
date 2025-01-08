@@ -1,3 +1,5 @@
+import { Accounts } from "@/components/account-papi/accounts";
+import { Wallets } from "@/components/account-papi/wallets";
 import Image from "next/image";
 
 export default function Home() {
@@ -5,6 +7,10 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start min-h-[200vh]">
         <h1>HeroJam</h1>
+        {/* accounts:
+        <Accounts />
+        wallets:
+        <Wallets /> */}
         <p>HeroJam is a platform for creating and sharing hero stories.</p>
         <p>
           HeroJam is a platform for creating and sharing hero stories. It is
