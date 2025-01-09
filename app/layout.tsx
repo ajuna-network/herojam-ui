@@ -4,6 +4,7 @@ import { MenuTop } from "@/components/nav/menu-top";
 import { Providers } from "@/providers/providers";
 import { geistMono, geistSans } from "@/fonts";
 import { ChainInfo } from "@/components/chain/chain-info";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "HeroJam - Home",
@@ -25,6 +26,7 @@ export default function RootLayout({
           <main className="mt-16">{children}</main>
           <footer>footer</footer>
           <ChainInfo />
+          <Toaster position="bottom-center" />
         </Providers>
       </body>
     </html>

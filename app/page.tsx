@@ -1,4 +1,3 @@
-import { ChainInfo } from "@/components/chain/chain-info";
 import Image from "next/image";
 
 export default function Home() {

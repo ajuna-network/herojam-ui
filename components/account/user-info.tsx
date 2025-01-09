@@ -6,9 +6,13 @@ import Identicon from "@polkadot/react-identicon";
 import { Wallet } from "lucide-react";
 import { formatBalance } from "../../lib/utils";
 import { useChainInfo } from "@/hooks/use-chain-info";
+import { Button } from "../ui/button";
+import { remarkHero } from "@/tx/remark-hero";
+import { useChain } from "@/providers/chain-provider";
 
 export function UserInfo() {
-  const { selectedAccount } = usePolkadotExtension();
+  const { pasApi } = useChain();
+  const { selectedAccount, activeSigner } = usePolkadotExtension();
   const accountInfo = useAccountInfo();
   const { tokenDecimals, tokenSymbol } = useChainInfo();
 
@@ -50,6 +54,9 @@ export function UserInfo() {
             unit: tokenSymbol,
           })}
         </div>
+        <Button onClick={() => remarkHero(pasApi, activeSigner)}>
+          Remark Hero
+        </Button>
       </div>
     </div>
   );
