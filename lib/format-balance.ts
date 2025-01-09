@@ -25,7 +25,7 @@ export const formatBalance = ({
   unit?: string;
   options?: Partial<FormatCurrencyOptions>;
 }): string => {
-  const { nDecimals, padToDecimals, decimalSeparator, withUnit } = {
+  const { nDecimals, padToDecimals, decimalSeparator } = {
     ...defaultOptions,
     ...options,
   };

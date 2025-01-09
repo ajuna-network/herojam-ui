@@ -5,12 +5,10 @@ import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 import Identicon from "@polkadot/react-identicon";
 import { Wallet } from "lucide-react";
 import { formatBalance } from "../../lib/utils";
-import { useBlockNumber } from "@/hooks/use-block-number";
 import { useChainInfo } from "@/hooks/use-chain-info";
 
 export function UserInfo() {
   const { selectedAccount } = usePolkadotExtension();
-  const blockNumber = useBlockNumber();
   const accountInfo = useAccountInfo();
   const { tokenDecimals, tokenSymbol } = useChainInfo();
 
