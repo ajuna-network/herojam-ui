@@ -27,12 +27,12 @@ export function ChainInfo() {
   };
 
   return (
-    <div className="fixed bottom-2 right-2">
+    <div className="fixed bottom-7 right-8">
       <TooltipProvider>
         <Tooltip delayDuration={100} open={isOpen} onOpenChange={setIsOpen}>
           <TooltipTrigger asChild>
             <Badge
-              className="tabular-nums font-light h-6 cursor-pointer"
+              className="tabular-nums font-light h-6 cursor-pointer shadow-sm"
               variant="secondary"
               onClick={handleSwitch}
             >

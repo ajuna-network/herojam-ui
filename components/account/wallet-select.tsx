@@ -17,9 +17,9 @@ export function WalletSelect() {
     accounts,
     installedExtensions,
     selectedExtensionName,
-    selectedAccountIndex,
+    selectedAccount,
     setSelectedExtensionName,
-    setSelectedAccountIndex,
+    setSelectedAccount,
     initiateConnection,
   } = usePolkadotExtension();
 
@@ -28,7 +28,7 @@ export function WalletSelect() {
       <DialogTrigger asChild>
         <Button variant="default" onClick={initiateConnection}>
           <Wallet className="w-4 h-4" />
-          {accounts[selectedAccountIndex]?.name}
+          {selectedAccount?.name}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]s">
@@ -72,7 +72,7 @@ export function WalletSelect() {
                     <Button
                       variant="outline"
                       className="w-full flex flex-row h-auto justify-start items-center gap-0 [&_svg]:size-auto"
-                      onClick={() => setSelectedAccountIndex(index)}
+                      onClick={() => setSelectedAccount(account)}
                     >
                       <Identicon
                         className="w-[32px] h-[32px] mr-2 [&>svg>circle:first-child]:fill-transparent"

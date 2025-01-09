@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { LoaderPinwheel, Swords } from "lucide-react";
+import { LoaderPinwheel } from "lucide-react";
 
 export function Loader({ className }: { className?: string }) {
   return (

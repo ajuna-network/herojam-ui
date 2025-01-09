@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { MenuTop } from "@/components/nav/menu-top";
+import { MenuTop } from "@/components/layout/menu-top";
 import { Providers } from "@/providers/providers";
 import { geistMono, geistSans } from "@/fonts";
 import { ChainInfo } from "@/components/chain/chain-info";
 import { Toaster } from "@/components/ui/sonner";
+import { Loader } from "@/components/ui/loader";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "HeroJam - Home",
@@ -23,10 +25,10 @@ export default function RootLayout({
       >
         <Providers>
           <MenuTop />
-          <main className="mt-16">{children}</main>
-          <footer>footer</footer>
+          <main className="mt-16 min-h-[calc(200vh)]">{children}</main>
+          <Footer />
           <ChainInfo />
-          <Toaster position="bottom-center" />
+          <Toaster position="bottom-center" icons={{ loading: <Loader /> }} />
         </Providers>
       </body>
     </html>

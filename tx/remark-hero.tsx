@@ -1,7 +1,7 @@
 import { PolkadotSigner, TypedApi, Binary } from "polkadot-api";
 import { pas } from "@polkadot-api/descriptors";
 import { toast } from "sonner";
-import { Loader } from "@/components/ui/loader";
+import { Check, CircleAlert } from "lucide-react";
 
 export async function remarkHero(
   polkadotApi: TypedApi<typeof pas> | null,
@@ -15,10 +15,8 @@ export async function remarkHero(
 ╩ ╩╚═╝╩╚═╚═╝╚╝╩ ╩╩ ╩
 `;
 
-  const toastId = toast("Awaiting signature...", {
+  const toastId = toast.loading("Awaiting signature...", {
     description: "Please sign the transaction in your wallet.",
-    icon: <Loader className="mr-2 w-5 h-5" />,
-    duration: Infinity,
   });
 
   return polkadotApi.tx.System.remark({
@@ -35,9 +33,6 @@ export async function remarkHero(
             });
             break;
           case "txBestBlocksState":
-            toast.info("The tx is now in a best block, check it out:", {
-              id: toastId,
-            });
             toast.success("Transaction Successful", {
               id: toastId,
               action: {
@@ -48,12 +43,37 @@ export async function remarkHero(
                     "_blank"
                   ),
               },
+              icon: <Check className="mr-2 w-5 h-5 animate-pulse" />,
             });
             break;
+          // default:
+          //   toast.error("Something went wrong", {
+          //     id: toastId,
+          //     duration: 5000,
+          //     description: event.type,
+          //   });
+          //   break;
         }
       },
       error: (error) => {
-        toast.error(error.message, { id: toastId });
+        const isCancelled = error.message === "Cancelled";
+
+        if (isCancelled) {
+          toast.error("Cancelled", {
+            id: toastId,
+            description: "Maybe another time",
+            duration: 5000,
+            icon: <CircleAlert className="mr-2 w-5 h-5" />,
+          });
+        } else {
+          toast.error("Something went wrong", {
+            id: toastId,
+            description: error.message,
+            duration: 5000,
+            icon: <CircleAlert className="mr-2 w-5 h-5" />,
+          });
+          console.error(error);
+        }
       },
     });
 }

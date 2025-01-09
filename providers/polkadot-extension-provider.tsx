@@ -14,11 +14,10 @@ interface PolkadotExtensionContextType {
   selectedExtensionName: string | undefined;
   setSelectedExtensionName: (name: string | undefined) => void;
   accounts: InjectedPolkadotAccount[];
-  selectedAccountIndex: number;
-  setSelectedAccountIndex: (index: number) => void;
   activeSigner: PolkadotSigner | null;
   initiateConnection: () => void;
   selectedAccount: InjectedPolkadotAccount | null;
+  setSelectedAccount: (account: InjectedPolkadotAccount) => void;
 }
 
 export const PolkadotExtensionContext = createContext<
@@ -37,7 +36,6 @@ export const PolkadotExtensionProvider = ({
   const [selectedExtensionName, setSelectedExtensionName] = useState<
     string | undefined
   >(undefined);
-  const [selectedAccountIndex, setSelectedAccountIndex] = useState<number>(0);
   const [selectedAccount, setSelectedAccount] =
     useState<InjectedPolkadotAccount | null>(null);
 
@@ -47,33 +45,32 @@ export const PolkadotExtensionProvider = ({
   }, []);
 
   useEffect(() => {
-    if (userWantsToConnect) {
-      connect();
-    }
-  }, [userWantsToConnect]);
-
-  useEffect(() => {
     const storedExtensionName =
       localStorage.getItem("selectedExtensionName") || undefined;
-    const storedAccountIndex =
-      Number(localStorage.getItem("selectedAccountIndex")) || 0;
+    const storedAccount = JSON.parse(
+      localStorage.getItem("selectedAccount") || "null"
+    );
     const storedUserWantsToConnect =
       localStorage.getItem("userWantsToConnect") || false;
 
     setSelectedExtensionName(storedExtensionName);
-    setSelectedAccountIndex(storedAccountIndex);
+    setSelectedAccount(storedAccount);
     setUserWantsToConnect(!!storedUserWantsToConnect);
   }, []);
 
   useEffect(() => {
-    connect();
-  }, [selectedExtensionName]);
+    if (selectedExtensionName && userWantsToConnect) {
+      setTimeout(() => {
+        connect();
+      });
+    }
+  }, [selectedExtensionName, userWantsToConnect]);
 
   useEffect(() => {
-    if (accounts.length > 0) {
-      setSelectedAccount(accounts[selectedAccountIndex]);
+    if (accounts.length > 0 && selectedAccount) {
+      setSelectedAccount(selectedAccount);
     }
-  }, [accounts, selectedAccountIndex]);
+  }, [accounts, selectedAccount]);
 
   const handleSetSelectedExtensionName = (name: string | undefined) => {
     if (name) {
@@ -84,9 +81,11 @@ export const PolkadotExtensionProvider = ({
     setSelectedExtensionName(name);
   };
 
-  const handleSetSelectedAccountIndex = (index: number) => {
-    localStorage.setItem("selectedAccountIndex", index.toString());
-    setSelectedAccountIndex(index);
+  const handleSetSelectedAccount = (account: InjectedPolkadotAccount) => {
+    localStorage.setItem("selectedAccount", JSON.stringify(account));
+    setSelectedAccount(account);
+    const polkadotSigner = account.polkadotSigner;
+    setActiveSigner(polkadotSigner);
   };
 
   const initiateConnection = () => {
@@ -112,9 +111,6 @@ export const PolkadotExtensionProvider = ({
 
     const accounts: InjectedPolkadotAccount[] = selectedExtension.getAccounts();
     setAccounts(accounts);
-
-    const polkadotSigner = accounts[0].polkadotSigner;
-    setActiveSigner(polkadotSigner);
   }
 
   return (
@@ -124,11 +120,10 @@ export const PolkadotExtensionProvider = ({
         selectedExtensionName,
         setSelectedExtensionName: handleSetSelectedExtensionName,
         accounts,
-        selectedAccountIndex,
-        setSelectedAccountIndex: handleSetSelectedAccountIndex,
+        selectedAccount,
+        setSelectedAccount: handleSetSelectedAccount,
         activeSigner,
         initiateConnection,
-        selectedAccount,
       }}
     >
       {children}
