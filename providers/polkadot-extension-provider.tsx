@@ -42,9 +42,7 @@ export const PolkadotExtensionProvider = ({
   useEffect(() => {
     const extensions = getInjectedExtensions();
     setInstalledExtensions(extensions);
-  }, []);
 
-  useEffect(() => {
     const storedExtensionName =
       localStorage.getItem("selectedExtensionName") || undefined;
     const storedAccount = JSON.parse(
@@ -84,8 +82,10 @@ export const PolkadotExtensionProvider = ({
   const handleSetSelectedAccount = (account: InjectedPolkadotAccount) => {
     localStorage.setItem("selectedAccount", JSON.stringify(account));
     setSelectedAccount(account);
+    console.log("handleSetSelectedAccount account", account);
     const polkadotSigner = account.polkadotSigner;
     setActiveSigner(polkadotSigner);
+    console.log("polkadotSigner", polkadotSigner);
   };
 
   const initiateConnection = () => {
@@ -111,6 +111,18 @@ export const PolkadotExtensionProvider = ({
 
     const accounts: InjectedPolkadotAccount[] = selectedExtension.getAccounts();
     setAccounts(accounts);
+
+    //set the signer to the selected account or the first account
+    if (selectedAccount?.address) {
+      const _selectedAccount = accounts.find(
+        (account) => account.address === selectedAccount.address
+      );
+      if (_selectedAccount) {
+        handleSetSelectedAccount(_selectedAccount);
+      }
+    } else {
+      handleSetSelectedAccount(accounts[0]);
+    }
   }
 
   return (
