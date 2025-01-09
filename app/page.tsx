@@ -60,7 +60,6 @@ export default function Home() {
           Ajuna.io →
         </a>
       </footer>
-      <ChainInfo />
     </div>
   );
 }

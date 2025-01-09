@@ -20,6 +20,9 @@ importers:
       '@polkadot/react-identicon':
         specifier: ^3.11.3
         version: 3.11.3(@polkadot/keyring@13.3.1(@polkadot/util-crypto@13.3.1(@polkadot/util@13.3.1))(@polkadot/util@13.3.1))(@polkadot/networks@13.3.1)(@polkadot/util-crypto@13.3.1(@polkadot/util@13.3.1))(@polkadot/util@13.3.1)(react-dom@19.0.0(react@19.0.0))(react-is@16.13.1)(react@19.0.0)
+      '@polkadot/types':
+        specifier: ^15.2.1
+        version: 15.2.1
       '@radix-ui/react-dialog':
         specifier: ^1.1.4
         version: 1.1.4(@types/react-dom@19.0.2(@types/react@19.0.3))(@types/react@19.0.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -672,6 +675,22 @@ packages:
       react: '*'
       react-dom: '*'
       react-is: '*'
+
+  '@polkadot/types-augment@15.2.1':
+    resolution: {integrity: sha512-Sa90PPbqGuBINPkaZydkshf+bd+3CHQTwdeImzEZ8TmiW6dD163mjRlCNbBq2pDiD9swTjmNc4/hUF/9M6mbUw==}
+    engines: {node: '>=18'}
+
+  '@polkadot/types-codec@15.2.1':
+    resolution: {integrity: sha512-Q5SuIgjAPLeTDLIlXMVd2Lyp2BvBhUXPxdXDRDC68tf/lCKyRlmTOkYFdvM11j4MY+ImdLxTzOdjLoIk+f2P8w==}
+    engines: {node: '>=18'}
+
+  '@polkadot/types-create@15.2.1':
+    resolution: {integrity: sha512-u3WbKfmYkyk0phoPVsdgQLpgogdKkYgb02Y3d1oM1FVmXWDj/OJX0T9ZSL1PhlD5ws6XTPFi1VYMzRvSNEx0Sw==}
+    engines: {node: '>=18'}
+
+  '@polkadot/types@15.2.1':
+    resolution: {integrity: sha512-5mLSlfJSv8/mll4EgUABrUs47nC4PLD7l4ATgVnYYNg9W3iTC37qVu8+D251/W0IAuDeA0PKXnSOlvAtaBgRnQ==}
+    engines: {node: '>=18'}
 
   '@polkadot/ui-settings@3.11.3':
     resolution: {integrity: sha512-VGtv5pGQM9iFWZ9kpU9TD0auDUb01mTp/DACTgG79mo9icK2XK8KUdkMMh70HuhnS5Dnqsgn7nhYuYqVOGAxeQ==}
@@ -3620,6 +3639,36 @@ snapshots:
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@polkadot/networks'
+
+  '@polkadot/types-augment@15.2.1':
+    dependencies:
+      '@polkadot/types': 15.2.1
+      '@polkadot/types-codec': 15.2.1
+      '@polkadot/util': 13.3.1
+      tslib: 2.8.1
+
+  '@polkadot/types-codec@15.2.1':
+    dependencies:
+      '@polkadot/util': 13.3.1
+      '@polkadot/x-bigint': 13.3.1
+      tslib: 2.8.1
+
+  '@polkadot/types-create@15.2.1':
+    dependencies:
+      '@polkadot/types-codec': 15.2.1
+      '@polkadot/util': 13.3.1
+      tslib: 2.8.1
+
+  '@polkadot/types@15.2.1':
+    dependencies:
+      '@polkadot/keyring': 13.3.1(@polkadot/util-crypto@13.3.1(@polkadot/util@13.3.1))(@polkadot/util@13.3.1)
+      '@polkadot/types-augment': 15.2.1
+      '@polkadot/types-codec': 15.2.1
+      '@polkadot/types-create': 15.2.1
+      '@polkadot/util': 13.3.1
+      '@polkadot/util-crypto': 13.3.1(@polkadot/util@13.3.1)
+      rxjs: 7.8.1
+      tslib: 2.8.1
 
   '@polkadot/ui-settings@3.11.3(@polkadot/networks@13.3.1)(@polkadot/util@13.3.1)':
     dependencies:
