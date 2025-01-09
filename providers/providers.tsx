@@ -12,14 +12,4 @@ export function Providers({ children }: { children: React.ReactNode }) {
       </PolkadotExtensionProvider>
     </ThemeProvider>
   );
-
-  //   return (
-  //     <ThemeProvider>
-  //       <ReactiveDotProviderWrapper>
-  //         <ChainProviderWrapper>
-  //           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-  //         </ChainProviderWrapper>
-  //       </ReactiveDotProviderWrapper>
-  //     </ThemeProvider>
-  //   );
 }

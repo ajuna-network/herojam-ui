@@ -16,7 +16,6 @@ interface ChainProviderType {
   pasApi: TypedApi<typeof pas> | null;
   wsProvider: WsJsonRpcProvider | null;
   client: PolkadotClient | null;
-  switchRpc: () => void;
 }
 
 const ChainContext = createContext<ChainProviderType | undefined>(undefined);
@@ -29,19 +28,12 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
     StatusChange | undefined
   >(undefined);
 
-  const switchRpc = () => {
-    if (!wsProviderRef.current) return;
-    wsProviderRef.current.switch();
-  };
-
   useEffect(() => {
     const _wsProvider = getWsProvider(
       ["wss://rpc.ibp.network/paseo", "wss://paseo.rpc.amforc.com"],
       setConnectionStatus
     );
     wsProviderRef.current = _wsProvider;
-
-    console.log("wsProvider status", _wsProvider.switch);
 
     const client = createClient(withPolkadotSdkCompat(_wsProvider));
     const pasApi = client.getTypedApi(pas);
@@ -57,7 +49,6 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
         pasApi,
         wsProvider: wsProviderRef.current,
         client,
-        switchRpc,
       }}
     >
       {children}

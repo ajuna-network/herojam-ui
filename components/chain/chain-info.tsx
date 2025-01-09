@@ -10,26 +10,29 @@ import {
 } from "@/components/ui/tooltip";
 import { useChain } from "@/providers/chain-provider";
 import { WsConnected, WsEvent } from "polkadot-api/ws-provider/web";
+import { useState } from "react";
 
 export function ChainInfo() {
   const blockNumber = useBlockNumber();
   const { connectionStatus, wsProvider } = useChain();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleSwitch = () => {
+  const handleSwitch = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
     if (connectionStatus?.type === WsEvent.CONNECTED) {
-      console.log("switching", wsProvider);
       wsProvider?.switch();
+      setIsOpen(true);
     }
   };
 
   return (
     <div className="fixed bottom-2 right-2">
       <TooltipProvider>
-        <Tooltip delayDuration={100}>
-          <TooltipTrigger>
-            {" "}
+        <Tooltip delayDuration={100} open={isOpen} onOpenChange={setIsOpen}>
+          <TooltipTrigger asChild>
             <Badge
-              className="tabular-nums font-light h-6"
+              className="tabular-nums font-light h-6 cursor-pointer"
               variant="secondary"
               onClick={handleSwitch}
             >
