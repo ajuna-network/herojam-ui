@@ -55,7 +55,7 @@ export function ChainInfo() {
           {connectionStatus?.type === WsEvent.CONNECTED && (
             <TooltipContent
               side="left"
-              sideOffset={-2}
+              sideOffset={-1}
               className="bg-background text-foreground"
             >
               connected to <b>{(connectionStatus as WsConnected).uri}</b> on
