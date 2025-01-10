@@ -11,7 +11,8 @@ import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 import { useChain } from "@/providers/chain-provider";
 import { useChainInfo } from "@/hooks/use-chain-info";
 import { useAccountInfo } from "@/hooks/use-account-info";
-import { Wallet } from "lucide-react";
+import { Copy, Wallet } from "lucide-react";
+import { toast } from "sonner";
 
 export type UserProfileProps = {
   name: string | undefined;
@@ -60,6 +61,11 @@ export function UserProfile() {
     }),
   };
 
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText(user.address ?? "");
+    toast.success("Address copied to clipboard");
+  };
+
   return (
     <Card className="w-full max-w-md overflow-hidden bg-white dark:bg-gray-900 shadow-lg">
       <div className="bg-primary p-6">
@@ -69,9 +75,19 @@ export function UserProfile() {
           </Avatar>
           <div>
             <h2 className="text-2xl font-bold text-white">{user.name}</h2>
-            <p className="text-sm text-blue-100">
-              {trimAddress(user.address ?? "", 10)}
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-blue-100">
+                {trimAddress(user.address ?? "", 10)}
+              </p>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleCopyAddress}
+                className="p-0 w-3 h-3"
+              >
+                <Copy className="w-2 h-2" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
