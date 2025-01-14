@@ -83,9 +83,9 @@ export function UserProfile() {
                 variant="ghost"
                 size="icon"
                 onClick={handleCopyAddress}
-                className="p-0 w-3 h-3"
+                className="p-0 w-3 h-3 hover:bg-transparent"
               >
-                <Copy className="w-2 h-2" />
+                <Copy className="text-white dark:text-gray-300 w-2 h-2 !hover:bg-transparent" />
               </Button>
             </div>
           </div>
