@@ -8,7 +8,9 @@ import { InlineLoader } from "./inline-loader";
 
 interface TxButtonProps {
   children?: React.ReactNode;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   transaction: Transaction<any, any, any, any>;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
   options?: {
     label?: string;
     costDecimals?: number;
