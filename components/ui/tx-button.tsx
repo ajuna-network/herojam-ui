@@ -55,7 +55,6 @@ export function TxButton({ children, transaction, options }: TxButtonProps) {
   return (
     <div className="flex flex-col gap-2 items-center">
       <Button onClick={handleClick}>{buttonContent}</Button>
-      <InlineLoader />
       {isCostLoading ? (
         <InlineLoader />
       ) : cost ? (
