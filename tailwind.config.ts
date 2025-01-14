@@ -65,10 +65,14 @@ export default {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        border: {
+          to: { "--border-angle": "360deg" },
+        },
       },
       animation: {
         "spin-3d": "spin-3d 2s linear infinite",
         "spin-slow": "spin-slow 2s linear infinite",
+        border: "border 4s linear infinite",
       },
     },
   },

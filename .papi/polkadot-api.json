@@ -9,6 +9,10 @@
     "pas": {
       "chain": "paseo",
       "metadata": ".papi/metadata/pas.scale"
+    },
+    "aju": {
+      "wsUrl": "wss://rpc-paseo.ajuna.network",
+      "metadata": ".papi/metadata/aju.scale"
     }
   }
 }

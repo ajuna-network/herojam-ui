@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ArrowLeft, Wallet } from "lucide-react";
+import { ArrowLeft, LogOut, Wallet } from "lucide-react";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 import { deslugify, trimAddress } from "@/lib/utils";
 import { Identicon } from "@polkadot/react-identicon";
@@ -21,6 +21,7 @@ export function WalletSelect() {
     setSelectedExtensionName,
     setSelectedAccount,
     initiateConnection,
+    disconnect,
   } = usePolkadotExtension();
 
   return (
@@ -47,6 +48,16 @@ export function WalletSelect() {
             {selectedExtensionName !== undefined
               ? "Select Account"
               : "Select Extension"}
+            {selectedExtensionName !== undefined && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="ml-4"
+                onClick={disconnect}
+              >
+                <LogOut className="w-4 h-4" />
+              </Button>
+            )}
           </DialogTitle>
         </DialogHeader>
 

@@ -18,6 +18,7 @@ interface PolkadotExtensionContextType {
   initiateConnection: () => void;
   selectedAccount: InjectedPolkadotAccount | null;
   setSelectedAccount: (account: InjectedPolkadotAccount) => void;
+  disconnect: () => void;
 }
 
 export const PolkadotExtensionContext = createContext<
@@ -79,12 +80,16 @@ export const PolkadotExtensionProvider = ({
     setSelectedExtensionName(name);
   };
 
-  const handleSetSelectedAccount = (account: InjectedPolkadotAccount) => {
+  const handleSetSelectedAccount = (
+    account: InjectedPolkadotAccount | null
+  ) => {
     localStorage.setItem("selectedAccount", JSON.stringify(account));
     setSelectedAccount(account);
     console.log("handleSetSelectedAccount account", account);
-    const polkadotSigner = account.polkadotSigner;
-    setActiveSigner(polkadotSigner);
+    const polkadotSigner = account?.polkadotSigner;
+    if (polkadotSigner) {
+      setActiveSigner(polkadotSigner);
+    }
     console.log("polkadotSigner", polkadotSigner);
   };
 
@@ -125,6 +130,11 @@ export const PolkadotExtensionProvider = ({
     }
   }
 
+  const disconnect = () => {
+    handleSetSelectedExtensionName(undefined);
+    handleSetSelectedAccount(null);
+  };
+
   return (
     <PolkadotExtensionContext.Provider
       value={{
@@ -136,6 +146,7 @@ export const PolkadotExtensionProvider = ({
         setSelectedAccount: handleSetSelectedAccount,
         activeSigner,
         initiateConnection,
+        disconnect,
       }}
     >
       {children}

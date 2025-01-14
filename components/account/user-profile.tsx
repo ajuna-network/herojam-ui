@@ -6,13 +6,12 @@ import { Button } from "@/components/ui/button";
 import Identicon from "@polkadot/react-identicon";
 import { formatBalance, trimAddress } from "@/lib/utils";
 import Link from "next/link";
-import { remarkHero } from "@/tx/remark-hero";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
-import { useChain } from "@/providers/chain-provider";
 import { useChainInfo } from "@/hooks/use-chain-info";
 import { useAccountInfo } from "@/hooks/use-account-info";
-import { Copy, Wallet } from "lucide-react";
+import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import { UserProfileActionButtons } from "./user-profile-action-buttons";
 
 export type UserProfileProps = {
   name: string | undefined;
@@ -23,25 +22,23 @@ export type UserProfileProps = {
 };
 
 export function UserProfile() {
-  const { pasApi } = useChain();
-  const { activeSigner } = usePolkadotExtension();
   const { selectedAccount } = usePolkadotExtension();
   const accountInfo = useAccountInfo();
   const { tokenDecimals, tokenSymbol } = useChainInfo();
 
-  if (!selectedAccount)
-    return (
-      <div className="items-center justify-center text-scenter">
-        No account selected. Please login to your{" "}
-        <Wallet className="inline w-5 h-5 mx-1" /> to continue.
-      </div>
-    );
+  // if (!selectedAccount)
+  //   return (
+  //     <div className="items-center justify-center text-scenter">
+  //       No account selected. Please login to your{" "}
+  //       <Wallet className="inline w-5 h-5 mx-1" /> to continue.
+  //     </div>
+  //   );
 
   const user: UserProfileProps = {
-    name: selectedAccount.name,
-    address: selectedAccount.address,
+    name: selectedAccount?.name ?? "Not connected",
+    address: selectedAccount?.address,
     profilePicture: (
-      <Identicon value={selectedAccount.address} size={32} theme="polkadot" />
+      <Identicon value={selectedAccount?.address} size={32} theme="polkadot" />
     ),
     freeBalance: formatBalance({
       value: accountInfo?.data.free,
@@ -77,7 +74,9 @@ export function UserProfile() {
             <h2 className="text-2xl font-bold text-white">{user.name}</h2>
             <div className="flex items-center gap-2">
               <p className="text-sm text-blue-100">
-                {trimAddress(user.address ?? "", 10)}
+                {selectedAccount
+                  ? trimAddress(user.address ?? "", 10)
+                  : "Not connected"}
               </p>
               <Button
                 variant="ghost"
@@ -85,37 +84,33 @@ export function UserProfile() {
                 onClick={handleCopyAddress}
                 className="p-0 w-3 h-3 hover:bg-transparent"
               >
-                <Copy className="text-white dark:text-gray-300 w-2 h-2 !hover:bg-transparent" />
+                {selectedAccount && (
+                  <Copy className="text-white dark:text-gray-300 w-2 h-2 !hover:bg-transparent" />
+                )}
               </Button>
             </div>
           </div>
         </div>
       </div>
       <CardContent className="p-6">
-        <div className="mb-6 grid grid-cols-2 gap-4">
-          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4">
+        <div className="mb-6 grid grid-cols-2 gap-4 h-20">
+          <div className="rounded-md bg-gray-50 dark:bg-gray-800 p-4">
             <p className="text-sm font-medium text-gray-500">Free Balance</p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-300 ">
+            <p className="text-lg font-bold text-gray-900 dark:text-gray-300 ">
               {user.freeBalance}
             </p>
           </div>
-          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4">
+          <div className="rounded-md bg-gray-50 dark:bg-gray-800 p-4 h-20">
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
               Frozen Balance
             </p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-300">
+            <p className="text-lg font-bold text-gray-900 dark:text-gray-300">
               {user.frozenBalance}
             </p>
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <Button
-            className="w-full"
-            variant="outline"
-            onClick={() => remarkHero(pasApi, activeSigner)}
-          >
-            Send on chain remark
-          </Button>
+          <UserProfileActionButtons />
           <Link
             href={`https://paseo.subscan.io/account/${user.address}`}
             className="w-full"

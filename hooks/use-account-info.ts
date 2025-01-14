@@ -5,16 +5,16 @@ import { PasQueries } from "@polkadot-api/descriptors";
 
 export function useAccountInfo() {
   const { selectedAccount } = usePolkadotExtension();
-  const { pasApi } = useChain();
+  const { ajuApi } = useChain();
   const [accountInfo, setAccountInfo] = useState<
     PasQueries["System"]["Account"]["Value"] | null
   >(null);
 
   useEffect(() => {
     async function fetchAccountInfo() {
-      if (!pasApi || !selectedAccount) return;
+      if (!ajuApi || !selectedAccount) return;
 
-      const subscription = pasApi?.query.System.Account.watchValue(
+      const subscription = ajuApi?.query.System.Account.watchValue(
         selectedAccount?.address,
         "best"
       ).subscribe((value) => {
@@ -25,7 +25,7 @@ export function useAccountInfo() {
     }
 
     fetchAccountInfo();
-  }, [pasApi, selectedAccount]);
+  }, [ajuApi, selectedAccount]);
 
   return accountInfo;
 }

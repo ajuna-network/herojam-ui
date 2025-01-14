@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { MenuTop } from "@/components/layout/menu-top";
 import { Providers } from "@/providers/providers";
-import { geistMono, geistSans } from "@/fonts";
+import { geistMono } from "@/fonts";
 import { ChainInfo } from "@/components/chain/chain-info";
 import { Toaster } from "@/components/ui/sonner";
 import { Loader } from "@/components/ui/loader";
@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistMono.className} antialiased`}>
         <Providers>
           <MenuTop />
           <main className="mt-16 min-h-[calc(200vh)]">{children}</main>
