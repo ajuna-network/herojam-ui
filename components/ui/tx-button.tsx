@@ -81,8 +81,6 @@ export function TxButton({ children, transaction, options }: TxButtonProps) {
     );
   };
 
-  //todo no account selected connected
-
   return (
     <div className="flex flex-col gap-[0.4rem]">
       <Button
@@ -91,7 +89,7 @@ export function TxButton({ children, transaction, options }: TxButtonProps) {
         disabled={isDisabled || isSubmitting}
         className="relative"
       >
-        {buttonContent}{" "}
+        {buttonContent}
         <span
           className={`absolute flex h-4 w-4 -top-2 -right-2 transition-opacity duration-200 ${
             isSubmitting ? "opacity-100" : "opacity-0"
