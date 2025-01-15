@@ -20,7 +20,7 @@ export function UserProfileActionButtons() {
       </TxButton>
       <TxButton
         transaction={ajuApi?.tx.Balances.burn({
-          value: BigInt(10 ** (tokenDecimals || 18 - 5)),
+          value: BigInt(10 ** ((tokenDecimals || 18) - 5)),
           keep_alive: true,
         })}
       >
