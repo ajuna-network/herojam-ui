@@ -50,18 +50,22 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
 
     console.log("Switching chain to", activeChain.name);
 
-    const _wsProvider = getWsProvider(
-      activeChain.endpoints,
-      setConnectionStatus
-    );
+    try {
+      const _wsProvider = getWsProvider(
+        activeChain.endpoints,
+        setConnectionStatus
+      );
 
-    wsProviderRef.current = _wsProvider;
+      wsProviderRef.current = _wsProvider;
 
-    const client = createClient(withPolkadotSdkCompat(_wsProvider));
-    const api = client.getTypedApi(activeChain.descriptors);
+      const client = createClient(withPolkadotSdkCompat(_wsProvider));
+      const api = client.getTypedApi(activeChain.descriptors);
 
-    clientRef.current = client;
-    setActiveApi(api);
+      clientRef.current = client;
+      setActiveApi(api);
+    } catch (error) {
+      console.error("Error connecting to chain", error);
+    }
   }, [activeChain]);
 
   return (

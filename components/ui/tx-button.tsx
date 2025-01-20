@@ -21,6 +21,7 @@ export interface TxButtonProps {
     label?: string;
     costDecimals?: number;
   };
+  className?: string;
 }
 
 const defaultOptions = {

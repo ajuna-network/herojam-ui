@@ -1,6 +1,6 @@
 "use client";
 
-import { aju, ajudev, pas } from "@polkadot-api/descriptors";
+import { aju, ajudev, pas } from "./.papi/descriptors";
 
 // import { pas } from "@polkadot-api/descriptors";
 // import { createClient } from "polkadot-api";
