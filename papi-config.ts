@@ -1,6 +1,6 @@
 "use client";
 
-import { aju, ajudev, pas } from "./.papi/descriptors";
+import { aju, ajudev, pas } from "@polkadot-api/descriptors";
 
 // import { pas } from "@polkadot-api/descriptors";
 // import { createClient } from "polkadot-api";
@@ -22,7 +22,7 @@ export interface ChainConfig {
 export const chainConfig: ChainConfig[] = [
   {
     key: "ajudev",
-    name: "Ajuna (Local)",
+    name: "Ajuna Devnet (Local)",
     descriptors: ajudev,
     endpoints: ["ws://127.0.0.1:9944"],
   },
