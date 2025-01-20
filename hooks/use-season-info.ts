@@ -29,9 +29,7 @@ export function useSeasonInfo() {
   });
 
   useEffect(() => {
-    if (!heroJamApi) {
-      return;
-    }
+    if (!heroJamApi) return;
 
     const seasonStatusSub =
       heroJamApi.query.HeroJamSeasons.CurrentSeasonStatus.watchValue(
@@ -39,28 +37,19 @@ export function useSeasonInfo() {
       ).subscribe((value) => {
         setSeasonInfo((prev) => ({
           ...prev,
+          seasonNumber: value?.season_id,
           seasonStatus: value,
         }));
       });
 
-    const latestSeasonSub =
-      heroJamApi.query.HeroJamSeasons.LatestSeason.watchValue("best").subscribe(
-        (value) => {
-          setSeasonInfo((prev) => ({
-            ...prev,
-            seasonNumber: value,
-          }));
-        }
-      );
+    return () => {
+      seasonStatusSub?.unsubscribe();
+    };
+  }, [heroJamApi]);
 
-    if (seasonInfo.seasonNumber === undefined) {
-      setSeasonInfo({
-        seasonNumber: undefined,
-        seasonStatus: undefined,
-        seasonSchedules: undefined,
-      });
-      return;
-    }
+  // Separate useEffect for season schedules that depends on seasonNumber
+  useEffect(() => {
+    if (!heroJamApi || !seasonInfo.seasonNumber) return;
 
     const schedulesSub =
       heroJamApi.query.HeroJamSeasons.SeasonSchedules.watchValue(
@@ -73,10 +62,7 @@ export function useSeasonInfo() {
         }));
       });
 
-    // Don't forget to clean up subscriptions
     return () => {
-      seasonStatusSub?.unsubscribe();
-      latestSeasonSub?.unsubscribe();
       schedulesSub?.unsubscribe();
     };
   }, [heroJamApi, seasonInfo.seasonNumber]);
