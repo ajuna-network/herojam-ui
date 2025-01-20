@@ -1,5 +1,5 @@
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
-import { Button } from "./button";
+import { Button, ButtonProps } from "./button";
 import type { Transaction } from "polkadot-api";
 import { useChainInfo } from "@/hooks/use-chain-info";
 import { formatBalance } from "@/lib/format-balance";
@@ -9,9 +9,11 @@ import { useAccountInfo } from "@/hooks/use-account-info";
 import { Coins } from "lucide-react";
 import { createTxNotificationHandler } from "@/tx/tx-notification";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
-interface TxButtonProps {
+export interface TxButtonProps {
   children?: React.ReactNode;
+  disabled?: boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   transaction: Transaction<any, any, any, any> | undefined;
   /* eslint-enable @typescript-eslint/no-explicit-any */
@@ -26,7 +28,14 @@ const defaultOptions = {
   costDecimals: 4,
 };
 
-export function TxButton({ children, transaction, options }: TxButtonProps) {
+export function TxButton({
+  children,
+  disabled,
+  transaction,
+  options,
+  className,
+  ...props
+}: TxButtonProps & ButtonProps) {
   const opts = { ...defaultOptions, ...options };
   const buttonContent = children ? (
     children
@@ -86,8 +95,9 @@ export function TxButton({ children, transaction, options }: TxButtonProps) {
       <Button
         variant="outline"
         onClick={handleClick}
-        disabled={isDisabled || isSubmitting}
-        className="relative"
+        disabled={disabled || isDisabled || isSubmitting}
+        className={cn("relative", className)}
+        {...props}
       >
         {buttonContent}
         <span
@@ -104,9 +114,11 @@ export function TxButton({ children, transaction, options }: TxButtonProps) {
           <InlineLoader />
         ) : (
           <div className="flex items-center text-xs text-muted-foreground justify-between w-full">
-            <span className="text-[11px] text-orange-500 self-start">
-              {errorMessage}
-            </span>
+            {errorMessage && (
+              <span className="text-[11px] text-orange-500 self-start">
+                {errorMessage}
+              </span>
+            )}
             <span className="text-xs self-end">
               {cost && (
                 <>

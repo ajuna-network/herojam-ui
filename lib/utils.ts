@@ -21,8 +21,10 @@ export function deslugify(str: string) {
 }
 
 export function stringifyWithBigInt(value: unknown) {
-  return JSON.stringify(value, (key, value) =>
-    typeof value === "bigint" ? value.toString() : value
+  return JSON.stringify(
+    value,
+    (key, value) => (typeof value === "bigint" ? value.toString() : value),
+    2
   );
 }
 

@@ -1,11 +1,9 @@
+"use client";
+
 import { toast } from "sonner";
 import { Check, CircleAlert } from "lucide-react";
-import {
-  InvalidTxError,
-  TransactionValidityError,
-  type TxEvent,
-} from "polkadot-api";
-import { chainConfig } from "@/config";
+import { InvalidTxError, type TxEvent } from "polkadot-api";
+import { chainConfig } from "@/papi-config";
 
 interface NotificationOptions {
   onComplete?: () => void;
@@ -14,12 +12,15 @@ interface NotificationOptions {
     awaitingSignatureDescription?: string;
     awaitingBestBlocksMessage?: string;
     awaitingBestBlocksDescription?: string;
+    awaitingFinalizationMessage?: string;
+    awaitingFinalizationDescription?: string;
     successMessage?: string;
     successDescription?: string;
     errorMessage?: string;
     errorDescription?: string;
   };
   subscanUrl?: string;
+  bestOrFinalized?: "best" | "finalized";
 }
 
 const defaultOptions: NotificationOptions = {
@@ -29,12 +30,15 @@ const defaultOptions: NotificationOptions = {
     awaitingSignatureDescription: "Please sign the transaction in your wallet.",
     awaitingBestBlocksMessage: "Waiting for tx to be included in block...",
     awaitingBestBlocksDescription: "This may take a few seconds.",
+    awaitingFinalizationMessage: "Waiting for finalization...",
+    awaitingFinalizationDescription: "This may take a few seconds.",
     successMessage: "Transaction Successful",
     successDescription: undefined,
     errorMessage: "Transaction failed",
     errorDescription: "Something went wrong",
   },
-  subscanUrl: chainConfig.blockExplorerUrl,
+  subscanUrl: chainConfig[0].explorerUrl,
+  bestOrFinalized: "finalized",
 };
 
 export function createTxNotificationHandler(options?: NotificationOptions) {
@@ -48,15 +52,27 @@ export function createTxNotificationHandler(options?: NotificationOptions) {
     next: (event: TxEvent) => {
       console.log("next event", event);
 
-      // event.type === "signed" is left out because it happens with broadcasted
       if (event.type === "broadcasted") {
         toast.loading(messages.awaitingBestBlocksMessage, {
           id: toastId,
           description: messages.awaitingBestBlocksDescription,
         });
       } else if (
-        (event.type === "txBestBlocksState" && event.found) ||
-        event.type === "finalized"
+        opts.bestOrFinalized === "finalized" &&
+        event.type === "txBestBlocksState" &&
+        event.found &&
+        event.ok !== undefined
+      ) {
+        toast.loading(messages.awaitingFinalizationMessage, {
+          id: toastId,
+          description: messages.awaitingFinalizationDescription,
+        });
+      } else if (
+        (opts.bestOrFinalized === "best" &&
+          event.type === "txBestBlocksState" &&
+          event.found &&
+          event.ok !== undefined) ||
+        (opts.bestOrFinalized === "finalized" && event.type === "finalized")
       ) {
         opts.onComplete?.();
 
@@ -94,11 +110,9 @@ export function createTxNotificationHandler(options?: NotificationOptions) {
       console.log("tx error", error);
 
       if (error instanceof InvalidTxError) {
-        const typedErr: TransactionValidityError<typeof chainConfig.chain> =
-          error.error;
         toast.error(messages.errorMessage, {
           id: toastId,
-          description: typedErr.value.type,
+          description: error.error.value.type,
           duration: 5000,
           icon: <CircleAlert className="mr-2 w-5 h-5" />,
         });

@@ -13,6 +13,14 @@
     "aju": {
       "wsUrl": "wss://rpc-paseo.ajuna.network",
       "metadata": ".papi/metadata/aju.scale"
+    },
+    "ajusage": {
+      "wsUrl": "ws://127.0.0.1:9944",
+      "metadata": ".papi/metadata/ajusage.scale"
+    },
+    "ajudev": {
+      "wsUrl": "ws://127.0.0.1:9944",
+      "metadata": ".papi/metadata/ajudev.scale"
     }
   }
 }

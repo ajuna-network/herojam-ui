@@ -9,12 +9,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useChain } from "@/providers/chain-provider";
-import { WsConnected, WsEvent } from "polkadot-api/ws-provider/web";
+import { WsEvent } from "polkadot-api/ws-provider/web";
 import { useState } from "react";
 
 export function ChainInfo() {
   const blockNumber = useBlockNumber();
-  const { connectionStatus, wsProvider } = useChain();
+  const { connectionStatus, wsProvider, activeChain } = useChain();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSwitch = (e: React.MouseEvent) => {
@@ -61,7 +61,7 @@ export function ChainInfo() {
               sideOffset={-1}
               className="bg-background text-foreground"
             >
-              connected to <b>{(connectionStatus as WsConnected).uri}</b> on
+              connected to <b>{activeChain?.name}</b>({connectionStatus.uri}) on
               block
             </TooltipContent>
           )}

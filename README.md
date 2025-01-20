@@ -1,17 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ajuna HeroJam UI
 
 ## Getting Started
 
-First, add generate the [papi types](https://papi.how/codegen) for ajuna testnet
-on paseo.
+### backend
+
+### frontend
+
+1. generate the [papi types](https://papi.how/codegen) for ajuna testnet on
+   paseo
 
 ````bash
 pnpm papi add aju -w wss://rpc-paseo.ajuna.network
 ```
-This will generate the types for connecting papi to ajuna with the key `aju`.
 
-Second, run the development server:
+or if you are running a substrate node locally
+
+```bash
+pn`m papi add ajudev -w ws://127.0.0.1:9944
+```
+
+This will generate the types for connecting papi to ajuna with the key `aju` / `ajudev`.
+
+2. run the development server:
 
 ```bash
 npm run dev
@@ -26,22 +36,15 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
 
-You can start editing the page by modifying `app/page.tsx`. The page
-auto-updates as you edit the file.
+3. If you are running your node with `--dev` you will have access to demo
+   accounts. The frontend uses Alice's account for demo purposes. Add it to your
+   wallet by importing
 
-This project uses
-[`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
-to automatically optimize and load [Geist](https://vercel.com/font), a new font
-family for Vercel.
+```bash
+bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out
-[the Next.js GitHub repository](https://github.com/vercel/next.js) - your
-feedback and contributions are welcome!
+- This project is build on [Next.js](https://nextjs.org/docs), make sure you
+  understand what it is and how to use it
