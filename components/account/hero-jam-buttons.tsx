@@ -33,12 +33,15 @@ export function HeroJamButtons() {
   const nextSeason =
     seasonInfo?.seasonNumber !== undefined ? seasonInfo.seasonNumber + 1 : 0;
 
+  const txAliceOrganizerDisabled =
+    organizer === "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
+
   return (
     <div className="flex flex-col md:flex-row justify-between w-full gap-4">
       <div className="flex flex-col gap-2">
         <TxButton
           transaction={heroJamApi?.tx.Sudo.sudo({ call: sudoCall })}
-          disabled={!sudoCall}
+          disabled={txAliceOrganizerDisabled}
         >
           <UserCheck />
           <span>Make Alice Organizer</span>

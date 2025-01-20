@@ -72,6 +72,13 @@ export function MenuTop() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
+                <Link href="/heroes" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Heroes
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <Link href="/docs" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Documentation
