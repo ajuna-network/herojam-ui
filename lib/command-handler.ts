@@ -5,13 +5,12 @@ export async function executeCommand(input: string): Promise<string> {
 
   if (trimmedInput in commands) return await commands[trimmedInput].execute([]);
 
-  const [firstWord] = trimmedInput.split(" ");
+  const [firstWord, ...args] = trimmedInput.split(" ");
   const potentialCommand = Object.keys(commands).find((cmd) =>
     cmd.startsWith(firstWord)
   );
 
   if (potentialCommand && trimmedInput.startsWith(potentialCommand)) {
-    const args = trimmedInput.slice(potentialCommand.length).trim().split(" ");
     return await commands[potentialCommand].execute(args);
   }
 
