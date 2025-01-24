@@ -4,6 +4,7 @@ import { createHero } from "./create-hero";
 import { welcome } from "./welcome";
 import { organizer } from "./organizer";
 import { season } from "./season";
+import { whoami } from "./whoami";
 import type { Command } from "@/types/command";
 
 export const commands: Record<string, Command> = {
@@ -13,4 +14,5 @@ export const commands: Record<string, Command> = {
   welcome,
   organizer,
   season,
+  whoami,
 };

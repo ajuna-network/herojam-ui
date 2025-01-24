@@ -8,6 +8,7 @@ import {
   type InjectedPolkadotAccount,
 } from "polkadot-api/pjs-signer";
 import { createContext, useContext, useEffect, useState } from "react";
+import { setWalletState } from "@/store/wallet-store";
 
 interface PolkadotExtensionContextType {
   installedExtensions: string[];
@@ -55,6 +56,15 @@ export const PolkadotExtensionProvider = ({
     setSelectedExtensionName(storedExtensionName);
     setSelectedAccount(storedAccount);
     setUserWantsToConnect(!!storedUserWantsToConnect);
+
+    // Initialize wallet store
+    setWalletState({
+      selectedExtensionName: storedExtensionName,
+      selectedAccount: storedAccount,
+      connectionStatus: storedUserWantsToConnect
+        ? "connecting"
+        : "disconnected",
+    });
   }, []);
 
   useEffect(() => {
@@ -85,12 +95,15 @@ export const PolkadotExtensionProvider = ({
   ) => {
     localStorage.setItem("selectedAccount", JSON.stringify(account));
     setSelectedAccount(account);
-    console.log("handleSetSelectedAccount account", account);
     const polkadotSigner = account?.polkadotSigner;
     if (polkadotSigner) {
       setActiveSigner(polkadotSigner);
+      // Update wallet store
+      setWalletState({
+        selectedAccount: account,
+        activeSigner: polkadotSigner,
+      });
     }
-    console.log("polkadotSigner", polkadotSigner);
   };
 
   const initiateConnection = () => {
@@ -99,9 +112,9 @@ export const PolkadotExtensionProvider = ({
   };
 
   async function connect() {
-    if (!selectedExtensionName) {
-      return;
-    }
+    if (!selectedExtensionName) return;
+
+    setWalletState({ connectionStatus: "connecting" });
 
     const extensions: string[] = getInjectedExtensions();
     setInstalledExtensions(extensions);
@@ -111,11 +124,18 @@ export const PolkadotExtensionProvider = ({
     );
 
     if (!selectedExtension) {
+      setWalletState({ connectionStatus: "failed" });
       return;
     }
 
     const accounts: InjectedPolkadotAccount[] = selectedExtension.getAccounts();
     setAccounts(accounts);
+
+    // Update wallet store with accounts
+    setWalletState({
+      accounts,
+      connectionStatus: "connected",
+    });
 
     //set the signer to the selected account or the first account
     if (selectedAccount?.address) {
@@ -133,6 +153,14 @@ export const PolkadotExtensionProvider = ({
   const disconnect = () => {
     handleSetSelectedExtensionName(undefined);
     handleSetSelectedAccount(null);
+    // Update wallet store
+    setWalletState({
+      connectionStatus: "disconnected",
+      selectedExtensionName: undefined,
+      selectedAccount: null,
+      activeSigner: null,
+      accounts: [],
+    });
   };
 
   return (
