@@ -1,4 +1,4 @@
 export interface Command {
-  execute: (args: string[]) => string;
+  execute: (args: string[]) => Promise<string> | string;
   help: string;
 }

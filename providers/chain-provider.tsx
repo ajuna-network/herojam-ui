@@ -11,6 +11,7 @@ import { withPolkadotSdkCompat } from "polkadot-api/polkadot-sdk-compat";
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { chainConfig, ChainConfig } from "@/papi-config";
+import { setChainState } from "@/store/chain-store";
 
 interface ChainProviderType {
   connectionStatus: StatusChange | undefined;
@@ -67,6 +68,22 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
       console.error("Error connecting to chain", error);
     }
   }, [activeChain]);
+
+  useEffect(() => {
+    const heroJamApi =
+      activeChain?.key === "ajudev"
+        ? (activeApi as TypedApi<typeof ajudev>)
+        : undefined;
+
+    setChainState({
+      connectionStatus: connectionStatus?.toString(),
+      activeChain,
+      client: clientRef.current,
+      wsProvider: wsProviderRef.current,
+      api: activeApi,
+      heroJamApi,
+    });
+  }, [connectionStatus, activeChain, activeApi]);
 
   return (
     <ChainContext.Provider

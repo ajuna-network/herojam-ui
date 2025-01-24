@@ -1,9 +1,9 @@
 import { commands } from "@/commands";
 
-export function executeCommand(input: string): string {
+export async function executeCommand(input: string): Promise<string> {
   const trimmedInput = input.trim();
 
-  if (trimmedInput in commands) return commands[trimmedInput].execute([]);
+  if (trimmedInput in commands) return await commands[trimmedInput].execute([]);
 
   const [firstWord] = trimmedInput.split(" ");
   const potentialCommand = Object.keys(commands).find((cmd) =>
@@ -12,7 +12,7 @@ export function executeCommand(input: string): string {
 
   if (potentialCommand && trimmedInput.startsWith(potentialCommand)) {
     const args = trimmedInput.slice(potentialCommand.length).trim().split(" ");
-    return commands[potentialCommand].execute(args);
+    return await commands[potentialCommand].execute(args);
   }
 
   return `Command not found: ${firstWord}`;

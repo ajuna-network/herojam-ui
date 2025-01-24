@@ -9,12 +9,19 @@ import { executeCommand } from "@/lib/command-handler";
 export default function Terminal() {
   const [history, setHistory] = useState<
     Array<{ command: string; output: string }>
-  >([{ command: "welcome", output: executeCommand("welcome") }]);
+  >([]);
   const historyRef = useRef<HTMLDivElement>(null);
 
-  const handleCommand = (command: string) => {
-    const output = executeCommand(command);
-    setHistory([...history, { command, output }]);
+  useEffect(() => {
+    // Handle initial welcome command
+    executeCommand("welcome").then((output) => {
+      setHistory([{ command: "welcome", output }]);
+    });
+  }, []);
+
+  const handleCommand = async (command: string) => {
+    const output = await executeCommand(command);
+    setHistory((prev) => [...prev, { command, output }]);
   };
 
   useEffect(() => {

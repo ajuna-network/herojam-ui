@@ -1,7 +1,5 @@
 "use client";
 
-import { useBlockNumber } from "@/hooks/use-block-number";
-import { Badge } from "@/components/ui/badge";
 import {
   Tooltip,
   TooltipContent,
@@ -35,24 +33,24 @@ export function ChainInfo() {
           >
             {connectionStatus?.type === WsEvent.CONNECTED ? (
               <>
-                <span className="block rounded-full w-3 h-3 bg-green-400 animate-pulse mr-1" />{" "}
+                <span className="block rounded-full w-2.5 h-2.5 bg-green-400 animate-pulse mr-1" />{" "}
               </>
             ) : connectionStatus?.type === WsEvent.ERROR ||
               connectionStatus?.type === WsEvent.CLOSE ? (
               <>
-                <span className="block rounded-full w-3 h-3 bg-red-400" />
+                <span className="block rounded-full w-2.5 h-2.5 bg-red-400" />
                 &nbsp;
               </>
             ) : (
               <>
-                <span className="block rounded-full w-3 h-3 bg-yellow-400 animate-pulse" />
+                <span className="block rounded-full w-2.5 h-2.5 bg-yellow-400 animate-pulse" />
                 &nbsp;
               </>
             )}
           </div>
         </TooltipTrigger>
         {connectionStatus?.type === WsEvent.CONNECTED && (
-          <TooltipContent side="left" className="">
+          <TooltipContent side="right" className="">
             connected to <b>{activeChain?.name}</b>({connectionStatus.uri})
           </TooltipContent>
         )}
