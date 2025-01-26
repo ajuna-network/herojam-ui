@@ -19,6 +19,7 @@ interface PolkadotExtensionContextType {
   selectedAccount: InjectedPolkadotAccount | null;
   setSelectedAccount: (account: InjectedPolkadotAccount) => void;
   disconnect: () => void;
+  isAccountsLoading: boolean;
 }
 
 export const PolkadotExtensionContext = createContext<
@@ -30,6 +31,7 @@ export const PolkadotExtensionProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [isAccountsLoading, setIsAccountsLoading] = useState<boolean>(false);
   const [userWantsToConnect, setUserWantsToConnect] = useState<boolean>(false);
   const [installedExtensions, setInstalledExtensions] = useState<string[]>([]);
   const [accounts, setAccounts] = useState<InjectedPolkadotAccount[]>([]);
@@ -41,27 +43,36 @@ export const PolkadotExtensionProvider = ({
     useState<InjectedPolkadotAccount | null>(null);
 
   useEffect(() => {
-    const extensions = getInjectedExtensions();
-    setInstalledExtensions(extensions);
+    const initializeExtensions = () => {
+      console.log("initializing extensions");
+      const extensions = getInjectedExtensions();
+      setInstalledExtensions(extensions);
 
-    const storedExtensionName =
-      localStorage.getItem("selectedExtensionName") || undefined;
-    const storedAccount = JSON.parse(
-      localStorage.getItem("selectedAccount") || "null"
-    );
-    const storedUserWantsToConnect =
-      localStorage.getItem("userWantsToConnect") || false;
+      const storedExtensionName =
+        localStorage.getItem("selectedExtensionName") || undefined;
+      const storedAccount = JSON.parse(
+        localStorage.getItem("selectedAccount") || "null"
+      );
+      const storedUserWantsToConnect =
+        localStorage.getItem("userWantsToConnect") || false;
 
-    setSelectedExtensionName(storedExtensionName);
-    setSelectedAccount(storedAccount);
-    setUserWantsToConnect(!!storedUserWantsToConnect);
+      setSelectedExtensionName(storedExtensionName);
+      setSelectedAccount(storedAccount);
+      setUserWantsToConnect(!!storedUserWantsToConnect);
+    };
+
+    window.addEventListener("load", initializeExtensions);
+
+    if (window.injectedWeb3) initializeExtensions();
+
+    return () => {
+      window.removeEventListener("load", initializeExtensions);
+    };
   }, []);
 
   useEffect(() => {
     if (selectedExtensionName && userWantsToConnect) {
-      setTimeout(() => {
-        connect();
-      });
+      connect();
     }
   }, [selectedExtensionName, userWantsToConnect]);
 
@@ -72,12 +83,17 @@ export const PolkadotExtensionProvider = ({
   }, [accounts, selectedAccount]);
 
   const handleSetSelectedExtensionName = (name: string | undefined) => {
+    setIsAccountsLoading(true);
+    setAccounts([]);
+    setSelectedExtensionName(name);
+
     if (name) {
       localStorage.setItem("selectedExtensionName", name);
     } else {
       localStorage.removeItem("selectedExtensionName");
     }
-    setSelectedExtensionName(name);
+
+    setIsAccountsLoading(false);
   };
 
   const handleSetSelectedAccount = (
@@ -110,8 +126,10 @@ export const PolkadotExtensionProvider = ({
       return;
     }
 
+    setIsAccountsLoading(true);
     const accounts: InjectedPolkadotAccount[] = selectedExtension.getAccounts();
     setAccounts(accounts);
+    setIsAccountsLoading(false);
 
     //set the signer to the selected account or the first account
     if (selectedAccount?.address) {
@@ -135,6 +153,7 @@ export const PolkadotExtensionProvider = ({
     <PolkadotExtensionContext.Provider
       value={{
         installedExtensions,
+        isAccountsLoading,
         selectedExtensionName,
         setSelectedExtensionName: handleSetSelectedExtensionName,
         accounts,
