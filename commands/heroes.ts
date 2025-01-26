@@ -1,3 +1,4 @@
+import { displayHero } from "@/lib/display-hero";
 import { getChainState } from "@/store/chain-store";
 import { Command } from "@/types/command";
 
@@ -31,9 +32,7 @@ export const heroes: Command = {
       const hero = transformedHeroes.find(
         (hero) => hero.id === parseInt(heroId)
       );
-      return hero
-        ? `-- 🦹‍♂️ ${hero.id} --\nbalance ${hero.balance}\nfatigue ${hero.fatigue}\nenergy ${hero.energy}\n----------`
-        : "Hero not found";
+      return hero ? displayHero(hero) : "Hero not found";
     }
 
     return `${heroes.length} Heroes: ${JSON.stringify(

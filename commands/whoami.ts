@@ -1,11 +1,9 @@
 import { getChainState } from "@/store/chain-store";
-import { getWalletState } from "@/store/wallet-store";
 import { Command } from "@/types/command";
 
 export const whoami: Command = {
-  execute: async () => {
+  execute: async (_, { selectedAccount }) => {
     const { heroJamApi } = getChainState();
-    const { selectedAccount } = getWalletState();
 
     if (!heroJamApi) return "No HeroJam API available";
 

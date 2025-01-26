@@ -23,14 +23,14 @@ export default function CommandPrompt({ onSubmit }: CommandPromptProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center">
-      <span className="text-green-500 mr-2">$</span>
+    <form onSubmit={handleSubmit} className="flex items-center text-green-500">
+      <span className="mr-2">$</span>
       <input
         ref={inputRef}
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        className="flex-grow bg-transparent text-green-500 focus:outline-none"
+        className="flex-grow bg-transparent focus:outline-none"
       />
     </form>
   );

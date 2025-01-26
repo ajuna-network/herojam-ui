@@ -5,12 +5,17 @@ import CommandPrompt from "./command-prompt";
 import CommandOutput from "./command-output";
 import { DynamicElements } from "./dynamic-elements";
 import { executeCommand } from "@/lib/command-handler";
+import { useTxContext } from "@/providers/tx-provider";
+import { Spinner } from "./spinner";
+import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 
 export default function Terminal() {
   const [history, setHistory] = useState<
     Array<{ command: string; output: string }>
   >([]);
   const historyRef = useRef<HTMLDivElement>(null);
+  const { isProcessing, setIsProcessing } = useTxContext();
+  const { activeSigner, selectedAccount } = usePolkadotExtension();
 
   useEffect(() => {
     // Handle initial welcome command
@@ -20,8 +25,19 @@ export default function Terminal() {
   }, []);
 
   const handleCommand = async (command: string) => {
-    const output = await executeCommand(command);
-    setHistory((prev) => [...prev, { command, output }]);
+    setIsProcessing(true);
+    try {
+      const output = await executeCommand(command, {
+        activeSigner,
+        selectedAccount,
+      });
+      setHistory((prev) => [...prev, { command, output }]);
+    } catch (error) {
+      setHistory((prev) => [...prev, { command, output: "Error" }]);
+      console.error(error);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   useEffect(() => {
@@ -40,7 +56,13 @@ export default function Terminal() {
         ))}
       </div>
       <div className="mt-auto">
-        <CommandPrompt onSubmit={handleCommand} />
+        {!isProcessing ? (
+          <CommandPrompt onSubmit={handleCommand} />
+        ) : (
+          <div className="flex items-center gap-2">
+            <Spinner />
+          </div>
+        )}
         <DynamicElements />
       </div>
     </div>
