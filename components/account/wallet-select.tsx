@@ -14,9 +14,7 @@ import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 import { cn, trimAddress } from "@/lib/utils";
 import { Identicon } from "@polkadot/react-identicon";
 import { allSubstrateWallets, SubstrateWalletPlatform } from "./wallets";
-import { detect } from "detect-browser";
 import { isMobile } from "@/lib/is-mobile";
-import Image from "next/image";
 
 export function WalletSelect() {
   const {
