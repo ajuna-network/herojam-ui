@@ -78,7 +78,7 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-2xl text-sm dark:bg-black bg-amber-100 text-green-500 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
+    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-500 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
       <div ref={historyRef} className="flex-grow overflow-y-auto mb-4">
         {history.map((item, index) => (
           <div key={index}>
