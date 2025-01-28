@@ -19,10 +19,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistMono.className} antialiased`}>
         <Providers>
-          {/* <MenuTop /> */}
           <main className="">{children}</main>
-          {/* <Footer /> */}
-          {/* <ChainInfo /> */}
           <Toaster position="bottom-center" icons={{ loading: <Loader /> }} />
         </Providers>
       </body>
