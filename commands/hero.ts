@@ -107,6 +107,22 @@ ${hero ? displayHero(hero) : "Hero not found"}`;
           console.log("result", result);
           return `❌ Hero ${hero.id} failed hunting in: <a class="underline" href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer/query/${result.block.hash}">${result.block.hash}</a>`;
         }
+      } else if (action === "train") {
+        const tx = heroJamApi.tx.HeroJamSage.state_transition({
+          transition_id: {
+            type: "HeroJam",
+            value: Enum("Work", [Enum("Train"), Enum("Short")]),
+          },
+          asset_ids: [hero.id],
+          payment: undefined,
+        });
+        const result = await tx.signAndSubmit(activeSigner, { at: "best" });
+        if (result.ok) {
+          return `✅ Hero ${hero.id} went training in: <a class="underline" href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer/query/${result.block.hash}">${result.block.hash}</a>`;
+        } else {
+          console.log("result", result);
+          return `❌ Hero ${hero.id} failed training in: <a class="underline" href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer/query/${result.block.hash}">${result.block.hash}</a>`;
+        }
       } else {
         return `action ${action} not found`;
       }

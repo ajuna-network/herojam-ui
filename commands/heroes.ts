@@ -35,11 +35,9 @@ export const heroes: Command = {
       return hero ? displayHero(hero) : "Hero not found";
     }
 
-    return `${heroes.length} Heroes: ${JSON.stringify(
-      transformedHeroes,
-      null,
-      2
-    )}`;
+    return `Total ${heroes.length} Heroes:\n\n${transformedHeroes
+      .map((hero) => displayHero(hero))
+      .join("\n\n")}`;
   },
   help: "heroes - Display the heroes",
 };
