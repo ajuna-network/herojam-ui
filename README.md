@@ -41,7 +41,10 @@ result.
    wallet by importing
 
 ```bash
+# alice
 bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice
+
+# bob
 bottom drive obey lake curtain smoke basket hold race lonely fit walk//Bob
 ```
 

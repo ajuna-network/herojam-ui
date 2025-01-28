@@ -97,6 +97,7 @@ export function createTxNotificationHandler(options?: NotificationOptions) {
           const err = event.dispatchError;
           toast.error(messages.errorMessage, {
             id: toastId,
+            // @ts-expect-error some errors are not typed
             description: `${err?.type} ${err?.value.type} ${err?.value.value.type} ${err?.value.value.value}`,
             duration: 5000,
             icon: <CircleAlert className="mr-2 w-5 h-5" />,

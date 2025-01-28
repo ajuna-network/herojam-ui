@@ -1,7 +1,5 @@
 "use client";
 
-import { useBlockNumber } from "@/hooks/use-block-number";
-import { Badge } from "@/components/ui/badge";
 import {
   Tooltip,
   TooltipContent,
@@ -13,7 +11,6 @@ import { WsEvent } from "polkadot-api/ws-provider/web";
 import { useState } from "react";
 
 export function ChainInfo() {
-  const blockNumber = useBlockNumber();
   const { connectionStatus, wsProvider, activeChain } = useChain();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,46 +24,37 @@ export function ChainInfo() {
   };
 
   return (
-    <div className="fixed bottom-7 right-8">
-      <TooltipProvider>
-        <Tooltip delayDuration={100} open={isOpen} onOpenChange={setIsOpen}>
-          <TooltipTrigger asChild>
-            <Badge
-              className="tabular-nums font-light h-6 cursor-pointer shadow-sm"
-              variant="secondary"
-              onClick={handleSwitch}
-            >
-              {connectionStatus?.type === WsEvent.CONNECTED ? (
-                <>
-                  <span className="block rounded-full w-1.5 h-1.5 bg-green-400 animate-pulse mr-1" />{" "}
-                  {blockNumber}
-                </>
-              ) : connectionStatus?.type === WsEvent.ERROR ||
-                connectionStatus?.type === WsEvent.CLOSE ? (
-                <>
-                  <span className="block rounded-full w-1.5 h-1.5 bg-red-400" />
-                  &nbsp;
-                </>
-              ) : (
-                <>
-                  <span className="block rounded-full w-1.5 h-1.5 bg-yellow-400 animate-pulse" />
-                  &nbsp;
-                </>
-              )}
-            </Badge>
-          </TooltipTrigger>
-          {connectionStatus?.type === WsEvent.CONNECTED && (
-            <TooltipContent
-              side="left"
-              sideOffset={-1}
-              className="bg-background text-foreground"
-            >
-              connected to <b>{activeChain?.name}</b>({connectionStatus.uri}) on
-              block
-            </TooltipContent>
-          )}
-        </Tooltip>
-      </TooltipProvider>
-    </div>
+    <TooltipProvider>
+      <Tooltip delayDuration={100} open={isOpen} onOpenChange={setIsOpen}>
+        <TooltipTrigger asChild className="flex items-center">
+          <div
+            className="tabular-nums font-light h-6 cursor-pointer shadow-sm"
+            onClick={handleSwitch}
+          >
+            {connectionStatus?.type === WsEvent.CONNECTED ? (
+              <>
+                <span className="block rounded-full w-2.5 h-2.5 bg-green-400 animate-pulse mr-1" />{" "}
+              </>
+            ) : connectionStatus?.type === WsEvent.ERROR ||
+              connectionStatus?.type === WsEvent.CLOSE ? (
+              <>
+                <span className="block rounded-full w-2.5 h-2.5 bg-red-400" />
+                &nbsp;
+              </>
+            ) : (
+              <>
+                <span className="block rounded-full w-2.5 h-2.5 bg-yellow-400 animate-pulse" />
+                &nbsp;
+              </>
+            )}
+          </div>
+        </TooltipTrigger>
+        {connectionStatus?.type === WsEvent.CONNECTED && (
+          <TooltipContent side="right" className="">
+            connected to <b>{activeChain?.name}</b>({connectionStatus.uri})
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 }

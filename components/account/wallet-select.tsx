@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,8 +11,10 @@ import {
 } from "@/components/ui/dialog";
 import { ArrowLeft, LogOut, Wallet } from "lucide-react";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
-import { deslugify, trimAddress } from "@/lib/utils";
+import { cn, trimAddress } from "@/lib/utils";
 import { Identicon } from "@polkadot/react-identicon";
+import { allSubstrateWallets, SubstrateWalletPlatform } from "./wallets";
+import { isMobile } from "@/lib/is-mobile";
 
 export function WalletSelect() {
   const {
@@ -22,7 +26,23 @@ export function WalletSelect() {
     setSelectedAccount,
     initiateConnection,
     disconnect,
+    isAccountsLoading,
   } = usePolkadotExtension();
+
+  const systemWallets = allSubstrateWallets
+    .filter((wallet) =>
+      isMobile()
+        ? wallet.platforms.includes(SubstrateWalletPlatform.Android) ||
+          wallet.platforms.includes(SubstrateWalletPlatform.iOS)
+        : wallet.platforms.includes(SubstrateWalletPlatform.Browser)
+    )
+    .sort((a, b) =>
+      installedExtensions.includes(a.id)
+        ? -1
+        : installedExtensions.includes(b.id)
+        ? 1
+        : 0
+    );
 
   return (
     <Dialog>
@@ -32,12 +52,12 @@ export function WalletSelect() {
           {selectedAccount?.name}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]s">
-        <DialogHeader>
-          <DialogTitle>
+      <DialogContent className="sm:max-w-[425px] p-0">
+        <DialogHeader className="p-4">
+          <DialogTitle className="leading-snug">
             {selectedExtensionName !== undefined && (
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
                 className="mr-4"
                 onClick={() => setSelectedExtensionName(undefined)}
@@ -47,10 +67,10 @@ export function WalletSelect() {
             )}
             {selectedExtensionName !== undefined
               ? "Select Account"
-              : "Select Extension"}
+              : "Select a wallet to connect to Polkadot"}
             {selectedExtensionName !== undefined && (
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
                 className="ml-4"
                 onClick={disconnect}
@@ -61,52 +81,85 @@ export function WalletSelect() {
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col items-start gap-2 py-4 max-h-[70vh] pr-4 overflow-y-auto">
-          {selectedExtensionName === undefined ? (
-            <>
-              {installedExtensions.map((extension, index) => (
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  key={index}
-                  onClick={() => setSelectedExtensionName(extension)}
-                >
-                  <span className="font-bold">{deslugify(extension)}</span>
-                </Button>
-              ))}
-            </>
-          ) : (
-            <>
-              {accounts.length > 0 ? (
-                accounts.map((account, index) => (
-                  <DialogClose asChild key={index}>
-                    <Button
-                      variant="outline"
-                      className="w-full flex flex-row h-auto justify-start items-center gap-0 [&_svg]:size-auto"
-                      onClick={() => setSelectedAccount(account)}
-                    >
-                      <Identicon
-                        className="w-[32px] h-[32px] mr-2 [&>svg>circle:first-child]:fill-transparent"
-                        value={account.address}
-                        size={32}
-                        theme="polkadot"
-                      />
-                      <div className="flex flex-col justify-start items-start gap-0">
-                        <span className="font-bold">{account.name}</span>
-                        {account.address && (
-                          <div>{trimAddress(account.address)}</div>
-                        )}
-                      </div>
-                    </Button>
-                  </DialogClose>
-                ))
-              ) : (
-                <div>
-                  Please allow the site to access your extension accounts
+        <div className="p-4 pt-0 overflow-auto max-h-[500px]">
+          <div
+            className={cn(
+              "flex flex-col items-start gap-2 transition-[max-height,opacity]",
+              selectedExtensionName === undefined
+                ? "opacity-100 max-h-[9999px] duration-500 delay-[0ms,200ms]"
+                : "opacity-0 max-h-0 overflow-hidden duration-0"
+            )}
+          >
+            {systemWallets.map((wallet, index) => (
+              <Button
+                variant="ghost"
+                className="w-full flex flex-row items-center justify-between"
+                key={index}
+                onClick={() => {
+                  if (installedExtensions.includes(wallet.id)) {
+                    setSelectedExtensionName(wallet.id);
+                  } else {
+                    window.open(wallet.urls.website, "_blank");
+                  }
+                }}
+              >
+                <div className="flex flex-row items-center justify-start gap-4">
+                  <img
+                    src={wallet.logoUrls[0]}
+                    alt={wallet.name}
+                    className="w-6 h-6"
+                    width={24}
+                    height={24}
+                  />
+                  <span className="font-bold">{wallet.name}</span>
                 </div>
-              )}
-            </>
-          )}
+                <span className="text-[10px] text-muted-foreground">
+                  {installedExtensions.includes(wallet.id)
+                    ? "Detected"
+                    : "Install"}
+                </span>
+              </Button>
+            ))}
+          </div>
+          <div
+            className={cn(
+              "flex flex-col items-start gap-2 transition-[max-height,opacity]",
+              selectedExtensionName === undefined
+                ? "opacity-0 max-h-0 overflow-hidden duration-0"
+                : "opacity-100 max-h-[9999px] duration-500 delay-[0ms,200ms]"
+            )}
+          >
+            {accounts.length > 0 ? (
+              accounts.map((account, index) => (
+                <DialogClose asChild key={index}>
+                  <Button
+                    variant="ghost"
+                    className="w-full flex flex-row h-auto justify-start items-center gap-0 [&_svg]:size-auto"
+                    onClick={() => setSelectedAccount(account)}
+                  >
+                    <Identicon
+                      className="w-[32px] h-[32px] mr-2 [&>svg>circle:first-child]:fill-transparent"
+                      value={account.address}
+                      size={32}
+                      theme="polkadot"
+                    />
+                    <div className="flex flex-col justify-start items-start gap-0">
+                      <span className="font-bold">{account.name}</span>
+                      {account.address && (
+                        <div>{trimAddress(account.address)}</div>
+                      )}
+                    </div>
+                  </Button>
+                </DialogClose>
+              ))
+            ) : (
+              <div>
+                {isAccountsLoading
+                  ? "Loading accounts..."
+                  : "Please allow the site to access your extension accounts"}
+              </div>
+            )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

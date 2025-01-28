@@ -4,6 +4,7 @@ import { ThemeProvider } from "./theme-provider";
 import { PolkadotExtensionProvider } from "./polkadot-extension-provider";
 import { ChainProvider } from "./chain-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { TxProvider } from "./tx-provider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
@@ -11,7 +12,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <PolkadotExtensionProvider>
-          <ChainProvider>{children}</ChainProvider>
+          <ChainProvider>
+            <TxProvider>{children}</TxProvider>
+          </ChainProvider>
         </PolkadotExtensionProvider>
       </QueryClientProvider>
     </ThemeProvider>
