@@ -61,12 +61,14 @@ export const PolkadotExtensionProvider = ({
       setUserWantsToConnect(!!storedUserWantsToConnect);
     };
 
-    window.addEventListener("load", initializeExtensions);
+    const timeout = setTimeout(() => {
+      initializeExtensions();
+    }, 200);
 
     if (window.injectedWeb3) initializeExtensions();
 
     return () => {
-      window.removeEventListener("load", initializeExtensions);
+      clearTimeout(timeout);
     };
   }, []);
 
