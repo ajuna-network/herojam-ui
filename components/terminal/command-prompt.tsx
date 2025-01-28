@@ -1,37 +1,54 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 interface CommandPromptProps {
-  onSubmit?: (command: string) => void;
+  onSubmit: (command: string) => void;
+  onUpPress: () => string;
+  onDownPress: () => string;
+  onCtrlC: () => void;
 }
 
-export default function CommandPrompt({ onSubmit }: CommandPromptProps) {
-  const [input, setInput] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+export default function CommandPrompt({
+  onSubmit,
+  onUpPress,
+  onDownPress,
+  onCtrlC,
+}: CommandPromptProps) {
+  const [command, setCommand] = useState("");
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSubmit && input.trim()) {
-      onSubmit(input.trim());
-      setInput("");
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.ctrlKey && e.key === "c") {
+      e.preventDefault();
+      onCtrlC();
+      setCommand("");
+      return;
+    }
+    if (e.key === "Enter") {
+      onSubmit(command);
+      setCommand("");
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const previousCommand = onUpPress();
+      setCommand(previousCommand);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextCommand = onDownPress();
+      setCommand(nextCommand);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center text-green-500">
+    <div className="flex items-center">
       <span className="mr-2">$</span>
       <input
-        ref={inputRef}
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="flex-grow bg-transparent focus:outline-none"
+        value={command}
+        onChange={(e) => setCommand(e.target.value)}
+        onKeyDown={handleKeyDown}
+        className="bg-transparent focus:outline-none flex-1"
+        autoFocus
       />
-    </form>
+    </div>
   );
 }

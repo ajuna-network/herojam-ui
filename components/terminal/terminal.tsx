@@ -13,6 +13,7 @@ export default function Terminal() {
   const [history, setHistory] = useState<
     Array<{ command: string; output: string }>
   >([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const historyRef = useRef<HTMLDivElement>(null);
   const { isProcessing, setIsProcessing } = useTxContext();
   const { activeSigner, selectedAccount } = usePolkadotExtension();
@@ -25,6 +26,7 @@ export default function Terminal() {
   }, []);
 
   const handleCommand = async (command: string) => {
+    setHistoryIndex(-1); // Reset history index when new command is executed
     setIsProcessing(true);
     try {
       const output = await executeCommand(command, {
@@ -40,11 +42,40 @@ export default function Terminal() {
     }
   };
 
+  const getPreviousCommand = () => {
+    if (history.length === 0) return "";
+    const newIndex = historyIndex + 1;
+    if (newIndex >= history.length) return history[historyIndex].command;
+    setHistoryIndex(newIndex);
+    return history[history.length - 1 - newIndex].command;
+  };
+
+  const getNextCommand = () => {
+    if (historyIndex <= 0) {
+      setHistoryIndex(-1);
+      return "";
+    }
+    const newIndex = historyIndex - 1;
+    setHistoryIndex(newIndex);
+    return history[history.length - 1 - newIndex].command;
+  };
+
   useEffect(() => {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
   }, [history]);
+
+  // Add resetInput handler
+  const handleReset = () => {
+    if (isProcessing) {
+      setIsProcessing(false);
+      setHistory((prev) => [
+        ...prev,
+        { command: "^C", output: "Command interrupted" },
+      ]);
+    }
+  };
 
   return (
     <div className="w-full max-w-2xl text-sm dark:bg-black bg-amber-100 text-green-500 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
@@ -57,7 +88,12 @@ export default function Terminal() {
       </div>
       <div className="mt-auto">
         {!isProcessing ? (
-          <CommandPrompt onSubmit={handleCommand} />
+          <CommandPrompt
+            onSubmit={handleCommand}
+            onUpPress={getPreviousCommand}
+            onDownPress={getNextCommand}
+            onCtrlC={handleReset}
+          />
         ) : (
           <div className="flex items-center gap-2">
             <Spinner />
