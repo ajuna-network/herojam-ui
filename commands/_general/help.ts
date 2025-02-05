@@ -1,5 +1,5 @@
 import type { Command } from "@/types/command";
-import { commands } from "./index";
+import { commands } from "../index";
 
 export const help: Command = {
   execute: (): string => {

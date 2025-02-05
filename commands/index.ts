@@ -1,14 +1,14 @@
-import { echo } from "./echo";
-import { help } from "./help";
-import { createHero } from "./create-hero";
-import { welcome } from "./welcome";
-import { organizer } from "./organizer";
-import { season } from "./season";
-import { whoami } from "./whoami";
-import { hero } from "./hero";
-import { heroes } from "./heroes";
-import { transfer } from "./transfer";
-
+import { echo } from "./_general/echo";
+import { help } from "./_general/help";
+import { createHero } from "./herojam/create-hero";
+import { welcome } from "./_general/welcome";
+import { organizer } from "./herojam/organizer";
+import { season } from "./herojam/season";
+import { whoami } from "./_general/whoami";
+import { hero } from "./herojam/hero";
+import { heroes } from "./herojam/heroes";
+import { transfer } from "./_general/transfer";
+import { gamble } from "./casinojam/gamble";
 import type { Command } from "@/types/command";
 
 export const commands: Record<string, Command> = {
@@ -22,4 +22,5 @@ export const commands: Record<string, Command> = {
   hero,
   heroes,
   transfer,
+  gamble,
 };

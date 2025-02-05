@@ -8,18 +8,18 @@ import { Loader } from "@/components/ui/loader";
 export const metadata: Metadata = {
   title: "HeroJam",
   description:
-    "HeroJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
+    "CasinoJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
   metadataBase: new URL(
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
       : "https://herojam.netlify.app/"
   ),
   openGraph: {
-    title: "HeroJam",
+    title: "CasinoJam",
     description:
-      "HeroJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
+      "CasinoJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
     url: "https://herojam.netlify.app/",
-    siteName: "HeroJam",
+    siteName: "CasinoJam",
   },
 };
 

@@ -14,6 +14,7 @@ export default function Terminal() {
     Array<{ command: string; output: string }>
   >([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [processingOutput, setProcessingOutput] = useState<string>("");
   const historyRef = useRef<HTMLDivElement>(null);
   const { isProcessing, setIsProcessing } = useTxContext();
   const { activeSigner, selectedAccount } = usePolkadotExtension();
@@ -26,12 +27,17 @@ export default function Terminal() {
   }, []);
 
   const handleCommand = async (command: string) => {
-    setHistoryIndex(-1); // Reset history index when new command is executed
+    setHistoryIndex(-1);
     setIsProcessing(true);
+    setProcessingOutput(""); // Reset processing output
+
     try {
       const output = await executeCommand(command, {
         activeSigner,
         selectedAccount,
+        onProcessing: (interimOutput: string) => {
+          setProcessingOutput(interimOutput);
+        },
       });
       setHistory((prev) => [...prev, { command, output }]);
     } catch (error) {
@@ -39,6 +45,7 @@ export default function Terminal() {
       console.error(error);
     } finally {
       setIsProcessing(false);
+      setProcessingOutput("");
     }
   };
 
@@ -64,7 +71,7 @@ export default function Terminal() {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
-  }, [history]);
+  }, [history, processingOutput]);
 
   // Add resetInput handler
   const handleReset = () => {
@@ -78,13 +85,18 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-500 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
+    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-500 dark:text-green-800 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
       <div ref={historyRef} className="flex-grow overflow-y-auto mb-4">
         {history.map((item, index) => (
           <div key={index}>
             <CommandOutput command={item.command} output={item.output} />
           </div>
         ))}
+        {isProcessing && processingOutput && (
+          <div>
+            <CommandOutput command="" output={processingOutput} />
+          </div>
+        )}
       </div>
       <div className="mt-auto">
         {!isProcessing ? (

@@ -14,12 +14,15 @@ export async function executeCommand(
   {
     activeSigner,
     selectedAccount,
+    onProcessing,
   }: {
     activeSigner: PolkadotSigner | null;
     selectedAccount: InjectedPolkadotAccount | null;
+    onProcessing?: (output: string) => void;
   } = {
     activeSigner: null,
     selectedAccount: null,
+    onProcessing: undefined,
   }
 ): Promise<string> {
   const trimmedInput = input.trim();
@@ -29,6 +32,7 @@ export async function executeCommand(
       return await commands[trimmedInput].execute([], {
         activeSigner,
         selectedAccount,
+        onProcessing,
       });
     }
 
@@ -41,6 +45,7 @@ export async function executeCommand(
       return await commands[potentialCommand].execute(args, {
         activeSigner,
         selectedAccount,
+        onProcessing,
       });
     }
 
