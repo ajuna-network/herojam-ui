@@ -25658,4 +25658,1408 @@ export type I3ur7d7so87s5l = {
 export type Iotnkqlev5olf = [SS58String, Anonymize<I1i5mdkqivk2lj>];
 export type Id32h28hjj1tch = [SS58String, number, number];
 export type I3i5slh4rot5vn = ResultPayload<Anonymize<Icb9i2osculmod>, TransactionValidityError>;
+export type Iukbfqjrrtjos = Array<Anonymize<Ic5pjq4cvagt7l>>;
+export type Ic5pjq4cvagt7l = {
+    "phase": Phase;
+    "event": Anonymize<I7ijmtqoti0eh8>;
+    "topics": Anonymize<Ic5m5lp1oioo8r>;
+};
+export type I7ijmtqoti0eh8 = AnonymousEnum<{
+    "System": Anonymize<I4d3r6tsu0h6u4>;
+    "Grandpa": GrandpaEvent;
+    "Balances": Anonymize<Iao8h4hv7atnq3>;
+    "TransactionPayment": TransactionPaymentEvent;
+    "Assets": Anonymize<I6avancvg8fd05>;
+    "Vesting": Anonymize<I3jgv45gfqgi7c>;
+    "Council": Anonymize<I85ca87bfvmq2n>;
+    "TechnicalCommittee": Anonymize<I85ca87bfvmq2n>;
+    "Treasury": Anonymize<I3kfo09eqm1214>;
+    "Democracy": Anonymize<Icfq8ap3e5p73t>;
+    "Sudo": Anonymize<I1vf63dpobgrb0>;
+    "Scheduler": Anonymize<I5ibtcniu9bdjh>;
+    "Identity": Anonymize<Ibju6hjiipokne>;
+    "Proxy": Anonymize<I7vut5421t445a>;
+    "Multisig": Anonymize<Ibj6l8ojv65btg>;
+    "Utility": Anonymize<I4f5v01l41eu3g>;
+    "Preimage": PreimageEvent;
+    "Migrations": Anonymize<I94co7vj7h6bo>;
+    "CasinoJamAffiliates": Anonymize<I388kdp8n592qc>;
+    "CasinoJamTournament": Anonymize<I2lf39pqathhsp>;
+    "CasinoJamSeasons": Anonymize<I68qp6c52l7bcq>;
+    "CasinoJamSage": Anonymize<I902valnkrerlv>;
+}>;
+export type I4d3r6tsu0h6u4 = AnonymousEnum<{
+    /**
+     *An extrinsic completed successfully.
+     */
+    "ExtrinsicSuccess": Anonymize<Ia82mnkmeo2rhc>;
+    /**
+     *An extrinsic failed.
+     */
+    "ExtrinsicFailed": Anonymize<I2f1qcen0dncv3>;
+    /**
+     *`:code` was updated.
+     */
+    "CodeUpdated": undefined;
+    /**
+     *A new account was created.
+     */
+    "NewAccount": Anonymize<Icbccs0ug47ilf>;
+    /**
+     *An account was reaped.
+     */
+    "KilledAccount": Anonymize<Icbccs0ug47ilf>;
+    /**
+     *On on-chain remark happened.
+     */
+    "Remarked": Anonymize<I855j4i3kr8ko1>;
+    /**
+     *An upgrade was authorized.
+     */
+    "UpgradeAuthorized": Anonymize<Ibgl04rn6nbfm6>;
+}>;
+export type I2f1qcen0dncv3 = {
+    "dispatch_error": Anonymize<I7goimdtpt105i>;
+    "dispatch_info": Anonymize<Ic9s8f85vjtncc>;
+};
+export type I7goimdtpt105i = AnonymousEnum<{
+    "Other": undefined;
+    "CannotLookup": undefined;
+    "BadOrigin": undefined;
+    "Module": Anonymize<Idjeckgmfdlo39>;
+    "ConsumerRemaining": undefined;
+    "NoProviders": undefined;
+    "TooManyConsumers": undefined;
+    "Token": TokenError;
+    "Arithmetic": ArithmeticError;
+    "Transactional": TransactionalError;
+    "Exhausted": undefined;
+    "Corruption": undefined;
+    "Unavailable": undefined;
+    "RootNotAllowed": undefined;
+}>;
+export type Idjeckgmfdlo39 = AnonymousEnum<{
+    "System": Anonymize<I5o0s7c8q1cc9b>;
+    "Timestamp": undefined;
+    "Aura": undefined;
+    "Grandpa": Anonymize<I7q8i0pp1gkas6>;
+    "Balances": Anonymize<Idj13i7adlomht>;
+    "TransactionPayment": undefined;
+    "Assets": Anonymize<Iapedqb0veh71>;
+    "Vesting": Anonymize<Ifkcmnj410r9fh>;
+    "Council": Anonymize<Icapevgbpfn5p9>;
+    "TechnicalCommittee": Anonymize<Icapevgbpfn5p9>;
+    "Treasury": Anonymize<I36uss0m9fpcsf>;
+    "Democracy": Anonymize<I67neb7i10udig>;
+    "Sudo": Anonymize<Iaug04qjhbli00>;
+    "Scheduler": Anonymize<If7oa8fprnilo5>;
+    "Identity": Anonymize<I9mq328955mgb8>;
+    "Proxy": Anonymize<Iuvt54ei4cehc>;
+    "Multisig": Anonymize<Ia76qmhhg4jvb9>;
+    "Utility": Anonymize<I8dt2g2hcrgh36>;
+    "Preimage": Anonymize<I4cfhml1prt4lu>;
+    "Migrations": Anonymize<Iaaqq5jevtahm8>;
+    "CasinoJamAffiliates": Anonymize<Idr6ie5uk7t9lj>;
+    "CasinoJamTournament": Anonymize<Ibcpk0l6cq8hng>;
+    "CasinoJamSeasons": Anonymize<Ic3ldj0b7dus0b>;
+    "CasinoJamSage": Anonymize<I8k67d2fnc1tie>;
+}>;
+export type Ic3ldj0b7dus0b = AnonymousEnum<{
+    /**
+     *There is currently no active season
+     */
+    "NoActiveSeason": undefined;
+    /**
+     *Cannot set season schedule without season config first.
+     */
+    "CannotScheduleSeasonWithoutConfig": undefined;
+    /**
+     *The previous season has no end, making it so that no
+     *new seasons can be added after it.
+     */
+    "CannotScheduleSeasonIfPreviousSeasonIsInfinite": undefined;
+    /**
+     *Cannot modify a season to be infinite if a season after it has already
+     *been scheduled.
+     */
+    "CannotScheduleInfiniteSeasonIfNextSeasonExists": undefined;
+    /**
+     *The season's early start is before the current block.
+     */
+    "SeasonStartBeforeCurrentBlock": undefined;
+    /**
+     *The season starts before the previous season starts.
+     */
+    "SeasonStartOverlapsPreviousSeason": undefined;
+    /**
+     *The season starts after the next season starts.
+     */
+    "SeasonStartOverlapsNextSeason": undefined;
+    /**
+     *The season's early start is earlier than its normal start.
+     */
+    "SeasonStartBeforeEarlyStart": undefined;
+    /**
+     *The season's start block is greater than its end block.
+     */
+    "SeasonEndBeforeStart": undefined;
+    /**
+     *The given asset was not registered in any season.
+     */
+    "AssetNotRegistered": undefined;
+    /**
+     *The given season identifier has not been registered.
+     */
+    "InvalidSeason": undefined;
+    /**
+     *The given season schedule update clashed with another season's schedule.
+     */
+    "ScheduleSlotAlreadyInUse": undefined;
+}>;
+export type I8k67d2fnc1tie = AnonymousEnum<{
+    /**
+     *There is no account set as the organizer
+     */
+    "OrganizerNotSet": undefined;
+    /**
+     *The asset doesn't exist.
+     */
+    "UnknownAsset": undefined;
+    /**
+     *Transfer is not available at the moment.
+     */
+    "TransferClosed": undefined;
+    /**
+     *Trading is not available at the moment.
+     */
+    "TradeClosed": undefined;
+    /**
+     *Max asset ownership reached.
+     */
+    "MaxOwnershipReached": undefined;
+    /**
+     *Max asset storage tier reached.
+     */
+    "MaxStorageTierReached": undefined;
+    /**
+     *Asset belongs to someone else.
+     */
+    "AssetNotOwned": undefined;
+    /**
+     *Attempt to buy already owned asset.
+     */
+    "AlreadyOwned": undefined;
+    /**
+     *This asset cannot be used in transfer.
+     */
+    "AssetCannotBeTransfered": undefined;
+    /**
+     *This asset cannot be used in trade.
+     */
+    "AssetCannotBeTraded": undefined;
+    /**
+     *An asset selected for buying is not actually in sale.
+     */
+    "AssetNotInTrade": undefined;
+    /**
+     *An asset listed for trade cannot be transferred to another account.
+     */
+    "CannotTransferAssetInTrade": undefined;
+    /**
+     *An asset in trade cannot be locked.
+     */
+    "CannotLockAssetInTrade": undefined;
+    /**
+     *The asset is currently locked and cannot be used.
+     */
+    "AssetLocked": undefined;
+    /**
+     *The asset is locked by another application.
+     */
+    "AssetLockedByOtherApplication": undefined;
+    /**
+     *The asset is not currently locked and cannot be unlocked.
+     */
+    "AssetNotLocked": undefined;
+    /**
+     *The asset does not own enough funds for the operation..
+     */
+    "AssetsFundsTooLow": undefined;
+    /**
+     *Tried transferring to his or her own account.
+     */
+    "CannotTransferToSelf": undefined;
+    /**
+     *The feature is locked for the current player
+     */
+    "FeatureLocked": undefined;
+    /**
+     *The feature trying to be unlocked is not available for the selected season
+     */
+    "FeatureUnavailableInSeason": undefined;
+    /**
+     *The feature trying to be unlocked cannot be unlocked with payment
+     */
+    "FeatureLockedThroughPayment": undefined;
+    /**
+     *The feature trying to be unlocked has missing requirements to be fulfilled by
+     *the account trying to unlock it
+     */
+    "UnlockCriteriaNotFulfilled": undefined;
+    /**
+     *The amount of input assets in the transition is greater than 'MAX_ASSETS_IN_TRANSITION'
+     */
+    "TooManyAssetsInTransition": undefined;
+    /**
+     *The rule for a given transition was not satisfied.
+     */
+    "TransitionRuleNotSatisfied": undefined;
+    /**
+     *An error occurred during the state transition.
+     */
+    "Transition": Anonymize<Ic2rqhn799ohav>;
+}>;
+export type I85ca87bfvmq2n = AnonymousEnum<{
+    /**
+     *A motion (given hash) has been proposed (by given account) with a threshold (given
+     *`MemberCount`).
+     */
+    "Proposed": Anonymize<Ift6f10887nk72>;
+    /**
+     *A motion (given hash) has been voted on by given account, leaving
+     *a tally (yes votes and no votes given respectively as `MemberCount`).
+     */
+    "Voted": Anonymize<I7qc53b1tvqjg2>;
+    /**
+     *A motion was approved by the required threshold.
+     */
+    "Approved": Anonymize<I2ev73t79f46tb>;
+    /**
+     *A motion was not approved by the required threshold.
+     */
+    "Disapproved": Anonymize<I2ev73t79f46tb>;
+    /**
+     *A motion was executed; result will be `Ok` if it returned without error.
+     */
+    "Executed": Anonymize<I1srbfs9q0b5nk>;
+    /**
+     *A single member did some action; result will be `Ok` if it returned without error.
+     */
+    "MemberExecuted": Anonymize<I1srbfs9q0b5nk>;
+    /**
+     *A proposal was closed because its threshold was reached or after its duration was up.
+     */
+    "Closed": Anonymize<Iak7fhrgb9jnnq>;
+}>;
+export type I1srbfs9q0b5nk = {
+    "proposal_hash": FixedSizeBinary<32>;
+    "result": Anonymize<I585aruspva0h0>;
+};
+export type I585aruspva0h0 = ResultPayload<undefined, Anonymize<I7goimdtpt105i>>;
+export type I1vf63dpobgrb0 = AnonymousEnum<{
+    /**
+     *A sudo call just took place.
+     */
+    "Sudid": Anonymize<I3bobd53899cil>;
+    /**
+     *The sudo key has been updated.
+     */
+    "KeyChanged": Anonymize<I5rtkmhm2dng4u>;
+    /**
+     *The key was permanently removed.
+     */
+    "KeyRemoved": undefined;
+    /**
+     *A [sudo_as](Pallet::sudo_as) call just took place.
+     */
+    "SudoAsDone": Anonymize<I3bobd53899cil>;
+}>;
+export type I3bobd53899cil = {
+    /**
+     *The result of the call made by the sudo user.
+     */
+    "sudo_result": Anonymize<I585aruspva0h0>;
+};
+export type I5ibtcniu9bdjh = AnonymousEnum<{
+    /**
+     *Scheduled some task.
+     */
+    "Scheduled": Anonymize<I5n4sebgkfr760>;
+    /**
+     *Canceled some task.
+     */
+    "Canceled": Anonymize<I5n4sebgkfr760>;
+    /**
+     *Dispatched some task.
+     */
+    "Dispatched": Anonymize<Ib650v85c21m7>;
+    /**
+     *Set a retry configuration for some task.
+     */
+    "RetrySet": Anonymize<Ia3c82eadg79bj>;
+    /**
+     *Cancel a retry configuration for some task.
+     */
+    "RetryCancelled": Anonymize<Ienusoeb625ftq>;
+    /**
+     *The call for the provided hash was not found so the task has been aborted.
+     */
+    "CallUnavailable": Anonymize<Ienusoeb625ftq>;
+    /**
+     *The given task was unable to be renewed since the agenda is full at that block.
+     */
+    "PeriodicFailed": Anonymize<Ienusoeb625ftq>;
+    /**
+     *The given task was unable to be retried since the agenda is full at that block or there
+     *was not enough weight to reschedule it.
+     */
+    "RetryFailed": Anonymize<Ienusoeb625ftq>;
+    /**
+     *The given task can never be executed since it is overweight.
+     */
+    "PermanentlyOverweight": Anonymize<Ienusoeb625ftq>;
+}>;
+export type Ib650v85c21m7 = {
+    "task": Anonymize<I9jd27rnpm8ttv>;
+    "id"?: Anonymize<I4s6vifaf8k998>;
+    "result": Anonymize<I585aruspva0h0>;
+};
+export type I7vut5421t445a = AnonymousEnum<{
+    /**
+     *A proxy was executed correctly, with the given.
+     */
+    "ProxyExecuted": Anonymize<If6h3hhgqdpss>;
+    /**
+     *A pure account has been created by new proxy with given
+     *disambiguation index and proxy type.
+     */
+    "PureCreated": Anonymize<I8oc1ui5us5hik>;
+    /**
+     *An announcement was placed to make a call in the future.
+     */
+    "Announced": Anonymize<I2ur0oeqg495j8>;
+    /**
+     *A proxy was added.
+     */
+    "ProxyAdded": Anonymize<I7f2f3co93gefl>;
+    /**
+     *A proxy was removed.
+     */
+    "ProxyRemoved": Anonymize<I7f2f3co93gefl>;
+}>;
+export type If6h3hhgqdpss = {
+    "result": Anonymize<I585aruspva0h0>;
+};
+export type Ibj6l8ojv65btg = AnonymousEnum<{
+    /**
+     *A new multisig operation has begun.
+     */
+    "NewMultisig": Anonymize<Iep27ialq4a7o7>;
+    /**
+     *A multisig operation has been approved by someone.
+     */
+    "MultisigApproval": Anonymize<Iasu5jvoqr43mv>;
+    /**
+     *A multisig operation has been executed.
+     */
+    "MultisigExecuted": Anonymize<Icgi0cqe69ln9d>;
+    /**
+     *A multisig operation has been cancelled.
+     */
+    "MultisigCancelled": Anonymize<I5qolde99acmd1>;
+}>;
+export type Icgi0cqe69ln9d = {
+    "approving": SS58String;
+    "timepoint": Anonymize<Itvprrpb0nm3o>;
+    "multisig": SS58String;
+    "call_hash": FixedSizeBinary<32>;
+    "result": Anonymize<I585aruspva0h0>;
+};
+export type I4f5v01l41eu3g = AnonymousEnum<{
+    /**
+     *Batch of dispatches did not complete fully. Index of first failing dispatch given, as
+     *well as the error.
+     */
+    "BatchInterrupted": Anonymize<I43qleb8tqoqvo>;
+    /**
+     *Batch of dispatches completed fully with no error.
+     */
+    "BatchCompleted": undefined;
+    /**
+     *Batch of dispatches completed but has errors.
+     */
+    "BatchCompletedWithErrors": undefined;
+    /**
+     *A single item within a Batch of dispatches has completed with no error.
+     */
+    "ItemCompleted": undefined;
+    /**
+     *A single item within a Batch of dispatches has completed with error.
+     */
+    "ItemFailed": Anonymize<I2cmpm947g385i>;
+    /**
+     *A call was dispatched.
+     */
+    "DispatchedAs": Anonymize<If6h3hhgqdpss>;
+}>;
+export type I43qleb8tqoqvo = {
+    "index": number;
+    "error": Anonymize<I7goimdtpt105i>;
+};
+export type I2cmpm947g385i = {
+    "error": Anonymize<I7goimdtpt105i>;
+};
+export type I388kdp8n592qc = AnonymousEnum<{
+    "AccountMarkedAsAffiliatable": Anonymize<Ibbiemldf16hc1>;
+    "AccountAffiliated": Anonymize<I1o0nv6o4hvf0g>;
+    "AccountUnaffiliated": Anonymize<Icbccs0ug47ilf>;
+    "RuleAdded": Anonymize<I8t08nu50u9bdn>;
+    "RuleCleared": Anonymize<I8t08nu50u9bdn>;
+}>;
+export type I8t08nu50u9bdn = {
+    "rule_id": Anonymize<Ieuuc7kg0naaf2>;
+};
+export type Ieuuc7kg0naaf2 = AnonymousEnum<{
+    "UpgradeAssetInventory": undefined;
+    "TradeAsset": undefined;
+    "StateTransition": Anonymize<Ibmgl9rkvb3vub>;
+}>;
+export type Ibmgl9rkvb3vub = AnonymousEnum<{
+    "Create": Anonymize<I16jbabpon3m9r>;
+    "Fund": Anonymize<Iaa33fko6otl5>;
+    "Gamble": Anonymize<I8fqrr4222vgvc>;
+    "Loot": Anonymize<Icken2hvfgaead>;
+}>;
+export type I16jbabpon3m9r = AnonymousEnum<{
+    "Player": undefined;
+    "Machine": Anonymize<Iasci566loq7es>;
+}>;
+export type Iasci566loq7es = AnonymousEnum<{
+    "Bandit": undefined;
+}>;
+export type Iaa33fko6otl5 = [Anonymize<I16jbabpon3m9r>, Anonymize<Icken2hvfgaead>];
+export type Icken2hvfgaead = AnonymousEnum<{
+    "T1": undefined;
+    "T10": undefined;
+    "T100": undefined;
+    "T1000": undefined;
+    "T10000": undefined;
+    "T100000": undefined;
+    "T1000000": undefined;
+}>;
+export type I8fqrr4222vgvc = AnonymousEnum<{
+    "V0": undefined;
+    "V1": undefined;
+    "V2": undefined;
+    "V3": undefined;
+    "V4": undefined;
+    "V5": undefined;
+    "V6": undefined;
+    "V7": undefined;
+    "V8": undefined;
+    "V9": undefined;
+}>;
+export type I68qp6c52l7bcq = AnonymousEnum<{
+    /**
+     *The season configuration for 'season_id' has been updated.
+     */
+    "UpdatedSeason": Anonymize<Ifctt5vck3ffj6>;
+    /**
+     *The season was started during its 'early_start' by the scheduler.
+     */
+    "SeasonEarlyStarted": Anonymize<Idd0agfql4ht2e>;
+    /**
+     *The season was started during its 'start' by the scheduler.
+     */
+    "SeasonStarted": Anonymize<Idd0agfql4ht2e>;
+    /**
+     *The season was ended during its 'end' by the scheduler.
+     */
+    "SeasonEnded": Anonymize<Idd0agfql4ht2e>;
+    /**
+     *The season was ended prematurely by the organizer.
+     */
+    "SeasonEarlyEnded": Anonymize<Idd0agfql4ht2e>;
+}>;
+export type Ifctt5vck3ffj6 = {
+    "season_id": number;
+    "config"?: Anonymize<I2plf5h54kqdrp>;
+    "metadata"?: Anonymize<Io91qk0gkacif>;
+    "schedule"?: Anonymize<I1vm0j09sgfsob>;
+};
+export type I2plf5h54kqdrp = (Anonymize<I5qohvm4to74le>) | undefined;
+export type I1vm0j09sgfsob = (Anonymize<I7mjclubiuighb>) | undefined;
+export type I7mjclubiuighb = {
+    "early_start": number;
+    "start": number;
+    "end"?: Anonymize<I4arjljr6dpflb>;
+};
+export type I902valnkrerlv = AnonymousEnum<{
+    /**
+     *An organizer has been set.
+     */
+    "OrganizerSet": Anonymize<Ifed8uh0vbjcgd>;
+    /**
+     *General configuration updated.
+     */
+    "UpdatedGeneralConfig": Anonymize<Ibch0l0v1nqcdq>;
+    /**
+     *Transition configuration updated.
+     */
+    "UpdatedTransitionConfig": Anonymize<I1t89svnc01aue>;
+    /**
+     *Unlock configuration updated for feature.
+     */
+    "UpdatedUnlockRule": Anonymize<I880p4chnat358>;
+    /**
+     *Storage tier has been upgraded.
+     */
+    "InventoryTierUpgraded": Anonymize<Ifvfk4kssvhjro>;
+    /**
+     *Trade filter has been updated
+     */
+    "UpdatedTradeFilter": Anonymize<I3uak4l8m6hsm6>;
+    /**
+     *Transfer filter has been updated
+     */
+    "UpdatedTransferFilter": Anonymize<I3uak4l8m6hsm6>;
+    /**
+     *Asset transferred.
+     */
+    "AssetTransferred": Anonymize<I8tlu1l9183dl2>;
+    /**
+     *Asset has price set for trade.
+     */
+    "AssetPriceSet": Anonymize<Idgsge7c4e6tn1>;
+    /**
+     *Asset has price removed for trade.
+     */
+    "AssetPriceUnset": Anonymize<Ia5le7udkgbaq9>;
+    /**
+     *Asset has been traded.
+     */
+    "AssetTraded": Anonymize<Idm6okauo300t5>;
+    /**
+     *Asset locked.
+     */
+    "AssetLocked": Anonymize<I1h3i3hv0od20s>;
+    /**
+     *Asset unlocked.
+     */
+    "AssetUnlocked": Anonymize<I1h3i3hv0od20s>;
+    /**
+     *A feature has been unlocked
+     */
+    "FeatureUnlocked": Anonymize<I3c88rdia20kf3>;
+    /**
+     *A transition has been executed.
+     */
+    "TransitionExecuted": Anonymize<I91ru1nfdvebg1>;
+}>;
+export type I1t89svnc01aue = {
+    "new_config": number;
+};
+export type I3uak4l8m6hsm6 = {
+    "season_id": number;
+    "filter": Anonymize<I16jbabpon3m9r>;
+};
+export type I91ru1nfdvebg1 = {
+    /**
+     *Account who initiated execution.
+     */
+    "account": SS58String;
+    /**
+     *Transition ID that was executed.
+     */
+    "id": Anonymize<Ibmgl9rkvb3vub>;
+};
+export type I4ppramn9dhajc = AnonymousEnum<{
+    "System": Anonymize<Iekve0i6djpd9f>;
+    "Timestamp": Anonymize<I7d75gqfg6jh9c>;
+    "Grandpa": Anonymize<Ibck9ekr2i96uj>;
+    "Balances": Anonymize<I9svldsp29mh87>;
+    "Assets": Anonymize<I84851acvod2ic>;
+    "Vesting": Anonymize<Ic5to9b2n7se54>;
+    "Council": Anonymize<I3lghbs0i2lf2e>;
+    "TechnicalCommittee": Anonymize<I3lghbs0i2lf2e>;
+    "Treasury": Anonymize<I78c6gap1snbjh>;
+    "Democracy": Anonymize<I10dimmis6musr>;
+    "Sudo": Anonymize<Ieqpdcr16em1mt>;
+    "Scheduler": Anonymize<Ibsp7qaa02d8kr>;
+    "Identity": Anonymize<I276doi9hm655d>;
+    "Proxy": Anonymize<Ifbtlohuaj5f13>;
+    "Multisig": Anonymize<I94k9rd9ecmmgs>;
+    "Utility": Anonymize<I4krp6aa7sneqc>;
+    "Preimage": Anonymize<If81ks88t5mpk5>;
+    "Migrations": Anonymize<I4oqb168b2d4er>;
+    "CasinoJamAffiliates": Anonymize<I7tc0te0bdj39u>;
+    "CasinoJamTournament": Anonymize<Ifva6agjnvahb>;
+    "CasinoJamSeasons": Anonymize<Ib0baqjghhgj3i>;
+    "CasinoJamSage": Anonymize<I8gkk0tfct0cnt>;
+}>;
+export type I3lghbs0i2lf2e = AnonymousEnum<{
+    /**
+     *Set the collective's membership.
+     *
+     *- `new_members`: The new member list. Be nice to the chain and provide it sorted.
+     *- `prime`: The prime member whose vote sets the default.
+     *- `old_count`: The upper bound for the previous number of members in storage. Used for
+     *  weight estimation.
+     *
+     *The dispatch of this call must be `SetMembersOrigin`.
+     *
+     *NOTE: Does not enforce the expected `MaxMembers` limit on the amount of members, but
+     *      the weight estimations rely on it to estimate dispatchable weight.
+     *
+     *# WARNING:
+     *
+     *The `pallet-collective` can also be managed by logic outside of the pallet through the
+     *implementation of the trait [`ChangeMembers`].
+     *Any call to `set_members` must be careful that the member set doesn't get out of sync
+     *with other logic managing the member set.
+     *
+     *## Complexity:
+     *- `O(MP + N)` where:
+     *  - `M` old-members-count (code- and governance-bounded)
+     *  - `N` new-members-count (code- and governance-bounded)
+     *  - `P` proposals-count (code-bounded)
+     */
+    "set_members": Anonymize<I38jfk5li8iang>;
+    /**
+     *Dispatch a proposal from a member using the `Member` origin.
+     *
+     *Origin must be a member of the collective.
+     *
+     *## Complexity:
+     *- `O(B + M + P)` where:
+     *- `B` is `proposal` size in bytes (length-fee-bounded)
+     *- `M` members-count (code-bounded)
+     *- `P` complexity of dispatching `proposal`
+     */
+    "execute": Anonymize<I9l05468e0ib27>;
+    /**
+     *Add a new proposal to either be voted on or executed directly.
+     *
+     *Requires the sender to be member.
+     *
+     *`threshold` determines whether `proposal` is executed directly (`threshold < 2`)
+     *or put up for voting.
+     *
+     *## Complexity
+     *- `O(B + M + P1)` or `O(B + M + P2)` where:
+     *  - `B` is `proposal` size in bytes (length-fee-bounded)
+     *  - `M` is members-count (code- and governance-bounded)
+     *  - branching is influenced by `threshold` where:
+     *    - `P1` is proposal execution complexity (`threshold < 2`)
+     *    - `P2` is proposals-count (code-bounded) (`threshold >= 2`)
+     */
+    "propose": Anonymize<I3hbc6mlf6egte>;
+    /**
+     *Add an aye or nay vote for the sender to the given proposal.
+     *
+     *Requires the sender to be a member.
+     *
+     *Transaction fees will be waived if the member is voting on any particular proposal
+     *for the first time and the call is successful. Subsequent vote changes will charge a
+     *fee.
+     *## Complexity
+     *- `O(M)` where `M` is members-count (code- and governance-bounded)
+     */
+    "vote": Anonymize<I2dtrijkm5601t>;
+    /**
+     *Disapprove a proposal, close, and remove it from the system, regardless of its current
+     *state.
+     *
+     *Must be called by the Root origin.
+     *
+     *Parameters:
+     ** `proposal_hash`: The hash of the proposal that should be disapproved.
+     *
+     *## Complexity
+     *O(P) where P is the number of max proposals
+     */
+    "disapprove_proposal": Anonymize<I2ev73t79f46tb>;
+    /**
+     *Close a vote that is either approved, disapproved or whose voting period has ended.
+     *
+     *May be called by any signed account in order to finish voting and close the proposal.
+     *
+     *If called before the end of the voting period it will only close the vote if it is
+     *has enough votes to be approved or disapproved.
+     *
+     *If called after the end of the voting period abstentions are counted as rejections
+     *unless there is a prime member set and the prime member cast an approval.
+     *
+     *If the close operation completes successfully with disapproval, the transaction fee will
+     *be waived. Otherwise execution of the approved operation will be charged to the caller.
+     *
+     *+ `proposal_weight_bound`: The maximum amount of weight consumed by executing the closed
+     *proposal.
+     *+ `length_bound`: The upper bound for the length of the proposal in storage. Checked via
+     *`storage::read` so it is `size_of::<u32>() == 4` larger than the pure length.
+     *
+     *## Complexity
+     *- `O(B + M + P1 + P2)` where:
+     *  - `B` is `proposal` size in bytes (length-fee-bounded)
+     *  - `M` is members-count (code- and governance-bounded)
+     *  - `P1` is the complexity of `proposal` preimage.
+     *  - `P2` is proposal-count (code-bounded)
+     */
+    "close": Anonymize<Ib2obgji960euh>;
+}>;
+export type I9l05468e0ib27 = {
+    "proposal": TxCallData;
+    "length_bound": number;
+};
+export type I3hbc6mlf6egte = {
+    "threshold": number;
+    "proposal": TxCallData;
+    "length_bound": number;
+};
+export type Ieqpdcr16em1mt = AnonymousEnum<{
+    /**
+     *Authenticates the sudo key and dispatches a function call with `Root` origin.
+     */
+    "sudo": Anonymize<Ibnq4ca9t25qp3>;
+    /**
+     *Authenticates the sudo key and dispatches a function call with `Root` origin.
+     *This function does not check the weight of the call, and instead allows the
+     *Sudo user to specify the weight of the call.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     */
+    "sudo_unchecked_weight": Anonymize<I14su0qhu0tuak>;
+    /**
+     *Authenticates the current sudo key and sets the given AccountId (`new`) as the new sudo
+     *key.
+     */
+    "set_key": Anonymize<I8k3rnvpeeh4hv>;
+    /**
+     *Authenticates the sudo key and dispatches a function call with `Signed` origin from
+     *a given account.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     */
+    "sudo_as": Anonymize<Ienqc8surbutor>;
+    /**
+     *Permanently removes the sudo key.
+     *
+     ***This cannot be un-done.**
+     */
+    "remove_key": undefined;
+}>;
+export type Ibnq4ca9t25qp3 = {
+    "call": TxCallData;
+};
+export type I14su0qhu0tuak = {
+    "call": TxCallData;
+    "weight": Anonymize<I4q39t5hn830vp>;
+};
+export type Ienqc8surbutor = {
+    "who": MultiAddress;
+    "call": TxCallData;
+};
+export type Ibsp7qaa02d8kr = AnonymousEnum<{
+    /**
+     *Anonymously schedule a task.
+     */
+    "schedule": Anonymize<I1u7ucq3lhuv8l>;
+    /**
+     *Cancel an anonymously scheduled task.
+     */
+    "cancel": Anonymize<I5n4sebgkfr760>;
+    /**
+     *Schedule a named task.
+     */
+    "schedule_named": Anonymize<I9567r4g0s2h8i>;
+    /**
+     *Cancel a named scheduled task.
+     */
+    "cancel_named": Anonymize<Ifs1i5fk9cqvr6>;
+    /**
+     *Anonymously schedule a task after a delay.
+     */
+    "schedule_after": Anonymize<Iba3hrj7c99s6b>;
+    /**
+     *Schedule a named task after a delay.
+     */
+    "schedule_named_after": Anonymize<Ia27m91di7hirc>;
+    /**
+     *Set a retry configuration for a task so that, in case its scheduled run fails, it will
+     *be retried after `period` blocks, for a total amount of `retries` retries or until it
+     *succeeds.
+     *
+     *Tasks which need to be scheduled for a retry are still subject to weight metering and
+     *agenda space, same as a regular task. If a periodic task fails, it will be scheduled
+     *normally while the task is retrying.
+     *
+     *Tasks scheduled as a result of a retry for a periodic task are unnamed, non-periodic
+     *clones of the original task. Their retry configuration will be derived from the
+     *original task's configuration, but will have a lower value for `remaining` than the
+     *original `total_retries`.
+     */
+    "set_retry": Anonymize<Ieg3fd8p4pkt10>;
+    /**
+     *Set a retry configuration for a named task so that, in case its scheduled run fails, it
+     *will be retried after `period` blocks, for a total amount of `retries` retries or until
+     *it succeeds.
+     *
+     *Tasks which need to be scheduled for a retry are still subject to weight metering and
+     *agenda space, same as a regular task. If a periodic task fails, it will be scheduled
+     *normally while the task is retrying.
+     *
+     *Tasks scheduled as a result of a retry for a periodic task are unnamed, non-periodic
+     *clones of the original task. Their retry configuration will be derived from the
+     *original task's configuration, but will have a lower value for `remaining` than the
+     *original `total_retries`.
+     */
+    "set_retry_named": Anonymize<I8kg5ll427kfqq>;
+    /**
+     *Removes the retry configuration of a task.
+     */
+    "cancel_retry": Anonymize<I467333262q1l9>;
+    /**
+     *Cancel the retry configuration of a named task.
+     */
+    "cancel_retry_named": Anonymize<Ifs1i5fk9cqvr6>;
+}>;
+export type I1u7ucq3lhuv8l = {
+    "when": number;
+    "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
+    "priority": number;
+    "call": TxCallData;
+};
+export type I9567r4g0s2h8i = {
+    "id": FixedSizeBinary<32>;
+    "when": number;
+    "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
+    "priority": number;
+    "call": TxCallData;
+};
+export type Iba3hrj7c99s6b = {
+    "after": number;
+    "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
+    "priority": number;
+    "call": TxCallData;
+};
+export type Ia27m91di7hirc = {
+    "id": FixedSizeBinary<32>;
+    "after": number;
+    "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
+    "priority": number;
+    "call": TxCallData;
+};
+export type Ifbtlohuaj5f13 = AnonymousEnum<{
+    /**
+     *Dispatch the given `call` from an account that the sender is authorised for through
+     *`add_proxy`.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `real`: The account that the proxy will make a call on behalf of.
+     *- `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
+     *- `call`: The call to be made by the `real` account.
+     */
+    "proxy": Anonymize<Ibifgq3mj1o6dn>;
+    /**
+     *Register a proxy account for the sender that is able to make calls on its behalf.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `proxy`: The account that the `caller` would like to make a proxy.
+     *- `proxy_type`: The permissions allowed for this proxy account.
+     *- `delay`: The announcement period required of the initial proxy. Will generally be
+     *zero.
+     */
+    "add_proxy": Anonymize<I3lj33btcqlb1i>;
+    /**
+     *Unregister a proxy account for the sender.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `proxy`: The account that the `caller` would like to remove as a proxy.
+     *- `proxy_type`: The permissions currently enabled for the removed proxy account.
+     */
+    "remove_proxy": Anonymize<I3lj33btcqlb1i>;
+    /**
+     *Unregister all proxy accounts for the sender.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *WARNING: This may be called on accounts created by `pure`, however if done, then
+     *the unreserved fees will be inaccessible. **All access to this account will be lost.**
+     */
+    "remove_proxies": undefined;
+    /**
+     *Spawn a fresh new account that is guaranteed to be otherwise inaccessible, and
+     *initialize it with a proxy of `proxy_type` for `origin` sender.
+     *
+     *Requires a `Signed` origin.
+     *
+     *- `proxy_type`: The type of the proxy that the sender will be registered as over the
+     *new account. This will almost always be the most permissive `ProxyType` possible to
+     *allow for maximum flexibility.
+     *- `index`: A disambiguation index, in case this is called multiple times in the same
+     *transaction (e.g. with `utility::batch`). Unless you're using `batch` you probably just
+     *want to use `0`.
+     *- `delay`: The announcement period required of the initial proxy. Will generally be
+     *zero.
+     *
+     *Fails with `Duplicate` if this has already been called in this transaction, from the
+     *same sender, with the same parameters.
+     *
+     *Fails if there are insufficient funds to pay for deposit.
+     */
+    "create_pure": Anonymize<I707m7edh0jft8>;
+    /**
+     *Removes a previously spawned pure proxy.
+     *
+     *WARNING: **All access to this account will be lost.** Any funds held in it will be
+     *inaccessible.
+     *
+     *Requires a `Signed` origin, and the sender account must have been created by a call to
+     *`pure` with corresponding parameters.
+     *
+     *- `spawner`: The account that originally called `pure` to create this account.
+     *- `index`: The disambiguation index originally passed to `pure`. Probably `0`.
+     *- `proxy_type`: The proxy type originally passed to `pure`.
+     *- `height`: The height of the chain when the call to `pure` was processed.
+     *- `ext_index`: The extrinsic index in which the call to `pure` was processed.
+     *
+     *Fails with `NoPermission` in case the caller is not a previously created pure
+     *account whose `pure` call has corresponding parameters.
+     */
+    "kill_pure": Anonymize<I2j5sqe1l974kn>;
+    /**
+     *Publish the hash of a proxy-call that will be made in the future.
+     *
+     *This must be called some number of blocks before the corresponding `proxy` is attempted
+     *if the delay associated with the proxy relationship is greater than zero.
+     *
+     *No more than `MaxPending` announcements may be made at any one time.
+     *
+     *This will take a deposit of `AnnouncementDepositFactor` as well as
+     *`AnnouncementDepositBase` if there are no other pending announcements.
+     *
+     *The dispatch origin for this call must be _Signed_ and a proxy of `real`.
+     *
+     *Parameters:
+     *- `real`: The account that the proxy will make a call on behalf of.
+     *- `call_hash`: The hash of the call to be made by the `real` account.
+     */
+    "announce": Anonymize<I2eb501t8s6hsq>;
+    /**
+     *Remove a given announcement.
+     *
+     *May be called by a proxy account to remove a call they previously announced and return
+     *the deposit.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `real`: The account that the proxy will make a call on behalf of.
+     *- `call_hash`: The hash of the call to be made by the `real` account.
+     */
+    "remove_announcement": Anonymize<I2eb501t8s6hsq>;
+    /**
+     *Remove the given announcement of a delegate.
+     *
+     *May be called by a target (proxied) account to remove a call that one of their delegates
+     *(`delegate`) has announced they want to execute. The deposit is returned.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `delegate`: The account that previously announced the call.
+     *- `call_hash`: The hash of the call to be made.
+     */
+    "reject_announcement": Anonymize<Ianmuoljk2sk1u>;
+    /**
+     *Dispatch the given `call` from an account that the sender is authorized for through
+     *`add_proxy`.
+     *
+     *Removes any corresponding announcement(s).
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *Parameters:
+     *- `real`: The account that the proxy will make a call on behalf of.
+     *- `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
+     *- `call`: The call to be made by the `real` account.
+     */
+    "proxy_announced": Anonymize<Ic3ua6figk026d>;
+}>;
+export type Ibifgq3mj1o6dn = {
+    "real": MultiAddress;
+    "force_proxy_type"?: Anonymize<I5gu0l454u7u79>;
+    "call": TxCallData;
+};
+export type Ic3ua6figk026d = {
+    "delegate": MultiAddress;
+    "real": MultiAddress;
+    "force_proxy_type"?: Anonymize<I5gu0l454u7u79>;
+    "call": TxCallData;
+};
+export type I94k9rd9ecmmgs = AnonymousEnum<{
+    /**
+     *Immediately dispatch a multi-signature call using a single approval from the caller.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *- `other_signatories`: The accounts (other than the sender) who are part of the
+     *multi-signature, but do not participate in the approval process.
+     *- `call`: The call to be executed.
+     *
+     *Result is equivalent to the dispatched result.
+     *
+     *## Complexity
+     *O(Z + C) where Z is the length of the call and C its execution weight.
+     */
+    "as_multi_threshold_1": Anonymize<Iu1e9cr2pq9dp>;
+    /**
+     *Register approval for a dispatch to be made from a deterministic composite account if
+     *approved by a total of `threshold - 1` of `other_signatories`.
+     *
+     *If there are enough, then dispatch the call.
+     *
+     *Payment: `DepositBase` will be reserved if this is the first approval, plus
+     *`threshold` times `DepositFactor`. It is returned once this dispatch happens or
+     *is cancelled.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *- `threshold`: The total number of approvals for this dispatch before it is executed.
+     *- `other_signatories`: The accounts (other than the sender) who can approve this
+     *dispatch. May not be empty.
+     *- `maybe_timepoint`: If this is the first approval, then this must be `None`. If it is
+     *not the first approval, then it must be `Some`, with the timepoint (block number and
+     *transaction index) of the first approval transaction.
+     *- `call`: The call to be executed.
+     *
+     *NOTE: Unless this is the final approval, you will generally want to use
+     *`approve_as_multi` instead, since it only requires a hash of the call.
+     *
+     *Result is equivalent to the dispatched result if `threshold` is exactly `1`. Otherwise
+     *on success, result is `Ok` and the result from the interior call, if it was executed,
+     *may be found in the deposited `MultisigExecuted` event.
+     *
+     *## Complexity
+     *- `O(S + Z + Call)`.
+     *- Up to one balance-reserve or unreserve operation.
+     *- One passthrough operation, one insert, both `O(S)` where `S` is the number of
+     *  signatories. `S` is capped by `MaxSignatories`, with weight being proportional.
+     *- One call encode & hash, both of complexity `O(Z)` where `Z` is tx-len.
+     *- One encode & hash, both of complexity `O(S)`.
+     *- Up to one binary search and insert (`O(logS + S)`).
+     *- I/O: 1 read `O(S)`, up to 1 mutate `O(S)`. Up to one remove.
+     *- One event.
+     *- The weight of the `call`.
+     *- Storage: inserts one item, value size bounded by `MaxSignatories`, with a deposit
+     *  taken for its lifetime of `DepositBase + threshold * DepositFactor`.
+     */
+    "as_multi": Anonymize<Ico7h67fa9oqg0>;
+    /**
+     *Register approval for a dispatch to be made from a deterministic composite account if
+     *approved by a total of `threshold - 1` of `other_signatories`.
+     *
+     *Payment: `DepositBase` will be reserved if this is the first approval, plus
+     *`threshold` times `DepositFactor`. It is returned once this dispatch happens or
+     *is cancelled.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *- `threshold`: The total number of approvals for this dispatch before it is executed.
+     *- `other_signatories`: The accounts (other than the sender) who can approve this
+     *dispatch. May not be empty.
+     *- `maybe_timepoint`: If this is the first approval, then this must be `None`. If it is
+     *not the first approval, then it must be `Some`, with the timepoint (block number and
+     *transaction index) of the first approval transaction.
+     *- `call_hash`: The hash of the call to be executed.
+     *
+     *NOTE: If this is the final approval, you will want to use `as_multi` instead.
+     *
+     *## Complexity
+     *- `O(S)`.
+     *- Up to one balance-reserve or unreserve operation.
+     *- One passthrough operation, one insert, both `O(S)` where `S` is the number of
+     *  signatories. `S` is capped by `MaxSignatories`, with weight being proportional.
+     *- One encode & hash, both of complexity `O(S)`.
+     *- Up to one binary search and insert (`O(logS + S)`).
+     *- I/O: 1 read `O(S)`, up to 1 mutate `O(S)`. Up to one remove.
+     *- One event.
+     *- Storage: inserts one item, value size bounded by `MaxSignatories`, with a deposit
+     *  taken for its lifetime of `DepositBase + threshold * DepositFactor`.
+     */
+    "approve_as_multi": Anonymize<Ideaemvoneh309>;
+    /**
+     *Cancel a pre-existing, on-going multisig transaction. Any deposit reserved previously
+     *for this operation will be unreserved on success.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     *
+     *- `threshold`: The total number of approvals for this dispatch before it is executed.
+     *- `other_signatories`: The accounts (other than the sender) who can approve this
+     *dispatch. May not be empty.
+     *- `timepoint`: The timepoint (block number and transaction index) of the first approval
+     *transaction for this dispatch.
+     *- `call_hash`: The hash of the call to be executed.
+     *
+     *## Complexity
+     *- `O(S)`.
+     *- Up to one balance-reserve or unreserve operation.
+     *- One passthrough operation, one insert, both `O(S)` where `S` is the number of
+     *  signatories. `S` is capped by `MaxSignatories`, with weight being proportional.
+     *- One encode & hash, both of complexity `O(S)`.
+     *- One event.
+     *- I/O: 1 read `O(S)`, one remove.
+     *- Storage: removes one item.
+     */
+    "cancel_as_multi": Anonymize<I3d9o9d7epp66v>;
+}>;
+export type Iu1e9cr2pq9dp = {
+    "other_signatories": Anonymize<Ia2lhg7l2hilo3>;
+    "call": TxCallData;
+};
+export type Ico7h67fa9oqg0 = {
+    "threshold": number;
+    "other_signatories": Anonymize<Ia2lhg7l2hilo3>;
+    "maybe_timepoint"?: Anonymize<I95jfd8j5cr5eh>;
+    "call": TxCallData;
+    "max_weight": Anonymize<I4q39t5hn830vp>;
+};
+export type I4krp6aa7sneqc = AnonymousEnum<{
+    /**
+     *Send a batch of dispatch calls.
+     *
+     *May be called from any origin except `None`.
+     *
+     *- `calls`: The calls to be dispatched from the same origin. The number of call must not
+     *  exceed the constant: `batched_calls_limit` (available in constant metadata).
+     *
+     *If origin is root then the calls are dispatched without checking origin filter. (This
+     *includes bypassing `frame_system::Config::BaseCallFilter`).
+     *
+     *## Complexity
+     *- O(C) where C is the number of calls to be batched.
+     *
+     *This will return `Ok` in all circumstances. To determine the success of the batch, an
+     *event is deposited. If a call failed and the batch was interrupted, then the
+     *`BatchInterrupted` event is deposited, along with the number of successful calls made
+     *and the error of the failed call. If all were successful, then the `BatchCompleted`
+     *event is deposited.
+     */
+    "batch": Anonymize<Ia2p3c0upn4qes>;
+    /**
+     *Send a call through an indexed pseudonym of the sender.
+     *
+     *Filter from origin are passed along. The call will be dispatched with an origin which
+     *use the same filter as the origin of this call.
+     *
+     *NOTE: If you need to ensure that any account-based filtering is not honored (i.e.
+     *because you expect `proxy` to have been used prior in the call stack and you do not want
+     *the call restrictions to apply to any sub-accounts), then use `as_multi_threshold_1`
+     *in the Multisig pallet instead.
+     *
+     *NOTE: Prior to version *12, this was called `as_limited_sub`.
+     *
+     *The dispatch origin for this call must be _Signed_.
+     */
+    "as_derivative": Anonymize<Ibfvh7cd6jno19>;
+    /**
+     *Send a batch of dispatch calls and atomically execute them.
+     *The whole transaction will rollback and fail if any of the calls failed.
+     *
+     *May be called from any origin except `None`.
+     *
+     *- `calls`: The calls to be dispatched from the same origin. The number of call must not
+     *  exceed the constant: `batched_calls_limit` (available in constant metadata).
+     *
+     *If origin is root then the calls are dispatched without checking origin filter. (This
+     *includes bypassing `frame_system::Config::BaseCallFilter`).
+     *
+     *## Complexity
+     *- O(C) where C is the number of calls to be batched.
+     */
+    "batch_all": Anonymize<Ia2p3c0upn4qes>;
+    /**
+     *Dispatches a function call with a provided origin.
+     *
+     *The dispatch origin for this call must be _Root_.
+     *
+     *## Complexity
+     *- O(1).
+     */
+    "dispatch_as": Anonymize<I539ja5t0q200n>;
+    /**
+     *Send a batch of dispatch calls.
+     *Unlike `batch`, it allows errors and won't interrupt.
+     *
+     *May be called from any origin except `None`.
+     *
+     *- `calls`: The calls to be dispatched from the same origin. The number of call must not
+     *  exceed the constant: `batched_calls_limit` (available in constant metadata).
+     *
+     *If origin is root then the calls are dispatch without checking origin filter. (This
+     *includes bypassing `frame_system::Config::BaseCallFilter`).
+     *
+     *## Complexity
+     *- O(C) where C is the number of calls to be batched.
+     */
+    "force_batch": Anonymize<Ia2p3c0upn4qes>;
+    /**
+     *Dispatch a function call with a specified weight.
+     *
+     *This function does not check the weight of the call, and instead allows the
+     *Root origin to specify the weight of the call.
+     *
+     *The dispatch origin for this call must be _Root_.
+     */
+    "with_weight": Anonymize<I14su0qhu0tuak>;
+}>;
+export type Ia2p3c0upn4qes = {
+    "calls": Anonymize<I536esj8ddfmud>;
+};
+export type I536esj8ddfmud = Array<TxCallData>;
+export type Ibfvh7cd6jno19 = {
+    "index": number;
+    "call": TxCallData;
+};
+export type I539ja5t0q200n = {
+    "as_origin": Anonymize<I7fg241ui414j7>;
+    "call": TxCallData;
+};
+export type I7tc0te0bdj39u = AnonymousEnum<{
+    "enable_affiliator": Anonymize<I27v1tss76333e>;
+    "add_affiliation": Anonymize<I79d0gjumllf3p>;
+    "remove_affiliation": Anonymize<Icbccs0ug47ilf>;
+    "set_rule_for": Anonymize<I5s9ii8njl35bo>;
+    "clear_rule_for": Anonymize<I8t08nu50u9bdn>;
+}>;
+export type I5s9ii8njl35bo = {
+    "rule_id": Anonymize<Ieuuc7kg0naaf2>;
+    "rule": Binary;
+};
+export type Ib0baqjghhgj3i = AnonymousEnum<{
+    "update_season": Anonymize<Ifctt5vck3ffj6>;
+    "interrupt_active_season": undefined;
+}>;
+export type I8gkk0tfct0cnt = AnonymousEnum<{
+    /**
+     *Set game organizer.
+     */
+    "set_organizer": Anonymize<Ifed8uh0vbjcgd>;
+    /**
+     *Update general configuration.
+     */
+    "update_general_config": Anonymize<Ibch0l0v1nqcdq>;
+    /**
+     *Update general configuration.
+     */
+    "update_transition_config": Anonymize<I1t89svnc01aue>;
+    /**
+     *Updates an unlock rule for the given season.
+     *
+     *It doesn't affect already unlocked features.
+     */
+    "update_unlock_rule": Anonymize<If814pe6non0j8>;
+    /**
+     *Upgrade the asset inventory space.
+     */
+    "upgrade_asset_inventory": Anonymize<I1egbk0tvjrlu0>;
+    /**
+     *Updates the filter that assets need to pass for certain actions.
+     */
+    "update_asset_filter": Anonymize<Igk0n00booo59>;
+    /**
+     *Transfers the asset with `asset_id` from the `origin` to `to`.
+     *
+     *It will fail if the asset transfer is disabled, the asset doesn't pass the filter
+     *or if the asset is on the market.
+     */
+    "transfer_asset": Anonymize<I9hbmjepu2be8h>;
+    /**
+     *Set the price of a given asset, putting it on sale for others to buy.
+     */
+    "set_asset_price": Anonymize<Idgsge7c4e6tn1>;
+    /**
+     *Remove the price of an asset, and thereby remove it from the market.
+     */
+    "remove_asset_price": Anonymize<Ia5le7udkgbaq9>;
+    /**
+     *Attempt to buy the selected asset.
+     */
+    "buy_asset": Anonymize<I20t8kds2svicr>;
+    /**
+     *Locks an asset, making it unavailable for use.
+     */
+    "lock_asset": Anonymize<Ia5le7udkgbaq9>;
+    /**
+     *Unlocks an asset, making it available for use again.
+     */
+    "unlock_asset": Anonymize<Ia5le7udkgbaq9>;
+    /**
+     *Attempts to unlock the selected feature for the `target`.
+     */
+    "unlock_feature": Anonymize<I9afo9k5pbihaa>;
+    /**
+     *Entry point for the custom state transition.
+     */
+    "state_transition": Anonymize<If7j8qd78gb6od>;
+}>;
+export type Igk0n00booo59 = {
+    "season_id": number;
+    "filter": Anonymize<Icgents3qu3aj5>;
+};
+export type Icgents3qu3aj5 = AnonymousEnum<{
+    "Trade": Anonymize<I16jbabpon3m9r>;
+    "Transfer": Anonymize<I16jbabpon3m9r>;
+}>;
+export type If7j8qd78gb6od = {
+    "transition_id": Anonymize<Ibmgl9rkvb3vub>;
+    "asset_ids": Anonymize<Icgljjb6j82uhn>;
+    "payment_kind"?: Anonymize<Iaplnrp413a859>;
+};
+export type I9veitme629dgv = AnonymousEnum<{
+    "StartActivePhase": Anonymize<I9jd27rnpm8ttv>;
+    "SwitchToClaimPhase": Anonymize<I9jd27rnpm8ttv>;
+    "EndClaimPhase": Anonymize<I9jd27rnpm8ttv>;
+}>;
+export type Ia9nka0vec2b9d = Array<Anonymize<I4a102j6dg391r>>;
+export type I4a102j6dg391r = [number, Anonymize<Id98uv1rt58m4c>];
+export type Id98uv1rt58m4c = {
+    "id": number;
+    "collection_id": number;
+    "genesis": number;
+    "variant": Anonymize<Idfao293d43dlh>;
+};
+export type Idfao293d43dlh = AnonymousEnum<{
+    "Player": number;
+    "Machine": Anonymize<I2pn2jb9k1ka1v>;
+}>;
+export type I2pn2jb9k1ka1v = {
+    "value_1_factor": Anonymize<Icken2hvfgaead>;
+    "value_1_mul": Anonymize<I8fqrr4222vgvc>;
+    "value_2_factor": Anonymize<Icken2hvfgaead>;
+    "value_2_mul": Anonymize<I8fqrr4222vgvc>;
+    "value_3_factor": Anonymize<Icken2hvfgaead>;
+    "value_3_mul": Anonymize<I8fqrr4222vgvc>;
+    "sub_variant": Anonymize<I6uvp0tgqu5qsp>;
+};
+export type I6uvp0tgqu5qsp = AnonymousEnum<{
+    "Bandit": Anonymize<I1kjjdenpl9ds7>;
+}>;
+export type I1kjjdenpl9ds7 = {
+    "slot_a_result": number;
+    "slot_b_result": number;
+    "slot_c_result": number;
+    "slot_d_result": number;
+    "jackpot": number;
+};
+export type Ielgh4t8o7rcvt = FixedSizeArray<3, number>;
+export type I1te8o0hcjorfr = [SS58String, Anonymize<Id98uv1rt58m4c>];
+export type I26468skq2k3rc = [number, Anonymize<I2ptvngfso215>];
+export type I8c33c0tigg288 = ResultPayload<Anonymize<I585aruspva0h0>, TransactionValidityError>;
 export {};

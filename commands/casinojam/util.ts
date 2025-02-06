@@ -1,3 +1,20 @@
+import { AvailableApis } from "@/types";
+import type { casinojam } from "@polkadot-api/descriptors";
+import type { TypedApi } from "polkadot-api";
+
+export function isCasinoJamApi(
+  api: AvailableApis
+): api is TypedApi<typeof casinojam> {
+  console.log("isCasinoJamApi", api);
+
+  return Boolean(
+    (api as TypedApi<typeof casinojam>)?.tx?.CasinoJamSage &&
+      (api as TypedApi<typeof casinojam>)?.tx?.CasinoJamSeasons &&
+      (api as TypedApi<typeof casinojam>)?.tx?.CasinoJamTournament &&
+      (api as TypedApi<typeof casinojam>)?.tx?.CasinoJamAffiliates
+  );
+}
+
 export type SlotSymbol = "🍒" | "🍊" | "🍋" | "7️⃣" | "💎";
 
 export const symbols: SlotSymbol[] = ["🍒", "🍊", "🍋", "7️⃣", "💎"];

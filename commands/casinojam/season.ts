@@ -1,17 +1,17 @@
-import { getChainState } from "@/store/chain-store";
 import { Command } from "@/types/command";
+import { isCasinoJamApi } from "./util";
 
 export const season: Command = {
-  execute: async () => {
-    const { heroJamApi } = getChainState();
+  execute: async (_, { api }) => {
+    console.log("api season command", api);
 
-    if (!heroJamApi) return "No HeroJam API available";
+    if (!api || !isCasinoJamApi(api)) return "No CasinoJam API available";
 
     const seasonStatus =
-      await heroJamApi.query.HeroJamSeasons.CurrentSeasonStatus.getValue();
+      await api.query.CasinoJamSeasons.CurrentSeasonStatus.getValue();
 
     const seasonSchedules =
-      await heroJamApi.query.HeroJamSeasons.SeasonSchedules.getValue(
+      await api.query.CasinoJamSeasons.SeasonSchedules.getValue(
         seasonStatus?.season_id ?? 0
       );
 

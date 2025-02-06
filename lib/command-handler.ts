@@ -1,5 +1,6 @@
 import { commands } from "@/commands";
-import { PolkadotSigner } from "polkadot-api";
+import { AvailableApis } from "@/types";
+import { PolkadotClient, PolkadotSigner } from "polkadot-api";
 import { InjectedPolkadotAccount } from "polkadot-api/pjs-signer";
 
 interface ChainError {
@@ -15,10 +16,14 @@ export async function executeCommand(
     activeSigner,
     selectedAccount,
     onProcessing,
+    api,
+    client,
   }: {
     activeSigner: PolkadotSigner | null;
     selectedAccount: InjectedPolkadotAccount | null;
     onProcessing?: (output: string) => void;
+    api?: AvailableApis | null;
+    client?: PolkadotClient | null;
   } = {
     activeSigner: null,
     selectedAccount: null,
@@ -27,12 +32,16 @@ export async function executeCommand(
 ): Promise<string> {
   const trimmedInput = input.trim();
 
+  console.log("execute command api", api);
+
   try {
     if (trimmedInput in commands) {
       return await commands[trimmedInput].execute([], {
         activeSigner,
         selectedAccount,
         onProcessing,
+        api,
+        client,
       });
     }
 
@@ -46,6 +55,8 @@ export async function executeCommand(
         activeSigner,
         selectedAccount,
         onProcessing,
+        api,
+        client,
       });
     }
 

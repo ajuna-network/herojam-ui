@@ -8,6 +8,7 @@ import { executeCommand } from "@/lib/command-handler";
 import { useTxContext } from "@/providers/tx-provider";
 import { Spinner } from "./spinner";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
+import { useChain } from "@/providers/chain-provider";
 
 export default function Terminal() {
   const [history, setHistory] = useState<
@@ -18,6 +19,7 @@ export default function Terminal() {
   const historyRef = useRef<HTMLDivElement>(null);
   const { isProcessing, setIsProcessing } = useTxContext();
   const { activeSigner, selectedAccount } = usePolkadotExtension();
+  const { api, client } = useChain();
 
   useEffect(() => {
     // Handle initial welcome command
@@ -31,6 +33,8 @@ export default function Terminal() {
     setIsProcessing(true);
     setProcessingOutput(""); // Reset processing output
 
+    console.log("handle command api", api);
+
     try {
       const output = await executeCommand(command, {
         activeSigner,
@@ -38,6 +42,8 @@ export default function Terminal() {
         onProcessing: (interimOutput: string) => {
           setProcessingOutput(interimOutput);
         },
+        api,
+        client,
       });
       setHistory((prev) => [...prev, { command, output }]);
     } catch (error) {
