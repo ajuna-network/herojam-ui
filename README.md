@@ -10,16 +10,18 @@
    paseo
 
 ````bash
-pnpm papi add aju -w wss://rpc-paseo.ajuna.network
+pnpm papi add casinojam -w wss://rpc-paseo.ajuna.network
 ```
 
 or if you are running a substrate node locally
 
 ```bash
-pn`m papi add ajudev -w ws://127.0.0.1:9944
+pn`m papi add casinojam -w ws://127.0.0.1:9944
 ```
 
 This will generate the types for connecting papi to ajuna with the key `aju` / `ajudev`.
+
+ℹ️ If your node specifications change, you will have to rerun the command.
 
 2. run the development server:
 

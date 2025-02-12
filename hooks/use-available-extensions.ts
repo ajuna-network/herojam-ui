@@ -25,7 +25,7 @@ function subscribe(callback: () => void) {
 
   document.addEventListener("readystatechange", documentLoadCheck);
 
-  // Initial check
+  // Initial check 
   if (window.injectedWeb3) callback();
 
   return () => {

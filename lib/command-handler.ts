@@ -32,8 +32,6 @@ export async function executeCommand(
 ): Promise<string> {
   const trimmedInput = input.trim();
 
-  console.log("execute command api", api);
-
   try {
     if (trimmedInput in commands) {
       return await commands[trimmedInput].execute([], {
@@ -46,8 +44,8 @@ export async function executeCommand(
     }
 
     const [firstWord, ...args] = trimmedInput.split(" ");
-    const potentialCommand = Object.keys(commands).find((cmd) =>
-      cmd.startsWith(firstWord)
+    const potentialCommand = Object.keys(commands).find(
+      (cmd) => cmd === firstWord
     );
 
     if (potentialCommand && trimmedInput.startsWith(potentialCommand)) {

@@ -33,8 +33,6 @@ export default function Terminal() {
     setIsProcessing(true);
     setProcessingOutput(""); // Reset processing output
 
-    console.log("handle command api", api);
-
     try {
       const output = await executeCommand(command, {
         activeSigner,
@@ -91,7 +89,7 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-500 dark:text-green-800 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
+    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
       <div ref={historyRef} className="flex-grow overflow-y-auto mb-4">
         {history.map((item, index) => (
           <div key={index}>

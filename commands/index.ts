@@ -1,11 +1,15 @@
-import { echo } from "./_general/echo";
-import { help } from "./_general/help";
-import { welcome } from "./_general/welcome";
-import { organizer } from "./casinojam/organizer";
-import { season } from "./casinojam/season";
-import { whoami } from "./_general/whoami";
-import { transfer } from "./_general/transfer";
-import { gamble } from "./casinojam/gamble";
+import { echo } from "@/commands/_general/echo";
+import { help } from "@/commands/_general/help";
+import { welcome } from "@/commands/_general/welcome";
+import { organizer } from "@/commands/casinojam/organizer";
+import { season } from "@/commands/casinojam/season";
+import { whoami } from "@/commands/_general/whoami";
+import { transfer } from "@/commands/_general/transfer";
+import { gamble } from "@/commands/casinojam/gamble";
+import { player } from "@/commands/casinojam/player";
+import { machine } from "@/commands/casinojam/machine";
+import { machines } from "@/commands/casinojam/machines";
+
 import type { Command } from "@/types/command";
 
 export const commands: Record<string, Command> = {
@@ -20,4 +24,7 @@ export const commands: Record<string, Command> = {
   gamble,
   season,
   organizer,
+  player,
+  machines,
+  machine,
 };

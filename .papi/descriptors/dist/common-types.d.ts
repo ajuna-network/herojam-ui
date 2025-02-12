@@ -25658,13 +25658,13 @@ export type I3ur7d7so87s5l = {
 export type Iotnkqlev5olf = [SS58String, Anonymize<I1i5mdkqivk2lj>];
 export type Id32h28hjj1tch = [SS58String, number, number];
 export type I3i5slh4rot5vn = ResultPayload<Anonymize<Icb9i2osculmod>, TransactionValidityError>;
-export type Iukbfqjrrtjos = Array<Anonymize<Ic5pjq4cvagt7l>>;
-export type Ic5pjq4cvagt7l = {
+export type Idql9on5ju4spl = Array<Anonymize<I20cfnfttir4se>>;
+export type I20cfnfttir4se = {
     "phase": Phase;
-    "event": Anonymize<I7ijmtqoti0eh8>;
+    "event": Anonymize<Ib1va05hum7vdn>;
     "topics": Anonymize<Ic5m5lp1oioo8r>;
 };
-export type I7ijmtqoti0eh8 = AnonymousEnum<{
+export type Ib1va05hum7vdn = AnonymousEnum<{
     "System": Anonymize<I4d3r6tsu0h6u4>;
     "Grandpa": GrandpaEvent;
     "Balances": Anonymize<Iao8h4hv7atnq3>;
@@ -25683,10 +25683,10 @@ export type I7ijmtqoti0eh8 = AnonymousEnum<{
     "Utility": Anonymize<I4f5v01l41eu3g>;
     "Preimage": PreimageEvent;
     "Migrations": Anonymize<I94co7vj7h6bo>;
-    "CasinoJamAffiliates": Anonymize<I388kdp8n592qc>;
+    "CasinoJamAffiliates": Anonymize<I9ldh56np3vm4t>;
     "CasinoJamTournament": Anonymize<I2lf39pqathhsp>;
     "CasinoJamSeasons": Anonymize<I68qp6c52l7bcq>;
-    "CasinoJamSage": Anonymize<I902valnkrerlv>;
+    "CasinoJamSage": Anonymize<I2gm6vrf8kb3g7>;
 }>;
 export type I4d3r6tsu0h6u4 = AnonymousEnum<{
     /**
@@ -26109,26 +26109,30 @@ export type I43qleb8tqoqvo = {
 export type I2cmpm947g385i = {
     "error": Anonymize<I7goimdtpt105i>;
 };
-export type I388kdp8n592qc = AnonymousEnum<{
+export type I9ldh56np3vm4t = AnonymousEnum<{
     "AccountMarkedAsAffiliatable": Anonymize<Ibbiemldf16hc1>;
     "AccountAffiliated": Anonymize<I1o0nv6o4hvf0g>;
     "AccountUnaffiliated": Anonymize<Icbccs0ug47ilf>;
-    "RuleAdded": Anonymize<I8t08nu50u9bdn>;
-    "RuleCleared": Anonymize<I8t08nu50u9bdn>;
+    "RuleAdded": Anonymize<Idkfbhn86u0r8u>;
+    "RuleCleared": Anonymize<Idkfbhn86u0r8u>;
 }>;
-export type I8t08nu50u9bdn = {
-    "rule_id": Anonymize<Ieuuc7kg0naaf2>;
+export type Idkfbhn86u0r8u = {
+    "rule_id": Anonymize<I9o6uhrc3js8pg>;
 };
-export type Ieuuc7kg0naaf2 = AnonymousEnum<{
+export type I9o6uhrc3js8pg = AnonymousEnum<{
     "UpgradeAssetInventory": undefined;
     "TradeAsset": undefined;
-    "StateTransition": Anonymize<Ibmgl9rkvb3vub>;
+    "StateTransition": Anonymize<Iad0p9j79b6ljd>;
 }>;
-export type Ibmgl9rkvb3vub = AnonymousEnum<{
+export type Iad0p9j79b6ljd = AnonymousEnum<{
     "Create": Anonymize<I16jbabpon3m9r>;
-    "Fund": Anonymize<Iaa33fko6otl5>;
+    "Deposit": Anonymize<Iaa33fko6otl5>;
     "Gamble": Anonymize<I8fqrr4222vgvc>;
-    "Loot": Anonymize<Icken2hvfgaead>;
+    "Withdraw": Anonymize<Iaa33fko6otl5>;
+    "Rent": Anonymize<I8fqrr4222vgvc>;
+    "Reserve": Anonymize<I8fqrr4222vgvc>;
+    "Release": undefined;
+    "Kick": undefined;
 }>;
 export type I16jbabpon3m9r = AnonymousEnum<{
     "Player": undefined;
@@ -26194,7 +26198,7 @@ export type I7mjclubiuighb = {
     "start": number;
     "end"?: Anonymize<I4arjljr6dpflb>;
 };
-export type I902valnkrerlv = AnonymousEnum<{
+export type I2gm6vrf8kb3g7 = AnonymousEnum<{
     /**
      *An organizer has been set.
      */
@@ -26218,11 +26222,11 @@ export type I902valnkrerlv = AnonymousEnum<{
     /**
      *Trade filter has been updated
      */
-    "UpdatedTradeFilter": Anonymize<I3uak4l8m6hsm6>;
+    "UpdatedTradeFilter": Anonymize<I2c4ff149g4ccv>;
     /**
      *Transfer filter has been updated
      */
-    "UpdatedTransferFilter": Anonymize<I3uak4l8m6hsm6>;
+    "UpdatedTransferFilter": Anonymize<I2c4ff149g4ccv>;
     /**
      *Asset transferred.
      */
@@ -26254,16 +26258,25 @@ export type I902valnkrerlv = AnonymousEnum<{
     /**
      *A transition has been executed.
      */
-    "TransitionExecuted": Anonymize<I91ru1nfdvebg1>;
+    "TransitionExecuted": Anonymize<Iddhmv0k5a2b93>;
 }>;
 export type I1t89svnc01aue = {
     "new_config": number;
 };
-export type I3uak4l8m6hsm6 = {
+export type I2c4ff149g4ccv = {
     "season_id": number;
-    "filter": Anonymize<I16jbabpon3m9r>;
+    "filter": Anonymize<Icpgclksujapsm>;
 };
-export type I91ru1nfdvebg1 = {
+export type Icpgclksujapsm = AnonymousEnum<{
+    "Player": Anonymize<I6bc0bnc5a12mc>;
+    "Machine": Anonymize<Iasci566loq7es>;
+    "Seat": undefined;
+}>;
+export type I6bc0bnc5a12mc = AnonymousEnum<{
+    "Human": undefined;
+    "Tracker": undefined;
+}>;
+export type Iddhmv0k5a2b93 = {
     /**
      *Account who initiated execution.
      */
@@ -26271,33 +26284,33 @@ export type I91ru1nfdvebg1 = {
     /**
      *Transition ID that was executed.
      */
-    "id": Anonymize<Ibmgl9rkvb3vub>;
+    "id": Anonymize<Iad0p9j79b6ljd>;
 };
-export type I4ppramn9dhajc = AnonymousEnum<{
+export type I301q9bt2vb7u6 = AnonymousEnum<{
     "System": Anonymize<Iekve0i6djpd9f>;
     "Timestamp": Anonymize<I7d75gqfg6jh9c>;
     "Grandpa": Anonymize<Ibck9ekr2i96uj>;
     "Balances": Anonymize<I9svldsp29mh87>;
     "Assets": Anonymize<I84851acvod2ic>;
     "Vesting": Anonymize<Ic5to9b2n7se54>;
-    "Council": Anonymize<I3lghbs0i2lf2e>;
-    "TechnicalCommittee": Anonymize<I3lghbs0i2lf2e>;
+    "Council": Anonymize<Ir7ug6brhligj>;
+    "TechnicalCommittee": Anonymize<Ir7ug6brhligj>;
     "Treasury": Anonymize<I78c6gap1snbjh>;
     "Democracy": Anonymize<I10dimmis6musr>;
-    "Sudo": Anonymize<Ieqpdcr16em1mt>;
-    "Scheduler": Anonymize<Ibsp7qaa02d8kr>;
+    "Sudo": Anonymize<I8i37huhig0mn6>;
+    "Scheduler": Anonymize<I1foo748rpnl81>;
     "Identity": Anonymize<I276doi9hm655d>;
-    "Proxy": Anonymize<Ifbtlohuaj5f13>;
-    "Multisig": Anonymize<I94k9rd9ecmmgs>;
-    "Utility": Anonymize<I4krp6aa7sneqc>;
+    "Proxy": Anonymize<I6arbg0h3tlh4j>;
+    "Multisig": Anonymize<I8av0rrtcqkpsc>;
+    "Utility": Anonymize<I3acrq7rapkhub>;
     "Preimage": Anonymize<If81ks88t5mpk5>;
     "Migrations": Anonymize<I4oqb168b2d4er>;
-    "CasinoJamAffiliates": Anonymize<I7tc0te0bdj39u>;
+    "CasinoJamAffiliates": Anonymize<I7e3i61llpufup>;
     "CasinoJamTournament": Anonymize<Ifva6agjnvahb>;
     "CasinoJamSeasons": Anonymize<Ib0baqjghhgj3i>;
-    "CasinoJamSage": Anonymize<I8gkk0tfct0cnt>;
+    "CasinoJamSage": Anonymize<Iditm9at5iv293>;
 }>;
-export type I3lghbs0i2lf2e = AnonymousEnum<{
+export type Ir7ug6brhligj = AnonymousEnum<{
     /**
      *Set the collective's membership.
      *
@@ -26336,7 +26349,7 @@ export type I3lghbs0i2lf2e = AnonymousEnum<{
      *- `M` members-count (code-bounded)
      *- `P` complexity of dispatching `proposal`
      */
-    "execute": Anonymize<I9l05468e0ib27>;
+    "execute": Anonymize<Iammdg5jtejir1>;
     /**
      *Add a new proposal to either be voted on or executed directly.
      *
@@ -26353,7 +26366,7 @@ export type I3lghbs0i2lf2e = AnonymousEnum<{
      *    - `P1` is proposal execution complexity (`threshold < 2`)
      *    - `P2` is proposals-count (code-bounded) (`threshold >= 2`)
      */
-    "propose": Anonymize<I3hbc6mlf6egte>;
+    "propose": Anonymize<Idbn6qolvf0jcu>;
     /**
      *Add an aye or nay vote for the sender to the given proposal.
      *
@@ -26407,20 +26420,20 @@ export type I3lghbs0i2lf2e = AnonymousEnum<{
      */
     "close": Anonymize<Ib2obgji960euh>;
 }>;
-export type I9l05468e0ib27 = {
+export type Iammdg5jtejir1 = {
     "proposal": TxCallData;
     "length_bound": number;
 };
-export type I3hbc6mlf6egte = {
+export type Idbn6qolvf0jcu = {
     "threshold": number;
     "proposal": TxCallData;
     "length_bound": number;
 };
-export type Ieqpdcr16em1mt = AnonymousEnum<{
+export type I8i37huhig0mn6 = AnonymousEnum<{
     /**
      *Authenticates the sudo key and dispatches a function call with `Root` origin.
      */
-    "sudo": Anonymize<Ibnq4ca9t25qp3>;
+    "sudo": Anonymize<I98ur5b5fohsf1>;
     /**
      *Authenticates the sudo key and dispatches a function call with `Root` origin.
      *This function does not check the weight of the call, and instead allows the
@@ -26428,7 +26441,7 @@ export type Ieqpdcr16em1mt = AnonymousEnum<{
      *
      *The dispatch origin for this call must be _Signed_.
      */
-    "sudo_unchecked_weight": Anonymize<I14su0qhu0tuak>;
+    "sudo_unchecked_weight": Anonymize<Ir9kfeu9hlh36>;
     /**
      *Authenticates the current sudo key and sets the given AccountId (`new`) as the new sudo
      *key.
@@ -26440,7 +26453,7 @@ export type Ieqpdcr16em1mt = AnonymousEnum<{
      *
      *The dispatch origin for this call must be _Signed_.
      */
-    "sudo_as": Anonymize<Ienqc8surbutor>;
+    "sudo_as": Anonymize<Ife2ihs95b7bbb>;
     /**
      *Permanently removes the sudo key.
      *
@@ -26448,22 +26461,22 @@ export type Ieqpdcr16em1mt = AnonymousEnum<{
      */
     "remove_key": undefined;
 }>;
-export type Ibnq4ca9t25qp3 = {
+export type I98ur5b5fohsf1 = {
     "call": TxCallData;
 };
-export type I14su0qhu0tuak = {
+export type Ir9kfeu9hlh36 = {
     "call": TxCallData;
     "weight": Anonymize<I4q39t5hn830vp>;
 };
-export type Ienqc8surbutor = {
+export type Ife2ihs95b7bbb = {
     "who": MultiAddress;
     "call": TxCallData;
 };
-export type Ibsp7qaa02d8kr = AnonymousEnum<{
+export type I1foo748rpnl81 = AnonymousEnum<{
     /**
      *Anonymously schedule a task.
      */
-    "schedule": Anonymize<I1u7ucq3lhuv8l>;
+    "schedule": Anonymize<Icfmq0h4fn6v1>;
     /**
      *Cancel an anonymously scheduled task.
      */
@@ -26471,7 +26484,7 @@ export type Ibsp7qaa02d8kr = AnonymousEnum<{
     /**
      *Schedule a named task.
      */
-    "schedule_named": Anonymize<I9567r4g0s2h8i>;
+    "schedule_named": Anonymize<I87afp9c253frr>;
     /**
      *Cancel a named scheduled task.
      */
@@ -26479,11 +26492,11 @@ export type Ibsp7qaa02d8kr = AnonymousEnum<{
     /**
      *Anonymously schedule a task after a delay.
      */
-    "schedule_after": Anonymize<Iba3hrj7c99s6b>;
+    "schedule_after": Anonymize<Ifgb0d0jnmknm1>;
     /**
      *Schedule a named task after a delay.
      */
-    "schedule_named_after": Anonymize<Ia27m91di7hirc>;
+    "schedule_named_after": Anonymize<I9b06bdtvibl47>;
     /**
      *Set a retry configuration for a task so that, in case its scheduled run fails, it will
      *be retried after `period` blocks, for a total amount of `retries` retries or until it
@@ -26523,33 +26536,33 @@ export type Ibsp7qaa02d8kr = AnonymousEnum<{
      */
     "cancel_retry_named": Anonymize<Ifs1i5fk9cqvr6>;
 }>;
-export type I1u7ucq3lhuv8l = {
+export type Icfmq0h4fn6v1 = {
     "when": number;
     "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
     "priority": number;
     "call": TxCallData;
 };
-export type I9567r4g0s2h8i = {
+export type I87afp9c253frr = {
     "id": FixedSizeBinary<32>;
     "when": number;
     "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
     "priority": number;
     "call": TxCallData;
 };
-export type Iba3hrj7c99s6b = {
+export type Ifgb0d0jnmknm1 = {
     "after": number;
     "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
     "priority": number;
     "call": TxCallData;
 };
-export type Ia27m91di7hirc = {
+export type I9b06bdtvibl47 = {
     "id": FixedSizeBinary<32>;
     "after": number;
     "maybe_periodic"?: Anonymize<Iep7au1720bm0e>;
     "priority": number;
     "call": TxCallData;
 };
-export type Ifbtlohuaj5f13 = AnonymousEnum<{
+export type I6arbg0h3tlh4j = AnonymousEnum<{
     /**
      *Dispatch the given `call` from an account that the sender is authorised for through
      *`add_proxy`.
@@ -26561,7 +26574,7 @@ export type Ifbtlohuaj5f13 = AnonymousEnum<{
      *- `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
      *- `call`: The call to be made by the `real` account.
      */
-    "proxy": Anonymize<Ibifgq3mj1o6dn>;
+    "proxy": Anonymize<I45ehghefjbjb1>;
     /**
      *Register a proxy account for the sender that is able to make calls on its behalf.
      *
@@ -26690,20 +26703,20 @@ export type Ifbtlohuaj5f13 = AnonymousEnum<{
      *- `force_proxy_type`: Specify the exact proxy type to be used and checked for this call.
      *- `call`: The call to be made by the `real` account.
      */
-    "proxy_announced": Anonymize<Ic3ua6figk026d>;
+    "proxy_announced": Anonymize<Iceerah4spn2le>;
 }>;
-export type Ibifgq3mj1o6dn = {
+export type I45ehghefjbjb1 = {
     "real": MultiAddress;
     "force_proxy_type"?: Anonymize<I5gu0l454u7u79>;
     "call": TxCallData;
 };
-export type Ic3ua6figk026d = {
+export type Iceerah4spn2le = {
     "delegate": MultiAddress;
     "real": MultiAddress;
     "force_proxy_type"?: Anonymize<I5gu0l454u7u79>;
     "call": TxCallData;
 };
-export type I94k9rd9ecmmgs = AnonymousEnum<{
+export type I8av0rrtcqkpsc = AnonymousEnum<{
     /**
      *Immediately dispatch a multi-signature call using a single approval from the caller.
      *
@@ -26718,7 +26731,7 @@ export type I94k9rd9ecmmgs = AnonymousEnum<{
      *## Complexity
      *O(Z + C) where Z is the length of the call and C its execution weight.
      */
-    "as_multi_threshold_1": Anonymize<Iu1e9cr2pq9dp>;
+    "as_multi_threshold_1": Anonymize<I61t9u8et7n03k>;
     /**
      *Register approval for a dispatch to be made from a deterministic composite account if
      *approved by a total of `threshold - 1` of `other_signatories`.
@@ -26760,7 +26773,7 @@ export type I94k9rd9ecmmgs = AnonymousEnum<{
      *- Storage: inserts one item, value size bounded by `MaxSignatories`, with a deposit
      *  taken for its lifetime of `DepositBase + threshold * DepositFactor`.
      */
-    "as_multi": Anonymize<Ico7h67fa9oqg0>;
+    "as_multi": Anonymize<Ibavsbecshbn45>;
     /**
      *Register approval for a dispatch to be made from a deterministic composite account if
      *approved by a total of `threshold - 1` of `other_signatories`.
@@ -26819,18 +26832,18 @@ export type I94k9rd9ecmmgs = AnonymousEnum<{
      */
     "cancel_as_multi": Anonymize<I3d9o9d7epp66v>;
 }>;
-export type Iu1e9cr2pq9dp = {
+export type I61t9u8et7n03k = {
     "other_signatories": Anonymize<Ia2lhg7l2hilo3>;
     "call": TxCallData;
 };
-export type Ico7h67fa9oqg0 = {
+export type Ibavsbecshbn45 = {
     "threshold": number;
     "other_signatories": Anonymize<Ia2lhg7l2hilo3>;
     "maybe_timepoint"?: Anonymize<I95jfd8j5cr5eh>;
     "call": TxCallData;
     "max_weight": Anonymize<I4q39t5hn830vp>;
 };
-export type I4krp6aa7sneqc = AnonymousEnum<{
+export type I3acrq7rapkhub = AnonymousEnum<{
     /**
      *Send a batch of dispatch calls.
      *
@@ -26851,7 +26864,7 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *and the error of the failed call. If all were successful, then the `BatchCompleted`
      *event is deposited.
      */
-    "batch": Anonymize<Ia2p3c0upn4qes>;
+    "batch": Anonymize<Ie2sh79njiciab>;
     /**
      *Send a call through an indexed pseudonym of the sender.
      *
@@ -26867,7 +26880,7 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *
      *The dispatch origin for this call must be _Signed_.
      */
-    "as_derivative": Anonymize<Ibfvh7cd6jno19>;
+    "as_derivative": Anonymize<I3k55u3i5pdugg>;
     /**
      *Send a batch of dispatch calls and atomically execute them.
      *The whole transaction will rollback and fail if any of the calls failed.
@@ -26883,7 +26896,7 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *## Complexity
      *- O(C) where C is the number of calls to be batched.
      */
-    "batch_all": Anonymize<Ia2p3c0upn4qes>;
+    "batch_all": Anonymize<Ie2sh79njiciab>;
     /**
      *Dispatches a function call with a provided origin.
      *
@@ -26892,7 +26905,7 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *## Complexity
      *- O(1).
      */
-    "dispatch_as": Anonymize<I539ja5t0q200n>;
+    "dispatch_as": Anonymize<Ickijr9f1v5pl1>;
     /**
      *Send a batch of dispatch calls.
      *Unlike `batch`, it allows errors and won't interrupt.
@@ -26908,7 +26921,7 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *## Complexity
      *- O(C) where C is the number of calls to be batched.
      */
-    "force_batch": Anonymize<Ia2p3c0upn4qes>;
+    "force_batch": Anonymize<Ie2sh79njiciab>;
     /**
      *Dispatch a function call with a specified weight.
      *
@@ -26917,36 +26930,36 @@ export type I4krp6aa7sneqc = AnonymousEnum<{
      *
      *The dispatch origin for this call must be _Root_.
      */
-    "with_weight": Anonymize<I14su0qhu0tuak>;
+    "with_weight": Anonymize<Ir9kfeu9hlh36>;
 }>;
-export type Ia2p3c0upn4qes = {
-    "calls": Anonymize<I536esj8ddfmud>;
+export type Ie2sh79njiciab = {
+    "calls": Anonymize<I61m85bam7mkb4>;
 };
-export type I536esj8ddfmud = Array<TxCallData>;
-export type Ibfvh7cd6jno19 = {
+export type I61m85bam7mkb4 = Array<TxCallData>;
+export type I3k55u3i5pdugg = {
     "index": number;
     "call": TxCallData;
 };
-export type I539ja5t0q200n = {
+export type Ickijr9f1v5pl1 = {
     "as_origin": Anonymize<I7fg241ui414j7>;
     "call": TxCallData;
 };
-export type I7tc0te0bdj39u = AnonymousEnum<{
+export type I7e3i61llpufup = AnonymousEnum<{
     "enable_affiliator": Anonymize<I27v1tss76333e>;
     "add_affiliation": Anonymize<I79d0gjumllf3p>;
     "remove_affiliation": Anonymize<Icbccs0ug47ilf>;
-    "set_rule_for": Anonymize<I5s9ii8njl35bo>;
-    "clear_rule_for": Anonymize<I8t08nu50u9bdn>;
+    "set_rule_for": Anonymize<I7cd70bnfdor0k>;
+    "clear_rule_for": Anonymize<Idkfbhn86u0r8u>;
 }>;
-export type I5s9ii8njl35bo = {
-    "rule_id": Anonymize<Ieuuc7kg0naaf2>;
+export type I7cd70bnfdor0k = {
+    "rule_id": Anonymize<I9o6uhrc3js8pg>;
     "rule": Binary;
 };
 export type Ib0baqjghhgj3i = AnonymousEnum<{
     "update_season": Anonymize<Ifctt5vck3ffj6>;
     "interrupt_active_season": undefined;
 }>;
-export type I8gkk0tfct0cnt = AnonymousEnum<{
+export type Iditm9at5iv293 = AnonymousEnum<{
     /**
      *Set game organizer.
      */
@@ -26972,7 +26985,7 @@ export type I8gkk0tfct0cnt = AnonymousEnum<{
     /**
      *Updates the filter that assets need to pass for certain actions.
      */
-    "update_asset_filter": Anonymize<Igk0n00booo59>;
+    "update_asset_filter": Anonymize<I6u8f34f8jbj4m>;
     /**
      *Transfers the asset with `asset_id` from the `origin` to `to`.
      *
@@ -27007,18 +27020,18 @@ export type I8gkk0tfct0cnt = AnonymousEnum<{
     /**
      *Entry point for the custom state transition.
      */
-    "state_transition": Anonymize<If7j8qd78gb6od>;
+    "state_transition": Anonymize<I2709mdch2573v>;
 }>;
-export type Igk0n00booo59 = {
+export type I6u8f34f8jbj4m = {
     "season_id": number;
-    "filter": Anonymize<Icgents3qu3aj5>;
+    "filter": Anonymize<Im5vj5egoj2qg>;
 };
-export type Icgents3qu3aj5 = AnonymousEnum<{
-    "Trade": Anonymize<I16jbabpon3m9r>;
-    "Transfer": Anonymize<I16jbabpon3m9r>;
+export type Im5vj5egoj2qg = AnonymousEnum<{
+    "Trade": Anonymize<Icpgclksujapsm>;
+    "Transfer": Anonymize<Icpgclksujapsm>;
 }>;
-export type If7j8qd78gb6od = {
-    "transition_id": Anonymize<Ibmgl9rkvb3vub>;
+export type I2709mdch2573v = {
+    "transition_id": Anonymize<Iad0p9j79b6ljd>;
     "asset_ids": Anonymize<Icgljjb6j82uhn>;
     "payment_kind"?: Anonymize<Iaplnrp413a859>;
 };
@@ -27027,39 +27040,61 @@ export type I9veitme629dgv = AnonymousEnum<{
     "SwitchToClaimPhase": Anonymize<I9jd27rnpm8ttv>;
     "EndClaimPhase": Anonymize<I9jd27rnpm8ttv>;
 }>;
-export type Ia9nka0vec2b9d = Array<Anonymize<I4a102j6dg391r>>;
-export type I4a102j6dg391r = [number, Anonymize<Id98uv1rt58m4c>];
-export type Id98uv1rt58m4c = {
+export type I8anmh19lnbume = Array<Anonymize<I5hitqpvsarl27>>;
+export type I5hitqpvsarl27 = [number, Anonymize<I69r69eetdha7k>];
+export type I69r69eetdha7k = {
     "id": number;
     "collection_id": number;
     "genesis": number;
-    "variant": Anonymize<Idfao293d43dlh>;
+    "variant": Anonymize<Ieho6b094pfjgr>;
 };
-export type Idfao293d43dlh = AnonymousEnum<{
-    "Player": number;
-    "Machine": Anonymize<I2pn2jb9k1ka1v>;
+export type Ieho6b094pfjgr = AnonymousEnum<{
+    "Player": Anonymize<I4gmkvq83s2etq>;
+    "Machine": Anonymize<I2soduhi7pa9ug>;
+    "Seat": Anonymize<Ie1eq20c5gl2kk>;
 }>;
-export type I2pn2jb9k1ka1v = {
+export type I4gmkvq83s2etq = AnonymousEnum<{
+    "Human"?: Anonymize<I4arjljr6dpflb>;
+    "Tracker": Anonymize<Icbh6jnqve85i9>;
+}>;
+export type Icbh6jnqve85i9 = {
+    "slot_a_result": number;
+    "slot_b_result": number;
+    "slot_c_result": number;
+    "slot_d_result": number;
+    "last_reward": number;
+};
+export type I2soduhi7pa9ug = {
+    "seat_linked": number;
+    "seat_limit": number;
     "value_1_factor": Anonymize<Icken2hvfgaead>;
     "value_1_mul": Anonymize<I8fqrr4222vgvc>;
     "value_2_factor": Anonymize<Icken2hvfgaead>;
     "value_2_mul": Anonymize<I8fqrr4222vgvc>;
     "value_3_factor": Anonymize<Icken2hvfgaead>;
     "value_3_mul": Anonymize<I8fqrr4222vgvc>;
-    "sub_variant": Anonymize<I6uvp0tgqu5qsp>;
+    "sub_variant": Anonymize<Icju75tcurdr1p>;
 };
-export type I6uvp0tgqu5qsp = AnonymousEnum<{
-    "Bandit": Anonymize<I1kjjdenpl9ds7>;
+export type Icju75tcurdr1p = AnonymousEnum<{
+    "Bandit": Anonymize<I75fst0ne8gd8l>;
 }>;
-export type I1kjjdenpl9ds7 = {
-    "slot_a_result": number;
-    "slot_b_result": number;
-    "slot_c_result": number;
-    "slot_d_result": number;
+export type I75fst0ne8gd8l = {
+    "max_spins": number;
     "jackpot": number;
 };
+export type Ie1eq20c5gl2kk = {
+    "seat_validity_period": number;
+    "player_fee": number;
+    "player_grace_period": number;
+    "reservation_start_block": number;
+    "reservation_duration": number;
+    "last_action_block": number;
+    "player_action_count": number;
+    "player_id"?: Anonymize<I4arjljr6dpflb>;
+    "machine_id"?: Anonymize<I4arjljr6dpflb>;
+};
 export type Ielgh4t8o7rcvt = FixedSizeArray<3, number>;
-export type I1te8o0hcjorfr = [SS58String, Anonymize<Id98uv1rt58m4c>];
+export type I85dfug3752car = [SS58String, Anonymize<I69r69eetdha7k>];
 export type I26468skq2k3rc = [number, Anonymize<I2ptvngfso215>];
 export type I8c33c0tigg288 = ResultPayload<Anonymize<I585aruspva0h0>, TransactionValidityError>;
 export {};
