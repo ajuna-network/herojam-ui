@@ -1,22 +1,19 @@
 import { formatBalance } from "@/lib/format-balance";
-import { getChainState } from "@/store/chain-store";
 import { Command } from "@/types/command";
 
 export const whoami: Command = {
-  execute: async (_, { selectedAccount }) => {
-    const { heroJamApi, client } = getChainState();
-
-    if (!heroJamApi) return "No HeroJam API available";
+  execute: async (_, { selectedAccount, api, client }) => {
+    if (!api) return "No  API available";
     if (!selectedAccount?.address) return "No account selected";
 
-    const accountInfo = await heroJamApi.query.System.Account.getValue(
+    const accountInfo = await api.query.System.Account.getValue(
       selectedAccount?.address,
       { at: "best" }
     );
 
     const chainInfo = await client?.getChainSpecData();
 
-    console.log("accountInfo", accountInfo);
+    console.log("chainInfo", client, chainInfo);
 
     return `
 You are ${selectedAccount?.name}: ${selectedAccount?.address}

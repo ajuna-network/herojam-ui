@@ -1,8 +1,8 @@
 import type { Command } from "@/types/command";
-import { commands } from "./index";
+import { commands } from "../index";
 
 export const help: Command = {
-  execute: (): string => {
+  execute: async (): Promise<string> => {
     const helpTexts = Object.entries(commands)
       .map(([name, command]) => command.help || `${name} - No help available`)
       .sort()

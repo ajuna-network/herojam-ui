@@ -1,13 +1,13 @@
 import { formatBalance } from "@/lib/format-balance";
-import { getChainState } from "@/store/chain-store";
 import { Command } from "@/types/command";
 import { MultiAddress } from "@polkadot-api/descriptors";
 
 export const transfer: Command = {
-  execute: async (args: string[], { activeSigner, selectedAccount }) => {
-    const { heroJamApi, client } = getChainState();
-
-    if (!heroJamApi) return "No chain connection available";
+  execute: async (
+    args: string[],
+    { activeSigner, selectedAccount, api, client }
+  ) => {
+    if (!api) return "No chain connection available";
     if (!activeSigner) return "No active signer";
     if (!selectedAccount) return "No selected account";
 
@@ -27,7 +27,7 @@ export const transfer: Command = {
     console.log("dest", dest);
     console.log("amount", amount);
 
-    const tx = heroJamApi.tx.Balances.transfer_keep_alive({
+    const tx = api.tx.Balances.transfer_keep_alive({
       dest: MultiAddress.Id(dest),
       value: BigInt(amount),
     });

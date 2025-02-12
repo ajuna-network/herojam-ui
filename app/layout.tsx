@@ -6,8 +6,21 @@ import { Toaster } from "@/components/ui/sonner";
 import { Loader } from "@/components/ui/loader";
 
 export const metadata: Metadata = {
-  title: "HeroJam - Home",
-  description: "HeroJam - Home",
+  title: "HeroJam",
+  description:
+    "CasinoJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
+  metadataBase: new URL(
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://herojam.netlify.app/"
+  ),
+  openGraph: {
+    title: "CasinoJam",
+    description:
+      "CasinoJam - Demo Terminal App for interacting with the SAGE game engine by Ajuna",
+    url: "https://herojam.netlify.app/",
+    siteName: "CasinoJam",
+  },
 };
 
 export default function RootLayout({
@@ -19,10 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistMono.className} antialiased`}>
         <Providers>
-          {/* <MenuTop /> */}
           <main className="">{children}</main>
-          {/* <Footer /> */}
-          {/* <ChainInfo /> */}
           <Toaster position="bottom-center" icons={{ loading: <Loader /> }} />
         </Providers>
       </body>

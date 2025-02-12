@@ -9,7 +9,7 @@ import { TxProvider } from "./tx-provider";
 export function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="dark">
       <QueryClientProvider client={queryClient}>
         <PolkadotExtensionProvider>
           <ChainProvider>

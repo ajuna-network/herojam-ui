@@ -14,8 +14,8 @@ var toBinary = (() => {
     return bytes;
   };
 })();
-var descriptorValues = import("./descriptors-YC5IDO66.mjs").then((module) => module["Wnd"]);
-var metadataTypes = import("./metadataTypes-LOGIT24L.mjs").then(
+var descriptorValues = import("./descriptors-XC37FTTY.mjs").then((module) => module["Wnd"]);
+var metadataTypes = import("./metadataTypes-CJW2LHRI.mjs").then(
   (module) => toBinary("default" in module ? module.default : module)
 );
 var asset = {};
@@ -38,8 +38,8 @@ var toBinary2 = (() => {
     return bytes;
   };
 })();
-var descriptorValues2 = import("./descriptors-YC5IDO66.mjs").then((module) => module["Pas"]);
-var metadataTypes2 = import("./metadataTypes-LOGIT24L.mjs").then(
+var descriptorValues2 = import("./descriptors-XC37FTTY.mjs").then((module) => module["Pas"]);
+var metadataTypes2 = import("./metadataTypes-CJW2LHRI.mjs").then(
   (module) => toBinary2("default" in module ? module.default : module)
 );
 var asset2 = {};
@@ -62,8 +62,8 @@ var toBinary3 = (() => {
     return bytes;
   };
 })();
-var descriptorValues3 = import("./descriptors-YC5IDO66.mjs").then((module) => module["Aju"]);
-var metadataTypes3 = import("./metadataTypes-LOGIT24L.mjs").then(
+var descriptorValues3 = import("./descriptors-XC37FTTY.mjs").then((module) => module["Aju"]);
+var metadataTypes3 = import("./metadataTypes-CJW2LHRI.mjs").then(
   (module) => toBinary3("default" in module ? module.default : module)
 );
 var asset3 = {};
@@ -86,8 +86,8 @@ var toBinary4 = (() => {
     return bytes;
   };
 })();
-var descriptorValues4 = import("./descriptors-YC5IDO66.mjs").then((module) => module["Ajusage"]);
-var metadataTypes4 = import("./metadataTypes-LOGIT24L.mjs").then(
+var descriptorValues4 = import("./descriptors-XC37FTTY.mjs").then((module) => module["Ajusage"]);
+var metadataTypes4 = import("./metadataTypes-CJW2LHRI.mjs").then(
   (module) => toBinary4("default" in module ? module.default : module)
 );
 var asset4 = {};
@@ -110,13 +110,37 @@ var toBinary5 = (() => {
     return bytes;
   };
 })();
-var descriptorValues5 = import("./descriptors-YC5IDO66.mjs").then((module) => module["Ajudev"]);
-var metadataTypes5 = import("./metadataTypes-LOGIT24L.mjs").then(
+var descriptorValues5 = import("./descriptors-XC37FTTY.mjs").then((module) => module["Ajudev"]);
+var metadataTypes5 = import("./metadataTypes-CJW2LHRI.mjs").then(
   (module) => toBinary5("default" in module ? module.default : module)
 );
 var asset5 = {};
 var _allDescriptors5 = { descriptors: descriptorValues5, metadataTypes: metadataTypes5, asset: asset5 };
 var ajudev_default = _allDescriptors5;
+
+// .papi/descriptors/src/casinojam.ts
+var toBinary6 = (() => {
+  const table = new Uint8Array(128);
+  for (let i = 0; i < 64; i++) table[i < 26 ? i + 65 : i < 52 ? i + 71 : i < 62 ? i - 4 : i * 4 - 205] = i;
+  return (base64) => {
+    const n = base64.length, bytes = new Uint8Array((n - Number(base64[n - 1] === "=") - Number(base64[n - 2] === "=")) * 3 / 4 | 0);
+    for (let i2 = 0, j = 0; i2 < n; ) {
+      const c0 = table[base64.charCodeAt(i2++)], c1 = table[base64.charCodeAt(i2++)];
+      const c2 = table[base64.charCodeAt(i2++)], c3 = table[base64.charCodeAt(i2++)];
+      bytes[j++] = c0 << 2 | c1 >> 4;
+      bytes[j++] = c1 << 4 | c2 >> 2;
+      bytes[j++] = c2 << 6 | c3;
+    }
+    return bytes;
+  };
+})();
+var descriptorValues6 = import("./descriptors-XC37FTTY.mjs").then((module) => module["Casinojam"]);
+var metadataTypes6 = import("./metadataTypes-CJW2LHRI.mjs").then(
+  (module) => toBinary6("default" in module ? module.default : module)
+);
+var asset6 = {};
+var _allDescriptors6 = { descriptors: descriptorValues6, metadataTypes: metadataTypes6, asset: asset6 };
+var casinojam_default = _allDescriptors6;
 
 // .papi/descriptors/src/common-types.ts
 import { _Enum } from "polkadot-api";
@@ -434,6 +458,7 @@ export {
   aju_default as aju,
   ajudev_default as ajudev,
   ajusage_default as ajusage,
+  casinojam_default as casinojam,
   pas_default as pas,
   wnd_default as wnd
 };

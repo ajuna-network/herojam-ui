@@ -1,25 +1,30 @@
-import { echo } from "./echo";
-import { help } from "./help";
-import { createHero } from "./create-hero";
-import { welcome } from "./welcome";
-import { organizer } from "./organizer";
-import { season } from "./season";
-import { whoami } from "./whoami";
-import { hero } from "./hero";
-import { heroes } from "./heroes";
-import { transfer } from "./transfer";
+import { echo } from "@/commands/_general/echo";
+import { help } from "@/commands/_general/help";
+import { welcome } from "@/commands/_general/welcome";
+import { organizer } from "@/commands/casinojam/organizer";
+import { season } from "@/commands/casinojam/season";
+import { whoami } from "@/commands/_general/whoami";
+import { transfer } from "@/commands/_general/transfer";
+import { gamble } from "@/commands/casinojam/gamble";
+import { player } from "@/commands/casinojam/player";
+import { machine } from "@/commands/casinojam/machine";
+import { machines } from "@/commands/casinojam/machines";
 
 import type { Command } from "@/types/command";
 
 export const commands: Record<string, Command> = {
+  // general commands
   echo,
   help,
-  "create hero": createHero,
   welcome,
-  organizer,
-  season,
   whoami,
-  hero,
-  heroes,
   transfer,
+
+  // casinojam commands
+  gamble,
+  season,
+  organizer,
+  player,
+  machines,
+  machine,
 };
