@@ -7,7 +7,7 @@ import {
 } from "./util";
 import { Enum } from "polkadot-api";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
-import { AssetType, PlayerUI, TokenType, TokenValuesType } from "./types";
+import { PlayerUI, TokenType, TokenValuesType } from "./types";
 
 const subCommands = `<span class="text-blue-500">player create</span> - create a new player
 <span class="text-blue-500">player me</span> - display your player
@@ -61,7 +61,6 @@ export const player: Command = {
       if (!isNaN(Number(args[0])) || args[0] === "me") {
         // COMMAND: player [id] / player me
         let player;
-        let seat;
 
         if (args[0] === "me") {
           player = uiPlayers.find(
@@ -75,27 +74,13 @@ export const player: Command = {
           const assetFundsEntries =
             await api.query.CasinoJamSage.AssetFunds.getEntries(player.id);
 
-          const playerSeat = casinoJamAssets.filter(
-            (
-              entry
-            ): entry is (typeof casinoJamAssets)[number] & {
-              value: [
-                string,
-                AssetType & {
-                  variant: {
-                    type: "Seat";
-                  };
-                }
-              ];
-            } => {
-              const [, assetData] = entry.value;
-              console.info("aaa', assetData", assetData);
-              return (
-                assetData.variant.type === "Seat" &&
-                assetData.variant.value.player_id === player.id
-              );
-            }
-          );
+          const playerSeat = casinoJamAssets.filter((entry) => {
+            const [, assetData] = entry.value;
+            return (
+              assetData.variant.type === "Seat" &&
+              assetData.variant.value.player_id === player.id
+            );
+          });
 
           return displayPlayer({
             ...player,

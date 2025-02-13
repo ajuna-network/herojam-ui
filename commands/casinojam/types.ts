@@ -8,6 +8,7 @@ export type MachineType = Extract<
   AssetTypeVariant,
   { type: "Machine" }
 >["value"];
+export type SeatType = Extract<AssetTypeVariant, { type: "Seat" }>["value"];
 export type MultiplierType = MachineType["value_1_mul"];
 export type MultiplierValuesType = MultiplierType extends { type: infer T }
   ? T
