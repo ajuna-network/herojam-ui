@@ -3,15 +3,23 @@ import { commands } from "../index";
 
 export const help: Command = {
   execute: async (): Promise<string> => {
-    const helpTexts = Object.entries(commands)
-      .map(([name, command]) => command.help || `${name} - No help available`)
-      .sort()
+    // Group commands by category
+    const playerCommands = commands.player.help;
+    const machineCommands = commands.machine.help;
+    const generalCommands = Object.entries(commands)
+      .filter(([name]) => !["player", "machine"].includes(name))
+      .map(([, command]) => command.help)
       .join("\n");
 
     return `
-Available commands:
-${helpTexts}
+available commands
+------------------
+${playerCommands}
+
+${machineCommands}
+
+${generalCommands}
 `;
   },
-  help: "help - Display this help message",
+  help: "<span class='text-blue-500'>help</span> - Display this help message",
 };

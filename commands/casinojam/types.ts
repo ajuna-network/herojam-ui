@@ -27,6 +27,7 @@ export type PlayerUI = {
   genesis: number;
   owner: SS58String;
   tracker: number | undefined;
+  funds?: bigint;
 };
 
 export type MachineUI = {

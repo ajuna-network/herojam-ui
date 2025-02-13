@@ -21,7 +21,8 @@ import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 const subCommands = `<span class="text-blue-500">machine create</span> - create a new machine
 <span class="text-blue-500">machine [id]</span> - display a machine
 <span class="text-blue-500">machine [id] rent [multiplier]</span> - rent a machine
-<span class="text-blue-500">machine [id] deposit [token_type]</span> - deposit a token to a machine`;
+<span class="text-blue-500">machine [id] deposit [token_type]</span> - deposit a token to a machine
+<span class="text-blue-500">machine [id] reserve [multiplier]</span> - reserve a free seat on machine [id] for your player`;
 
 function isMachineAsset(asset: AssetType): asset is AssetType & {
   variant: {
@@ -152,7 +153,6 @@ export const machine: Command = {
           return formatTransitionError(err);
         }
       }
-
       return (
         "Invalid command: " +
         args[0] +
@@ -250,18 +250,79 @@ export const machine: Command = {
           const err = result.dispatchError.value as CasinojamDispatchError;
           return formatTransitionError(err);
         }
+      } else if (action === "reserve") {
+        // COMMAND: machine [id] reserve
+        if (subCommandArgs.length !== 1) {
+          return "Invalid command. Use 'machine [id] reserve [multiplier]' to reserve a seat on a machine";
+        }
+
+        const multiplierArg = subCommandArgs[0].toUpperCase();
+
+        if (
+          !MULTIPLIER_VALUES.includes(multiplierArg as MultiplierValuesType)
+        ) {
+          return `Invalid multiplier. Valid values are: ${MULTIPLIER_VALUES.join(
+            ", "
+          )}`;
+        }
+
+        const multiplier: MultiplierType = Enum(
+          multiplierArg as MultiplierValuesType
+        );
+
+        const playerMe = casinoJamAssets.find(
+          ({ value: [owner, asset] }) =>
+            asset.variant.type === "Player" &&
+            asset.variant.value.type === "Human" &&
+            owner === selectedAccount.address
+        )?.value[1].id;
+
+        const machineSeats = seats.filter(
+          ({ value: [, asset] }) =>
+            asset.variant.value.machine_id === machine.id
+        );
+
+        // TODO: uses the first seat for the machine, should use the first FREE seat
+        const seatId = machineSeats[0]?.value[1].id;
+
+        if (!playerMe || !seatId) {
+          return "Player or seat not found";
+        }
+
+        const tx = await api.tx.CasinoJamSage.state_transition({
+          transition_id: {
+            type: "Reserve",
+            value: multiplier,
+          },
+          asset_ids: [playerMe, seatId],
+          payment_kind: undefined,
+        });
+
+        const result = await tx.signAndSubmit(activeSigner, { at: "best" });
+
+        if (result.ok) {
+          return "✅ Machine reserved";
+        } else {
+          const err = result.dispatchError.value as CasinojamDispatchError;
+          return formatTransitionError(err);
+        }
       } else {
-        return `Invalid action ${action}. Available actions: rent, deposit`;
+        return `Invalid action ${action}. 
+        
+available actions
+-----------------
+${subCommands}`;
       }
     } else {
       return `
-available actions:
-${subCommands}
+available machines
+------------------
+${uiMachines.map((machine) => machine.id).join(", ")}
 
-available machines:
-${uiMachines.map((machine) => machine.id).join(", ")}`;
+available machine actions
+-------------------------
+${subCommands}`;
     }
   },
-  help:
-    "machine - Display a machine or take action on a machine\n" + subCommands,
+  help: subCommands,
 };

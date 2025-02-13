@@ -81,5 +81,5 @@ export const gamble: Command = {
       return "An error occurred while gambling";
     }
   },
-  help: "gamble - Try your luck at the slot machine",
+  help: "<span class='text-blue-500'>gamble</span> - Try your luck at the slot machine",
 };

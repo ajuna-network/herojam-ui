@@ -81,6 +81,7 @@ export function displayPlayer(player: PlayerUI) {
 genesis: ${player.genesis}
 owner: ${trimAddress(player.owner, 6)}
 tracker: ${player.tracker}
+funds: ${player.funds}
 `;
 }
 
@@ -105,7 +106,7 @@ export function displayMachine(machine: MachineUI) {
 }
 
 export function formatTransitionError(error: CasinojamDispatchError) {
-  //const errorCode = error.value?.value?.value?.code;
+  console.error("error", error);
   return `❌ Transition failed: ${error.type} ${error.value?.type} ${error.value?.value?.type} ${error.value?.value?.value?.code}`;
 }
 

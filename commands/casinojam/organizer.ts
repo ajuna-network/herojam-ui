@@ -10,5 +10,5 @@ export const organizer: Command = {
 
     return `Organizer: ${organizer}`;
   },
-  help: "organizer - Display the organizer",
+  help: "<span class='text-blue-500'>organizer</span> - Display the organizer",
 };
