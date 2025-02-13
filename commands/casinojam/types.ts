@@ -28,6 +28,7 @@ export type PlayerUI = {
   owner: SS58String;
   tracker: number | undefined;
   funds?: bigint;
+  seat?: number;
 };
 
 export type MachineUI = {

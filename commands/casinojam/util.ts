@@ -82,6 +82,7 @@ genesis: ${player.genesis}
 owner: ${trimAddress(player.owner, 6)}
 tracker: ${player.tracker}
 funds: ${player.funds}
+seat: ${player.seat ?? "none"}
 `;
 }
 
