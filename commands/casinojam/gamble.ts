@@ -5,9 +5,10 @@ import {
   symbols,
   isCasinoJamApi,
   formatTransitionError,
+  MULTIPLIER_VALUES,
 } from "./util";
 import { Enum } from "polkadot-api";
-import { SeatType } from "./types";
+import { MultiplierType, MultiplierValuesType, SeatType } from "./types";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 
 function sleep(ms: number): Promise<void> {
@@ -56,6 +57,20 @@ export const gamble: Command = {
     if (args.length === 1) {
       // COMMAND: gamble
 
+      const multiplierArg = args[0].toUpperCase();
+
+      console.log("multiplierArg", multiplierArg);
+
+      if (!MULTIPLIER_VALUES.includes(multiplierArg as MultiplierValuesType)) {
+        return `Invalid multiplier. Valid values are: ${MULTIPLIER_VALUES.join(
+          ", "
+        )}`;
+      }
+
+      const multiplier: MultiplierType = Enum(
+        multiplierArg as MultiplierValuesType
+      );
+
       // retrieve all required assets for the gamble extrinsic:
       // player, tracker, seat, machine
       const casinoJamAssets = await api.query.CasinoJamSage.Assets.getEntries();
@@ -97,7 +112,7 @@ export const gamble: Command = {
 
       // craft the gamble params
       const tx = api.tx.CasinoJamSage.state_transition({
-        transition_id: { type: "Gamble", value: Enum("V0") },
+        transition_id: { type: "Gamble", value: multiplier },
         asset_ids: [playerId, meTrackerId, currentSeatId, currentMachineId], //player, tracker, seat, machine,
         payment_kind: undefined,
       });
@@ -145,7 +160,7 @@ export const gamble: Command = {
       // }
     }
 
-    return "Invalid command, use gamble <multiplier>";
+    return "Invalid command, use gamble &lt;multiplier&gt;";
   },
   help: "<span class='text-blue-500'>gamble</span> - Try your luck at the slot machine",
 };
