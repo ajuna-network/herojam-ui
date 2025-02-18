@@ -34,10 +34,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <Link href="/" className="text-2xl font-bold dark:text-white">
-              HeroJam
+              CasinoJam
             </Link>
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-              A platform for building and playing games on the Polkadot Network.
+              CasinoJams runs on SAGE (Substrate Asset Game Engine) - a platform
+              for building and playing games on the Polkadot Network.
             </p>
           </div>
           {footerLinks.map((category) => (

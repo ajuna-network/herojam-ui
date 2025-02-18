@@ -9,10 +9,24 @@ import { Enum } from "polkadot-api";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 import { PlayerUI, TokenType, TokenValuesType } from "./types";
 
-const subCommands = `<span class="text-blue-500">player create</span> - create a new player
-<span class="text-blue-500">player me</span> - display your player
-<span class="text-blue-500">player [id]</span> - display a player
-<span class="text-blue-500">player [id] deposit [token_type]</span> - deposit a token`;
+const subCommands = [
+  {
+    command: "player create",
+    description: "create a new player",
+  },
+  {
+    command: "player me",
+    description: "display your player",
+  },
+  {
+    command: "player [id]",
+    description: "display a player",
+  },
+  {
+    command: "player [id] deposit [token_type]",
+    description: "deposit a token",
+  },
+];
 
 /**
  * Get all assets of AssetType.Hero
@@ -172,5 +186,10 @@ ${subCommands}`;
   },
   help:
     "<span class='text-blue-500'>player</span> - Display a player or take action on a player\n" +
-    subCommands,
+    subCommands
+      .map(
+        (command) =>
+          `<span class='text-blue-500'>${command.command}</span> - ${command.description}`
+      )
+      .join("\n"),
 };

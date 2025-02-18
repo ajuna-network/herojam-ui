@@ -9,8 +9,9 @@ import { useTxContext } from "@/providers/tx-provider";
 import { Spinner } from "./spinner";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
 import { useChain } from "@/providers/chain-provider";
+import { cn } from "@/lib/utils";
 
-export default function Terminal() {
+export default function Terminal({ className }: { className?: string }) {
   const [history, setHistory] = useState<
     Array<{ command: string; output: string }>
   >([]);
@@ -29,6 +30,10 @@ export default function Terminal() {
   }, []);
 
   const handleCommand = async (command: string) => {
+    if (command === "") {
+      return;
+    }
+
     setHistoryIndex(-1);
     setIsProcessing(true);
     setProcessingOutput(""); // Reset processing output
@@ -89,7 +94,12 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-4xl text-sm dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
+    <div
+      className={cn(
+        "w-full text-sm xl:max-w-4xl justify-self-start xl:justify-self-center dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col",
+        className
+      )}
+    >
       <div ref={historyRef} className="flex-grow overflow-y-auto mb-4">
         {history.map((item, index) => (
           <div key={index}>

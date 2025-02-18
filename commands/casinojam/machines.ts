@@ -3,7 +3,7 @@ import { isCasinoJamApi } from "./util";
 import { machine } from "./machine";
 
 /**
- * Get all assets of AssetType.Hero
+ * Get all assets of AssetType.Machine
  */
 export const machines: Command = {
   execute: async (args: string[], { activeSigner, selectedAccount, api }) => {
