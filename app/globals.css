@@ -76,3 +76,11 @@ body {
   initial-value: 0deg;
   syntax: "<angle>";
 }
+
+.grid {
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+
+.terminal-container {
+  transition: max-width 0.3s ease-in-out;
+}

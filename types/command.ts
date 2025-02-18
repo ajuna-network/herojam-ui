@@ -14,5 +14,10 @@ export interface CommandContext {
 
 export interface Command {
   execute: (args: string[], context: CommandContext) => Promise<string>;
-  help: string;
+  help: CommandHelp;
+}
+
+export interface CommandHelp {
+  command: string;
+  description: string;
 }

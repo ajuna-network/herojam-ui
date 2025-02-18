@@ -14,5 +14,8 @@ const welcomeMessage =
 export const welcome: Command = {
   execute: async (): Promise<string> =>
     Promise.resolve(rainbowize(casinoJamAscii) + "\n" + welcomeMessage),
-  help: "<span class='text-blue-500'>welcome</span> - Display a welcome message",
+  help: {
+    command: "welcome",
+    description: "display a welcome message",
+  },
 };

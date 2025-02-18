@@ -324,5 +324,8 @@ available machine actions
 ${subCommands}`;
     }
   },
-  help: subCommands,
+  help: {
+    command: "machine",
+    description: "display a machine or take action on a machine",
+  },
 };

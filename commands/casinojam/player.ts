@@ -184,12 +184,8 @@ available player actions
 ${subCommands}`;
     }
   },
-  help:
-    "<span class='text-blue-500'>player</span> - Display a player or take action on a player\n" +
-    subCommands
-      .map(
-        (command) =>
-          `<span class='text-blue-500'>${command.command}</span> - ${command.description}`
-      )
-      .join("\n"),
+  help: {
+    command: "player",
+    description: "display a player or take action on a player",
+  },
 };

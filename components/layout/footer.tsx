@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center">
           <p className="text-sm text-gray-400 dark:text-gray-500">
-            © {new Date().getFullYear()} HeroJam, powered by{" "}
+            © {new Date().getFullYear()} CasinoJam, powered by{" "}
             <Link
               href="https://polkadot.network"
               target="_blank"

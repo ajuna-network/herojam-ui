@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { HelpCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 import {
@@ -17,6 +19,12 @@ import { ThemeToggle } from "./theme-toggle";
 import { WalletSelect } from "../account/wallet-select";
 
 export function MenuTop() {
+  const [isHelpVisible, setIsHelpVisible] = React.useState(false);
+
+  const toggleHelp = () => {
+    setIsHelpVisible(!isHelpVisible);
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-8">
       <div className="flex flex-row items-center justify-between w-full h-16">
@@ -89,6 +97,15 @@ export function MenuTop() {
           </NavigationMenu>
         </div>
         <div className="flex flex-row items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleHelp}
+            className="relative"
+          >
+            <HelpCircle className="h-[1.2rem] w-[1.2rem]" />
+            <span className="sr-only">Toggle help</span>
+          </Button>
           <ThemeToggle />
           <WalletSelect />
         </div>

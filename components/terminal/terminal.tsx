@@ -96,7 +96,7 @@ export default function Terminal({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "w-full text-sm xl:max-w-4xl justify-self-start xl:justify-self-center dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col",
+        "w-full text-sm xl:max-w-5xl justify-self-start xl:justify-self-center dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col",
         className
       )}
     >

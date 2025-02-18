@@ -29,5 +29,8 @@ export const machines: Command = {
 
     return "Invalid command. Use 'machines' to display all machines or 'machines my' to display your machines";
   },
-  help: "<span class='text-blue-500'>machines</span> - Display all machines or take action on a machine",
+  help: {
+    command: "machines",
+    description: "display all machines or take action on a machine",
+  },
 };

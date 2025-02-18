@@ -14,12 +14,18 @@ export const help: Command = {
     return `
 available commands
 ------------------
-${playerCommands}
+${playerCommands.command}
+${playerCommands.description}
 
-${machineCommands}
+${machineCommands.command}
+${machineCommands.description}
 
-${generalCommands}
+${generalCommands.command}
+${generalCommands.description}
 `;
   },
-  help: "<span class='text-blue-500'>help</span> - Display this help message",
+  help: {
+    command: "help",
+    description: "display this help message",
+  },
 };
