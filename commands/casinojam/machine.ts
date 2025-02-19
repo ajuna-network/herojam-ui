@@ -8,7 +8,6 @@ export const machine: Command = {
     if (!api || !isCasinoJamApi(api)) return "No CasinoJam API available";
     if (!selectedAccount || !activeSigner) return "No selected account";
 
-    // Validate and normalize first argument
     if (args.length !== 1) {
       return "Error: The syntax is 'machine [machine_id]'";
     }
@@ -29,6 +28,6 @@ export const machine: Command = {
   },
   help: {
     command: "machine <machine_id>",
-    description: "Display a machine",
+    description: "Display machine info",
   },
 };

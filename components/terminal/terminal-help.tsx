@@ -38,21 +38,19 @@ export function TerminalHelp({ className }: { className?: string }) {
       )}
     >
       <div className="p-4 relative">
-        <h2 className="text-lg font-bold mb-2">Available Commands</h2>
-
         {[
           {
-            title: "Transitions",
+            title: "Transition Commands",
             commands: transitions,
             color: "green",
           },
           {
-            title: "Info",
+            title: "Info Commands ",
             commands: info,
             color: "blue",
           },
           {
-            title: "General",
+            title: "General Commands",
             commands: general,
             color: "gray",
           },
@@ -66,7 +64,9 @@ export function TerminalHelp({ className }: { className?: string }) {
               color === "gray" && "border-gray-700"
             )}
           >
-            <h3 className="font-bold mb-2">{title}</h3>
+            <h3 className="font-bold mb-2 w-full text-center text-base">
+              {title}
+            </h3>
             {commands.map((commandInfo) => (
               <div key={commandInfo.command} className="flex flex-col mb-1">
                 <h3

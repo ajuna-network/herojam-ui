@@ -69,6 +69,6 @@ export const player: Command = {
   },
   help: {
     command: "player",
-    description: "display a player or take action on a player",
+    description: "Display player info",
   },
 };

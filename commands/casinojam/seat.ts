@@ -29,6 +29,6 @@ export const seat: Command = {
   },
   help: {
     command: "seat <seat_id>",
-    description: "Display a seat",
+    description: "Display seat info",
   },
 };
