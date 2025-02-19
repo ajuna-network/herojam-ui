@@ -77,6 +77,7 @@ export const reserve: Command = {
     });
 
     const result = await tx.signAndSubmit(activeSigner, { at: "best" });
+    console.info("result reserve", result);
 
     if (result.ok) {
       return `✅ Seat ${seatToReserveId} reserved for player ${playerMeId} on machine ${machineIdArg}`;

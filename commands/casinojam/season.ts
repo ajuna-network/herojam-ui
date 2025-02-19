@@ -3,8 +3,6 @@ import { isCasinoJamApi } from "./util";
 
 export const season: Command = {
   execute: async (_, { api }) => {
-    console.log("api season command", api);
-
     if (!api || !isCasinoJamApi(api)) return "No CasinoJam API available";
 
     const seasonStatus =

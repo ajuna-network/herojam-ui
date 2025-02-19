@@ -15,6 +15,7 @@ export function TerminalHelp({ className }: { className?: string }) {
   ];
 
   const info = [
+    commands.gambleInfo.help,
     commands.players.help,
     commands.player.help,
     commands.machines.help,

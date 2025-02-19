@@ -24,9 +24,6 @@ export const transfer: Command = {
       BigInt(whole) * BigInt(10 ** decimals) +
       BigInt(fraction.padEnd(decimals, "0").slice(0, decimals));
 
-    console.log("dest", dest);
-    console.log("amount", amount);
-
     const tx = api.tx.Balances.transfer_keep_alive({
       dest: MultiAddress.Id(dest),
       value: BigInt(amount),

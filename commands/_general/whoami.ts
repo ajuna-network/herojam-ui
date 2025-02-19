@@ -13,8 +13,6 @@ export const whoami: Command = {
 
     const chainInfo = await client?.getChainSpecData();
 
-    console.log("chainInfo", client, chainInfo);
-
     return `
 You are ${selectedAccount?.name}: ${selectedAccount?.address}
 Balance: ${formatBalance({

@@ -10,36 +10,36 @@ import {
 import { Enum } from "polkadot-api";
 import { MultiplierType, MultiplierValuesType, SeatType } from "./types";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
+import { gambleInfo } from "./gamble-info";
+// function sleep(ms: number): Promise<void> {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// async function animateSpinning(
+//   onProcessing: (output: string) => void,
+//   stopSignal: { shouldStop: boolean }
+// ) {
+//   if (!onProcessing) return;
 
-async function animateSpinning(
-  onProcessing: (output: string) => void,
-  stopSignal: { shouldStop: boolean }
-) {
-  if (!onProcessing) return;
+//   try {
+//     while (!stopSignal.shouldStop) {
+//       // Generate random symbols for this frame
+//       const spinningWheels: SlotSymbol[] = Array(4)
+//         .fill(null)
+//         .map(() => symbols[Math.floor(Math.random() * symbols.length)]);
 
-  try {
-    while (!stopSignal.shouldStop) {
-      // Generate random symbols for this frame
-      const spinningWheels: SlotSymbol[] = Array(4)
-        .fill(null)
-        .map(() => symbols[Math.floor(Math.random() * symbols.length)]);
+//       const spinningDisplay = generateSlotMachine({
+//         wheels: spainningWheels,
+//         spinning: true,
+//       });
 
-      const spinningDisplay = generateSlotMachine({
-        wheels: spinningWheels,
-        spinning: true,
-      });
-
-      onProcessing(`${spinningDisplay}\n\n`);
-      await sleep(100);
-    }
-  } catch (error) {
-    console.error("Animation error:", error);
-  }
-}
+//       onProcessing(`${spinningDisplay}\n\n`);
+//       await sleep(100);
+//     }
+//   } catch (error) {
+//     console.error("Animation error:", error);
+//   }
+// }
 
 export const gamble: Command = {
   execute: async (
@@ -47,6 +47,15 @@ export const gamble: Command = {
     { onProcessing, api, activeSigner, selectedAccount }
   ) => {
     if (!onProcessing) return "Error: Processing callback not available";
+
+    if (args[0] === "info") {
+      return gambleInfo.execute(args, {
+        onProcessing,
+        api,
+        activeSigner,
+        selectedAccount,
+      });
+    }
 
     if (!api || !isCasinoJamApi(api))
       return "Error: API or client not available";
@@ -58,8 +67,6 @@ export const gamble: Command = {
       // COMMAND: gamble
 
       const multiplierArg = args[0].toUpperCase();
-
-      console.log("multiplierArg", multiplierArg);
 
       if (!MULTIPLIER_VALUES.includes(multiplierArg as MultiplierValuesType)) {
         return `Invalid multiplier. Valid values are: ${MULTIPLIER_VALUES.join(
@@ -118,11 +125,11 @@ export const gamble: Command = {
       });
 
       const stopSignal = { shouldStop: false };
-      const animationPromise = animateSpinning(onProcessing, stopSignal);
+      // const animationPromise = animateSpinning(onProcessing, stopSignal);
 
       const result = await tx.signAndSubmit(activeSigner);
       stopSignal.shouldStop = true;
-      await animationPromise;
+      // await animationPromise;
 
       console.info("result gamble", result);
 
