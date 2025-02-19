@@ -1,7 +1,7 @@
 import type { Command, CommandContext } from "@/types/command";
 import { displayAsset, isCasinoJamApi } from "./util";
 
-export const machine: Command = {
+export const seat: Command = {
   execute: async (args: string[], context: CommandContext) => {
     const { api, activeSigner, selectedAccount } = context;
 
@@ -10,25 +10,25 @@ export const machine: Command = {
 
     // Validate and normalize first argument
     if (args.length !== 1) {
-      return "Error: The syntax is 'machine [machine_id]'";
+      return "Error: The syntax is 'seat [seat_id]'";
     }
 
-    const machineIdArg = args[0];
+    const seatIdArg = args[0];
 
     const casinoJamAssets = await api.query.CasinoJamSage.Assets.getEntries();
-    const machine = casinoJamAssets.find(
+    const seat = casinoJamAssets.find(
       ({ value: [, asset] }) =>
-        asset.variant.type === "Machine" && asset.id === parseInt(machineIdArg)
+        asset.variant.type === "Seat" && asset.id === parseInt(seatIdArg)
     );
 
-    if (!machine) {
-      return "Error: Machine not found";
+    if (!seat) {
+      return "Error: Seat not found";
     }
 
-    return displayAsset(machine.value);
+    return displayAsset(seat.value);
   },
   help: {
-    command: "machine <machine_id>",
-    description: "Display a machine",
+    command: "seat <seat_id>",
+    description: "Display a seat",
   },
 };

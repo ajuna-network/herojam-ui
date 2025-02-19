@@ -9,7 +9,9 @@ export default function CommandOutput({ command, output }: CommandOutputProps) {
       <div className="text-green-500 dark:text-green-300">$ {command}</div>
       <pre
         className="whitespace-pre-wrap ml-4"
-        dangerouslySetInnerHTML={{ __html: output }}
+        dangerouslySetInnerHTML={{
+          __html: output,
+        }}
       />
     </div>
   );

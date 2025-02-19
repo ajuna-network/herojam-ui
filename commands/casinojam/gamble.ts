@@ -162,5 +162,8 @@ export const gamble: Command = {
 
     return "Invalid command, use gamble &lt;multiplier&gt;";
   },
-  help: "<span class='text-blue-500'>gamble</span> - Try your luck at the slot machine",
+  help: {
+    command: "gamble <multiplier>",
+    description: "Try your luck at the slot machine",
+  },
 };

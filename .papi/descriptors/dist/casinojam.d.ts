@@ -1,5 +1,5 @@
 import { StorageDescriptor, PlainDescriptor, TxDescriptor, RuntimeDescriptor, Enum, QueryFromPalletsDef, TxFromPalletsDef, EventsFromPalletsDef, ErrorsFromPalletsDef, ConstFromPalletsDef, SS58String, FixedSizeBinary, Binary, FixedSizeArray } from "polkadot-api";
-import { I5sesotjlssv2d, Iffmde3ekjedi9, I4mddgoa69c0a2, Idql9on5ju4spl, I95g6i7ilua7lq, Ieniouoqkq4icf, Phase, Ibgl04rn6nbfm6, Ic5m5lp1oioo8r, GrandpaStoredState, I7pe2me3i3vtn9, I9jd27rnpm8ttv, I3geksg000c171, I1q8tnt1cluu5j, I8ds64oj6581v0, Ia7pdug7cdsg8g, I9bin2jc70qt6q, TransactionPaymentReleases, I3qklfjubrljqh, Iag3f1hum3p4c8, I7svnfko10tq2e, I4s6jkha20aoh0, I2brm5b9jij1st, I78s05f59eoi8b, I199nnq793ql30, I301q9bt2vb7u6, I99bb69usss9gs, Ia2lhg7l2hilo3, Iegmj7n48sc3am, Icgljjb6j82uhn, Ie9j1itogtv7p5, I6mhebgj62g585, I3vhcedhm4hpvm, I526daka7j7b17, Ifanv2kvm586s4, I5rsgtofmn5lli, Idned7t7knml6b, I2itl2k1j2q8nf, I9i2qnsi9tt4st, I56u24ncejr5kt, I1evsr8hplu1lg, I910puuahutflf, I4nfjdef0ibh44, I74af64m08r6as, I9bhbof2vim227, I6ouflveob4eli, I775lbh1002e7f, I9p9lq3rej5bhc, Iag146hmjgqfgj, I8uo3fpd3bcc6f, PreimageOldRequestStatus, PreimageRequestStatus, I4pact7n2e9a0i, Iepbsvlk3qceij, I5r70ks82kp6jd, I9o6uhrc3js8pg, I9veitme629dgv, I1sm563u0c9vca, If5qosgf4kc0ce, I8anmh19lnbume, I6f3f327e3k6hl, Ielgh4t8o7rcvt, I4m5utiuhsse9r, Ic1suif0iej5as, I5qohvm4to74le, Idqvgv9ec5j9ok, I7mjclubiuighb, I3jqtuu2q04qhu, I7ni4sa58l6l0v, I3rer8a0o0uf4s, I9da88a5i664uj, I3ur7d7so87s5l, I85dfug3752car, Id32h28hjj1tch, Icpgclksujapsm, Id21bivdb9t470, I26468skq2k3rc, In7a38730s6qs, If15el53dd76v9, I9s0ave7t0vnrk, Ic6nglu2db2c36, I4q39t5hn830vp, I8ofcg5rbj0g2c, I4adgbll7gku4i, I6pjjpfvhvcfru, I9pj91mj79qekl, I39uah9nss64h9, Ik64dknsq7k08, Ib51vk42m1po4n, Idcr6u6361oad9, I3a5kuu5t5jj3g, I2hviml3snvhhn, I4ktuaksf5i1gk, I9bqtpv2ii35mp, I9j7pagd6d4bda, I2h9pmio37r7fb, Ibmr18suc9ikh9, I9iq22t0burs89, I5u8olqbbvfnvf, I5utcetro501ir, Ic357tcepuvo5c, I2rnoam876ruhj, Ic5b47dj4coa3r, Ib3qnc19gu633c, Ifira6u9hi7cu1, I72tqocvdoqfff, I2i27f3sfmvc05, I1nlrtd1epki2d, I3abtumcmempjs, Id81m8flopt8ha, I8hff7chabggkd, I49i39mtj1ivbs, Ifkr2kcak2vto1, I1ju6r8q0cs9jt, I4kpeq6j7cd5bu, I5na1ka76k6811, I59mhdb9omdqfa, I9vl5kpk0fpakt, I717jt61hu19b4, I7f7v8192r1lmq, I14u52veq53dmr, I8ajr5e1kfvl54, Id4pbsr0s25b4d, I38jfk5li8iang, Iammdg5jtejir1, Idbn6qolvf0jcu, I2dtrijkm5601t, I2ev73t79f46tb, Ib2obgji960euh, Icnrv1mfbd3in1, Icm9m0qeemu66d, I6qq5nnbjegi8u, I666bl2fqjkejo, I1moso5oagpiea, Ibeb4n9vpjefp3, Id7murq9s9fg6h, Ied9mja4bq7va8, I4f7jul8ljs54r, I5agg650597e49, Ibot4i7a9t6oo8, Id9uqtigc0il3v, I3hsuol7rtl0bj, I3v9h9f3mpm1l8, I9mnj4k4u8ls2c, I2kt2u1flctk2q, I98ur5b5fohsf1, Ir9kfeu9hlh36, I8k3rnvpeeh4hv, Ife2ihs95b7bbb, Icfmq0h4fn6v1, I5n4sebgkfr760, I87afp9c253frr, Ifs1i5fk9cqvr6, Ifgb0d0jnmknm1, I9b06bdtvibl47, Ieg3fd8p4pkt10, I8kg5ll427kfqq, I467333262q1l9, Ic6cqd9g0t65v0, I2kds5jji7slh8, Ia9mkdf6l44shb, I9l2s4klu0831o, I2ctrt5nqb8o7c, I711qahikocb1c, I6o1er683vod1j, Id6gojh30v9ib2, Ide1bahhh47lj9, Ic68lsi7chpv5k, Iek0boln8pgnko, I452bkd71b385t, I2mk62irjfqdo1, I9pnrh0ioo3e3p, Ie5l999tf7t2te, I45ehghefjbjb1, I3lj33btcqlb1i, I707m7edh0jft8, I2j5sqe1l974kn, I2eb501t8s6hsq, Ianmuoljk2sk1u, Iceerah4spn2le, I61t9u8et7n03k, Ibavsbecshbn45, Ideaemvoneh309, I3d9o9d7epp66v, Ie2sh79njiciab, I3k55u3i5pdugg, Ickijr9f1v5pl1, I82nfqfkd48n10, I1jm8m1rh9e20v, I3o5j3bli1pd8e, Ibou4u1engb441, Id6nbvqoqdj4o2, I95iqep3b8snn9, I27v1tss76333e, I79d0gjumllf3p, Icbccs0ug47ilf, I7cd70bnfdor0k, Idkfbhn86u0r8u, Ie1gqkgo8q4gsu, I7efh0hns6gbqe, Ichp4337m7saae, Ifctt5vck3ffj6, Ifed8uh0vbjcgd, Ibch0l0v1nqcdq, I1t89svnc01aue, If814pe6non0j8, I1egbk0tvjrlu0, I6u8f34f8jbj4m, I9hbmjepu2be8h, Idgsge7c4e6tn1, Ia5le7udkgbaq9, I20t8kds2svicr, I9afo9k5pbihaa, I2709mdch2573v, Ia82mnkmeo2rhc, I2f1qcen0dncv3, I855j4i3kr8ko1, I5768ac424h061, Icv68aq8841478, Ic262ibdoec56a, Iflcfm9b6nlmdd, Ijrsf4mnp3eka, Id5fm4p8lj5qgi, I8tjvj9uq4b7hi, I4cbvqmqadhrea, I3qt1hgg4djhgb, I4fooe9dun9o0t, Ier2cke86dqbr2, I88ff3u4dpivk, I33cp947glv1ks, Ic9om1gmmqu7rq, I5hfov2b68ppb6, Ibthhb2m9vneds, Iaitn5bqfacj7k, If4ebvclj2ugvi, Ieduc1e6frq8rb, I9h6gbtabovtm4, Ifnsa0dkkpf465, I65dtqr2egjbc3, Ibqj3vg5s5lk0c, I6l73u513p8rna, Iefqmt2htu1dlu, If8bgtgqrchjtu, Idusmq77988cmt, I4uo49pmivhb33, Ift6f10887nk72, I7qc53b1tvqjg2, I1srbfs9q0b5nk, Iak7fhrgb9jnnq, I8iksqi3eani0a, I16enopmju1p0q, I43kq8qudg7pq9, I76riseemre533, Ie5v6njpckr05b, I38bmcrmh852rk, I4hcillge8de5f, I8usdc6tg7829p, I3peh714diura8, I62ffgu6q2478o, I10r7il4gvbcae, I2c00i2bngegk9, Iet7kfijhihjik, I2vrbos7ogo6ps, Iffeo46j957abe, I4ljshcevmm3p2, I3bobd53899cil, I5rtkmhm2dng4u, Ib650v85c21m7, Ia3c82eadg79bj, Ienusoeb625ftq, Iep1lmt6q3s6r3, I1fac16213rie2, Ifjt77oc391o43, Itvt1jsipv0lc, Ick3mveut33f44, I2rg5btjrsqec0, Ibdqerrooruuq9, I8u2ba9jeiu6q0, I7ieadb293k6b4, If6h3hhgqdpss, I8oc1ui5us5hik, I2ur0oeqg495j8, I7f2f3co93gefl, Iep27ialq4a7o7, Iasu5jvoqr43mv, Icgi0cqe69ln9d, I5qolde99acmd1, I43qleb8tqoqvo, I2cmpm947g385i, If1co0pilmi7oq, Iae74gjak1qibn, I3escdojpj0551, Ibbiemldf16hc1, I1o0nv6o4hvf0g, I2likojp7pd978, I1c84mmo1rgd9l, I2tkqdqiomgb0q, I3lbfq5fgdpulr, Idd0agfql4ht2e, I880p4chnat358, Ifvfk4kssvhjro, I2c4ff149g4ccv, I8tlu1l9183dl2, Idm6okauo300t5, I1h3i3hv0od20s, I3c88rdia20kf3, Iddhmv0k5a2b93, Ic2rqhn799ohav, Iaqet9jc3ihboe, Ic952bubvq4k7d, I2v50gu3s1aqk6, Iabpgqcjikia83, I8c33c0tigg288, If7uv525tdvv7a, Itom7fk49o0c9, I2an1fs2eiebjp, TransactionValidityTransactionSource, Iajbob6uln5jct, Icerf8h8pdu8ss, I9puqgoda8ofk4, I6spmpef2c7svf, Iei2mvq0mjvt81, Ie9sr1iqcg3cgm, I1mqgk2tmnn9i2, I6lr8sctk0bi4e, I7goimdtpt105i } from "./common-types";
+import { I5sesotjlssv2d, Iffmde3ekjedi9, I4mddgoa69c0a2, I47cidck2p3ipe, I95g6i7ilua7lq, Ieniouoqkq4icf, Phase, Ibgl04rn6nbfm6, Ic5m5lp1oioo8r, GrandpaStoredState, I7pe2me3i3vtn9, I9jd27rnpm8ttv, I3geksg000c171, I1q8tnt1cluu5j, I8ds64oj6581v0, Ia7pdug7cdsg8g, I9bin2jc70qt6q, TransactionPaymentReleases, I3qklfjubrljqh, Iag3f1hum3p4c8, I7svnfko10tq2e, I4s6jkha20aoh0, I2brm5b9jij1st, I78s05f59eoi8b, I199nnq793ql30, I301q9bt2vb7u6, I99bb69usss9gs, Ia2lhg7l2hilo3, Iegmj7n48sc3am, Icgljjb6j82uhn, Ie9j1itogtv7p5, I6mhebgj62g585, I3vhcedhm4hpvm, I526daka7j7b17, Ifanv2kvm586s4, I5rsgtofmn5lli, Idned7t7knml6b, I2itl2k1j2q8nf, I9i2qnsi9tt4st, I56u24ncejr5kt, I1evsr8hplu1lg, I910puuahutflf, I4nfjdef0ibh44, I74af64m08r6as, I9bhbof2vim227, I6ouflveob4eli, I775lbh1002e7f, I9p9lq3rej5bhc, Iag146hmjgqfgj, I8uo3fpd3bcc6f, PreimageOldRequestStatus, PreimageRequestStatus, I4pact7n2e9a0i, Iepbsvlk3qceij, I5r70ks82kp6jd, I9o6uhrc3js8pg, I9veitme629dgv, I1sm563u0c9vca, If5qosgf4kc0ce, I8anmh19lnbume, I6f3f327e3k6hl, Ielgh4t8o7rcvt, I4m5utiuhsse9r, Ic1suif0iej5as, I5qohvm4to74le, Idqvgv9ec5j9ok, I7mjclubiuighb, I3jqtuu2q04qhu, I7ni4sa58l6l0v, I3rer8a0o0uf4s, I9da88a5i664uj, I3ur7d7so87s5l, I85dfug3752car, Id32h28hjj1tch, Icpgclksujapsm, Id21bivdb9t470, I26468skq2k3rc, In7a38730s6qs, If15el53dd76v9, I9s0ave7t0vnrk, Ic6nglu2db2c36, I4q39t5hn830vp, I8ofcg5rbj0g2c, I4adgbll7gku4i, I6pjjpfvhvcfru, I9pj91mj79qekl, I39uah9nss64h9, Ik64dknsq7k08, Ib51vk42m1po4n, Idcr6u6361oad9, I3a5kuu5t5jj3g, I2hviml3snvhhn, I4ktuaksf5i1gk, I9bqtpv2ii35mp, I9j7pagd6d4bda, I2h9pmio37r7fb, Ibmr18suc9ikh9, I9iq22t0burs89, I5u8olqbbvfnvf, I5utcetro501ir, Ic357tcepuvo5c, I2rnoam876ruhj, Ic5b47dj4coa3r, Ib3qnc19gu633c, Ifira6u9hi7cu1, I72tqocvdoqfff, I2i27f3sfmvc05, I1nlrtd1epki2d, I3abtumcmempjs, Id81m8flopt8ha, I8hff7chabggkd, I49i39mtj1ivbs, Ifkr2kcak2vto1, I1ju6r8q0cs9jt, I4kpeq6j7cd5bu, I5na1ka76k6811, I59mhdb9omdqfa, I9vl5kpk0fpakt, I717jt61hu19b4, I7f7v8192r1lmq, I14u52veq53dmr, I8ajr5e1kfvl54, Id4pbsr0s25b4d, I38jfk5li8iang, Iammdg5jtejir1, Idbn6qolvf0jcu, I2dtrijkm5601t, I2ev73t79f46tb, Ib2obgji960euh, Icnrv1mfbd3in1, Icm9m0qeemu66d, I6qq5nnbjegi8u, I666bl2fqjkejo, I1moso5oagpiea, Ibeb4n9vpjefp3, Id7murq9s9fg6h, Ied9mja4bq7va8, I4f7jul8ljs54r, I5agg650597e49, Ibot4i7a9t6oo8, Id9uqtigc0il3v, I3hsuol7rtl0bj, I3v9h9f3mpm1l8, I9mnj4k4u8ls2c, I2kt2u1flctk2q, I98ur5b5fohsf1, Ir9kfeu9hlh36, I8k3rnvpeeh4hv, Ife2ihs95b7bbb, Icfmq0h4fn6v1, I5n4sebgkfr760, I87afp9c253frr, Ifs1i5fk9cqvr6, Ifgb0d0jnmknm1, I9b06bdtvibl47, Ieg3fd8p4pkt10, I8kg5ll427kfqq, I467333262q1l9, Ic6cqd9g0t65v0, I2kds5jji7slh8, Ia9mkdf6l44shb, I9l2s4klu0831o, I2ctrt5nqb8o7c, I711qahikocb1c, I6o1er683vod1j, Id6gojh30v9ib2, Ide1bahhh47lj9, Ic68lsi7chpv5k, Iek0boln8pgnko, I452bkd71b385t, I2mk62irjfqdo1, I9pnrh0ioo3e3p, Ie5l999tf7t2te, I45ehghefjbjb1, I3lj33btcqlb1i, I707m7edh0jft8, I2j5sqe1l974kn, I2eb501t8s6hsq, Ianmuoljk2sk1u, Iceerah4spn2le, I61t9u8et7n03k, Ibavsbecshbn45, Ideaemvoneh309, I3d9o9d7epp66v, Ie2sh79njiciab, I3k55u3i5pdugg, Ickijr9f1v5pl1, I82nfqfkd48n10, I1jm8m1rh9e20v, I3o5j3bli1pd8e, Ibou4u1engb441, Id6nbvqoqdj4o2, I95iqep3b8snn9, I27v1tss76333e, I79d0gjumllf3p, Icbccs0ug47ilf, I7cd70bnfdor0k, Idkfbhn86u0r8u, Ie1gqkgo8q4gsu, I7efh0hns6gbqe, Ichp4337m7saae, Ifctt5vck3ffj6, Ifed8uh0vbjcgd, Ibch0l0v1nqcdq, I1t89svnc01aue, If814pe6non0j8, I1egbk0tvjrlu0, I6u8f34f8jbj4m, I9hbmjepu2be8h, Idgsge7c4e6tn1, Ia5le7udkgbaq9, I20t8kds2svicr, I9afo9k5pbihaa, I2709mdch2573v, Ia82mnkmeo2rhc, Ibcl79aml8e7oc, I855j4i3kr8ko1, I5768ac424h061, Icv68aq8841478, Ic262ibdoec56a, Iflcfm9b6nlmdd, Ijrsf4mnp3eka, Id5fm4p8lj5qgi, I8tjvj9uq4b7hi, I4cbvqmqadhrea, I3qt1hgg4djhgb, I4fooe9dun9o0t, Ier2cke86dqbr2, I88ff3u4dpivk, I33cp947glv1ks, Ic9om1gmmqu7rq, I5hfov2b68ppb6, Ibthhb2m9vneds, Iaitn5bqfacj7k, If4ebvclj2ugvi, Ieduc1e6frq8rb, I9h6gbtabovtm4, Ifnsa0dkkpf465, I65dtqr2egjbc3, Ibqj3vg5s5lk0c, I6l73u513p8rna, Iefqmt2htu1dlu, If8bgtgqrchjtu, Idusmq77988cmt, I4uo49pmivhb33, Ift6f10887nk72, I7qc53b1tvqjg2, I8ejbun203spop, Iak7fhrgb9jnnq, I8iksqi3eani0a, I16enopmju1p0q, I43kq8qudg7pq9, I76riseemre533, Ie5v6njpckr05b, I38bmcrmh852rk, I4hcillge8de5f, I8usdc6tg7829p, I3peh714diura8, I62ffgu6q2478o, I10r7il4gvbcae, I2c00i2bngegk9, Iet7kfijhihjik, I2vrbos7ogo6ps, Iffeo46j957abe, I4ljshcevmm3p2, Ie9qvrvil655pa, I5rtkmhm2dng4u, I8c7hbegas2qm1, Ia3c82eadg79bj, Ienusoeb625ftq, Iep1lmt6q3s6r3, I1fac16213rie2, Ifjt77oc391o43, Itvt1jsipv0lc, Ick3mveut33f44, I2rg5btjrsqec0, Ibdqerrooruuq9, I8u2ba9jeiu6q0, I7ieadb293k6b4, I82b4jsnuajnr, I8oc1ui5us5hik, I2ur0oeqg495j8, I7f2f3co93gefl, Iep27ialq4a7o7, Iasu5jvoqr43mv, I8dpgkn5vloves, I5qolde99acmd1, I8fjrqm26pcu7b, Ieicgb2ilc8h92, If1co0pilmi7oq, Iae74gjak1qibn, I3escdojpj0551, Ibbiemldf16hc1, I1o0nv6o4hvf0g, I2likojp7pd978, I1c84mmo1rgd9l, I2tkqdqiomgb0q, I3lbfq5fgdpulr, Idd0agfql4ht2e, I880p4chnat358, Ifvfk4kssvhjro, I2c4ff149g4ccv, I8tlu1l9183dl2, Idm6okauo300t5, I1h3i3hv0od20s, I3c88rdia20kf3, Iddhmv0k5a2b93, Ic2rqhn799ohav, Iaqet9jc3ihboe, Ic952bubvq4k7d, I2v50gu3s1aqk6, Iabpgqcjikia83, I43s16caq8eapu, If7uv525tdvv7a, Itom7fk49o0c9, I2an1fs2eiebjp, TransactionValidityTransactionSource, Iajbob6uln5jct, Icerf8h8pdu8ss, I9puqgoda8ofk4, I6spmpef2c7svf, Iei2mvq0mjvt81, Ie9sr1iqcg3cgm, I1mqgk2tmnn9i2, I6lr8sctk0bi4e, Iepp9k2sgb1cf8 } from "./common-types";
 type AnonymousEnum<T extends {}> = T & {
     __anonymous: true;
 };
@@ -61,7 +61,7 @@ type IStorage = {
          * Events have a large in-memory size. Box the events to not go out-of-memory
          * just in case someone still reads them from within the runtime.
          */
-        Events: StorageDescriptor<[], Anonymize<Idql9on5ju4spl>, false, never>;
+        Events: StorageDescriptor<[], Anonymize<I47cidck2p3ipe>, false, never>;
         /**
          * The number of events in the `Events<T>` list.
          */
@@ -724,6 +724,14 @@ type IStorage = {
          * asset is consumed
          */
         AssetFunds: StorageDescriptor<Anonymize<I26468skq2k3rc>, bigint, true, never>;
+    };
+    CasinoJamRandom: {
+        /**
+         * Series of block headers from the last 81 blocks that acts as random seed material. This
+         * is arranged as a ring buffer with `block_number % 81` being the index into the `Vec` of
+         * the oldest hash.
+         */
+        RandomMaterial: StorageDescriptor<[], Anonymize<Ic5m5lp1oioo8r>, false, never>;
     };
 };
 type ICalls = {
@@ -2997,7 +3005,7 @@ type IEvent = {
         /**
          *An extrinsic failed.
          */
-        ExtrinsicFailed: PlainDescriptor<Anonymize<I2f1qcen0dncv3>>;
+        ExtrinsicFailed: PlainDescriptor<Anonymize<Ibcl79aml8e7oc>>;
         /**
          *`:code` was updated.
          */
@@ -3275,11 +3283,11 @@ type IEvent = {
         /**
          *A motion was executed; result will be `Ok` if it returned without error.
          */
-        Executed: PlainDescriptor<Anonymize<I1srbfs9q0b5nk>>;
+        Executed: PlainDescriptor<Anonymize<I8ejbun203spop>>;
         /**
          *A single member did some action; result will be `Ok` if it returned without error.
          */
-        MemberExecuted: PlainDescriptor<Anonymize<I1srbfs9q0b5nk>>;
+        MemberExecuted: PlainDescriptor<Anonymize<I8ejbun203spop>>;
         /**
          *A proposal was closed because its threshold was reached or after its duration was up.
          */
@@ -3307,11 +3315,11 @@ type IEvent = {
         /**
          *A motion was executed; result will be `Ok` if it returned without error.
          */
-        Executed: PlainDescriptor<Anonymize<I1srbfs9q0b5nk>>;
+        Executed: PlainDescriptor<Anonymize<I8ejbun203spop>>;
         /**
          *A single member did some action; result will be `Ok` if it returned without error.
          */
-        MemberExecuted: PlainDescriptor<Anonymize<I1srbfs9q0b5nk>>;
+        MemberExecuted: PlainDescriptor<Anonymize<I8ejbun203spop>>;
         /**
          *A proposal was closed because its threshold was reached or after its duration was up.
          */
@@ -3442,7 +3450,7 @@ type IEvent = {
         /**
          *A sudo call just took place.
          */
-        Sudid: PlainDescriptor<Anonymize<I3bobd53899cil>>;
+        Sudid: PlainDescriptor<Anonymize<Ie9qvrvil655pa>>;
         /**
          *The sudo key has been updated.
          */
@@ -3454,7 +3462,7 @@ type IEvent = {
         /**
          *A [sudo_as](Pallet::sudo_as) call just took place.
          */
-        SudoAsDone: PlainDescriptor<Anonymize<I3bobd53899cil>>;
+        SudoAsDone: PlainDescriptor<Anonymize<Ie9qvrvil655pa>>;
     };
     Scheduler: {
         /**
@@ -3468,7 +3476,7 @@ type IEvent = {
         /**
          *Dispatched some task.
          */
-        Dispatched: PlainDescriptor<Anonymize<Ib650v85c21m7>>;
+        Dispatched: PlainDescriptor<Anonymize<I8c7hbegas2qm1>>;
         /**
          *Set a retry configuration for some task.
          */
@@ -3571,7 +3579,7 @@ type IEvent = {
         /**
          *A proxy was executed correctly, with the given.
          */
-        ProxyExecuted: PlainDescriptor<Anonymize<If6h3hhgqdpss>>;
+        ProxyExecuted: PlainDescriptor<Anonymize<I82b4jsnuajnr>>;
         /**
          *A pure account has been created by new proxy with given
          *disambiguation index and proxy type.
@@ -3602,7 +3610,7 @@ type IEvent = {
         /**
          *A multisig operation has been executed.
          */
-        MultisigExecuted: PlainDescriptor<Anonymize<Icgi0cqe69ln9d>>;
+        MultisigExecuted: PlainDescriptor<Anonymize<I8dpgkn5vloves>>;
         /**
          *A multisig operation has been cancelled.
          */
@@ -3613,7 +3621,7 @@ type IEvent = {
          *Batch of dispatches did not complete fully. Index of first failing dispatch given, as
          *well as the error.
          */
-        BatchInterrupted: PlainDescriptor<Anonymize<I43qleb8tqoqvo>>;
+        BatchInterrupted: PlainDescriptor<Anonymize<I8fjrqm26pcu7b>>;
         /**
          *Batch of dispatches completed fully with no error.
          */
@@ -3629,11 +3637,11 @@ type IEvent = {
         /**
          *A single item within a Batch of dispatches has completed with error.
          */
-        ItemFailed: PlainDescriptor<Anonymize<I2cmpm947g385i>>;
+        ItemFailed: PlainDescriptor<Anonymize<Ieicgb2ilc8h92>>;
         /**
          *A call was dispatched.
          */
-        DispatchedAs: PlainDescriptor<Anonymize<If6h3hhgqdpss>>;
+        DispatchedAs: PlainDescriptor<Anonymize<I82b4jsnuajnr>>;
     };
     Preimage: {
         /**
@@ -5320,7 +5328,7 @@ type IRuntimeCalls = {
          * Returns an inclusion outcome which specifies if this extrinsic is included in
          * this block or not.
          */
-        apply_extrinsic: RuntimeDescriptor<[extrinsic: Binary], Anonymize<I8c33c0tigg288>>;
+        apply_extrinsic: RuntimeDescriptor<[extrinsic: Binary], Anonymize<I43s16caq8eapu>>;
         /**
          * Finish the current block.
          */
@@ -5541,7 +5549,7 @@ type IRuntimeCalls = {
     };
 };
 type IAsset = PlainDescriptor<void>;
-export type CasinojamDispatchError = Anonymize<I7goimdtpt105i>;
+export type CasinojamDispatchError = Anonymize<Iepp9k2sgb1cf8>;
 type PalletsTypedef = {
     __storage: IStorage;
     __tx: ICalls;

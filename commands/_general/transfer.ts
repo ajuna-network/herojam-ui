@@ -47,5 +47,8 @@ export const transfer: Command = {
       return `❌ Transfer failed`;
     }
   },
-  help: "<span class='text-blue-500'>transfer [to] [amount]</span> - Transfer tokens to an address",
+  help: {
+    command: "transfer [to] [amount]",
+    description: "Transfer tokens to an address",
+  },
 };

@@ -20,8 +20,7 @@ ${playerCommands.description}
 ${machineCommands.command}
 ${machineCommands.description}
 
-${generalCommands.command}
-${generalCommands.description}
+${generalCommands}
 `;
   },
   help: {

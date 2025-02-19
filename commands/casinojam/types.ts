@@ -1,7 +1,8 @@
 import { CasinojamQueries } from "@polkadot-api/descriptors";
 import { SS58String } from "polkadot-api";
 
-export type AssetType = CasinojamQueries["CasinoJamSage"]["Assets"]["Value"][1];
+export type AssetWithKey = CasinojamQueries["CasinoJamSage"]["Assets"]["Value"];
+export type AssetType = AssetWithKey[1];
 export type AssetTypeVariant = AssetType["variant"];
 
 export type MachineType = Extract<
@@ -30,6 +31,7 @@ export type PlayerUI = {
   tracker: number | undefined;
   funds?: bigint;
   seat?: number;
+  machines: number[];
 };
 
 export type MachineUI = {

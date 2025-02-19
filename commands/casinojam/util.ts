@@ -1,13 +1,16 @@
 import { trimAddress } from "@/lib/utils";
 import { AvailableApis } from "@/types";
 import type { casinojam } from "@polkadot-api/descriptors";
-import type { TypedApi } from "polkadot-api";
+import { Enum, type TypedApi } from "polkadot-api";
 
 import {
+  AssetWithKey,
   MachineType,
   MachineUI,
+  MultiplierType,
   MultiplierValuesType,
   PlayerUI,
+  TokenType,
   TokenValuesType,
 } from "./types";
 import { CasinojamDispatchError } from "../../.papi/descriptors/dist/casinojam";
@@ -24,6 +27,15 @@ export const MULTIPLIER_VALUES: MultiplierValuesType[] = [
   "V9",
 ];
 
+export function validateMultiplierType(multiplier: string): MultiplierType {
+  if (!MULTIPLIER_VALUES.includes(multiplier as MultiplierValuesType)) {
+    throw new Error(
+      `Invalid multiplier. Valid values are: ${MULTIPLIER_VALUES.join(", ")}`
+    );
+  }
+  return Enum(multiplier as MultiplierValuesType);
+}
+
 export const TOKEN_TYPE_VALUES: TokenValuesType[] = [
   "T1",
   "T10",
@@ -33,6 +45,16 @@ export const TOKEN_TYPE_VALUES: TokenValuesType[] = [
   "T100000",
   "T1000000",
 ];
+
+export function validateTokenType(tokenType: string): TokenType {
+  if (!TOKEN_TYPE_VALUES.includes(tokenType as TokenValuesType)) {
+    throw new Error(
+      `Invalid token type. Valid values are: ${TOKEN_TYPE_VALUES.join(", ")}`
+    );
+  }
+
+  return Enum(tokenType as TokenValuesType);
+}
 
 export function isCasinoJamApi(
   api: AvailableApis
@@ -77,12 +99,13 @@ export function generateSlotMachine({
 }
 
 export function displayPlayer(player: PlayerUI) {
-  return `id: ${player.id}
-genesis: ${player.genesis}
-owner: ${trimAddress(player.owner, 6)}
-tracker: ${player.tracker}
-funds: ${player.funds}
-seat: ${player.seat ?? "none"}
+  return `| id: ${player.id}
+| genesis: ${player.genesis}
+| owner: ${trimAddress(player.owner, 6)}
+| tracker: ${player.tracker}
+| funds: ${player.funds}
+| seat: ${player.seat ?? "none"}
+| machines: [${player.machines.join(", ")}]
 `;
 }
 
@@ -107,7 +130,7 @@ export function displayMachine(machine: MachineUI) {
 }
 
 export function formatTransitionError(error: CasinojamDispatchError) {
-  console.error("error", error);
+  console.warn("error", error);
   return `❌ Transition failed: ${error.type} ${error.value?.type} ${error.value?.value?.type} ${error.value?.value?.value?.code}`;
 }
 
@@ -119,4 +142,36 @@ export function formatTransitionError(error: CasinojamDispatchError) {
 export function toUiMachine(machines: MachineType[]) {
   console.warn("toUiMachine not implemented");
   return machines;
+}
+
+export function displayObject(obj: Record<string, unknown>) {
+  return Object.entries(obj)
+    .map(([key, value]) => {
+      const displayValue =
+        typeof value === "object" && value !== null
+          ? JSON.stringify(value)
+          : value;
+      return `| ${key}: ${displayValue}`;
+    })
+    .join("\n");
+}
+
+export function displayAsset(asset: AssetWithKey) {
+  const uiAsset = {
+    id: asset[1].id,
+    owner: asset[0],
+    genesis: asset[1].genesis,
+    variant: asset[1].variant.type,
+    ...asset[1].variant.value,
+  };
+
+  return Object.entries(uiAsset)
+    .map(([key, value]) => {
+      const displayValue =
+        typeof value === "object" && value !== null
+          ? JSON.stringify(value)
+          : value;
+      return `| ${key}: ${displayValue}`;
+    })
+    .join("\n");
 }

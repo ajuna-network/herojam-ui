@@ -1,7 +1,7 @@
 import type { Command, CommandContext } from "@/types/command";
 import { isCasinoJamApi } from "./util";
 
-export const machines: Command = {
+export const players: Command = {
   execute: async (args: string[], context: CommandContext) => {
     const { api, activeSigner, selectedAccount } = context;
 
@@ -13,36 +13,37 @@ export const machines: Command = {
     const targetArg = args[0]?.toLowerCase() ?? "all";
 
     if (!validArgs.includes(targetArg))
-      return `Invalid argument. Use 'machines me' or 'machines all'`;
+      return `Invalid argument. Use 'players me' or 'players all'`;
 
     const casinoJamAssets = await api.query.CasinoJamSage.Assets.getEntries();
-    const machines = casinoJamAssets.filter(
-      ({ value: [, asset] }) => asset.variant.type === "Machine"
+    const players = casinoJamAssets.filter(
+      ({ value: [, asset] }) =>
+        asset.variant.type === "Player" && asset.variant.value.type === "Human"
     );
 
-    const machineIds = machines.map(({ value: [, asset] }) => asset.id);
+    const playerIds = players.map(({ value: [, asset] }) => asset.id);
 
     if (targetArg === "me") {
       return (
-        machines
+        players
           .find(({ value: [owner] }) => owner === selectedAccount.address)
-          ?.value[1].id.toString() ?? "No machine found for this account"
+          ?.value[1].id.toString() ?? "No player found for this account"
       );
     } else if (targetArg === "all") {
-      const formattedMachineIds = machineIds.map((id) => {
-        const isMe = machines.find(
+      const formattedPlayerIds = playerIds.map((id) => {
+        const isMe = players.find(
           ({ value: [owner, asset] }) =>
             asset.id === id && owner === selectedAccount.address
         );
         return isMe ? `${id}(me)` : id;
       });
-      return formattedMachineIds.join(", ");
+      return formattedPlayerIds.join(", ");
     }
 
-    return "Invalid argument. Use 'machines me' or 'machines all'";
+    return "Invalid argument. Use 'players me' or 'players all'";
   },
   help: {
-    command: "machines <me|all>",
-    description: "Display your machine id or all machine ids",
+    command: "players <me|all>",
+    description: "Display your player id or all player ids",
   },
 };

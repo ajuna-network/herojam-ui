@@ -25658,29 +25658,29 @@ export type I3ur7d7so87s5l = {
 export type Iotnkqlev5olf = [SS58String, Anonymize<I1i5mdkqivk2lj>];
 export type Id32h28hjj1tch = [SS58String, number, number];
 export type I3i5slh4rot5vn = ResultPayload<Anonymize<Icb9i2osculmod>, TransactionValidityError>;
-export type Idql9on5ju4spl = Array<Anonymize<I20cfnfttir4se>>;
-export type I20cfnfttir4se = {
+export type I47cidck2p3ipe = Array<Anonymize<I5d5kcjqalbt7j>>;
+export type I5d5kcjqalbt7j = {
     "phase": Phase;
-    "event": Anonymize<Ib1va05hum7vdn>;
+    "event": Anonymize<I7c68kfc4ddmgh>;
     "topics": Anonymize<Ic5m5lp1oioo8r>;
 };
-export type Ib1va05hum7vdn = AnonymousEnum<{
-    "System": Anonymize<I4d3r6tsu0h6u4>;
+export type I7c68kfc4ddmgh = AnonymousEnum<{
+    "System": Anonymize<I890k65a6b6g8c>;
     "Grandpa": GrandpaEvent;
     "Balances": Anonymize<Iao8h4hv7atnq3>;
     "TransactionPayment": TransactionPaymentEvent;
     "Assets": Anonymize<I6avancvg8fd05>;
     "Vesting": Anonymize<I3jgv45gfqgi7c>;
-    "Council": Anonymize<I85ca87bfvmq2n>;
-    "TechnicalCommittee": Anonymize<I85ca87bfvmq2n>;
+    "Council": Anonymize<Ic6u8qmsq4sn6v>;
+    "TechnicalCommittee": Anonymize<Ic6u8qmsq4sn6v>;
     "Treasury": Anonymize<I3kfo09eqm1214>;
     "Democracy": Anonymize<Icfq8ap3e5p73t>;
-    "Sudo": Anonymize<I1vf63dpobgrb0>;
-    "Scheduler": Anonymize<I5ibtcniu9bdjh>;
+    "Sudo": Anonymize<I842r47k1uppbf>;
+    "Scheduler": Anonymize<I22r92rqqvnrd9>;
     "Identity": Anonymize<Ibju6hjiipokne>;
-    "Proxy": Anonymize<I7vut5421t445a>;
-    "Multisig": Anonymize<Ibj6l8ojv65btg>;
-    "Utility": Anonymize<I4f5v01l41eu3g>;
+    "Proxy": Anonymize<Ifmqn7r6c93mna>;
+    "Multisig": Anonymize<Id5nrl1ed9338q>;
+    "Utility": Anonymize<I3n6rjs4rmgadf>;
     "Preimage": PreimageEvent;
     "Migrations": Anonymize<I94co7vj7h6bo>;
     "CasinoJamAffiliates": Anonymize<I9ldh56np3vm4t>;
@@ -25688,7 +25688,7 @@ export type Ib1va05hum7vdn = AnonymousEnum<{
     "CasinoJamSeasons": Anonymize<I68qp6c52l7bcq>;
     "CasinoJamSage": Anonymize<I2gm6vrf8kb3g7>;
 }>;
-export type I4d3r6tsu0h6u4 = AnonymousEnum<{
+export type I890k65a6b6g8c = AnonymousEnum<{
     /**
      *An extrinsic completed successfully.
      */
@@ -25696,7 +25696,7 @@ export type I4d3r6tsu0h6u4 = AnonymousEnum<{
     /**
      *An extrinsic failed.
      */
-    "ExtrinsicFailed": Anonymize<I2f1qcen0dncv3>;
+    "ExtrinsicFailed": Anonymize<Ibcl79aml8e7oc>;
     /**
      *`:code` was updated.
      */
@@ -25718,15 +25718,15 @@ export type I4d3r6tsu0h6u4 = AnonymousEnum<{
      */
     "UpgradeAuthorized": Anonymize<Ibgl04rn6nbfm6>;
 }>;
-export type I2f1qcen0dncv3 = {
-    "dispatch_error": Anonymize<I7goimdtpt105i>;
+export type Ibcl79aml8e7oc = {
+    "dispatch_error": Anonymize<Iepp9k2sgb1cf8>;
     "dispatch_info": Anonymize<Ic9s8f85vjtncc>;
 };
-export type I7goimdtpt105i = AnonymousEnum<{
+export type Iepp9k2sgb1cf8 = AnonymousEnum<{
     "Other": undefined;
     "CannotLookup": undefined;
     "BadOrigin": undefined;
-    "Module": Anonymize<Idjeckgmfdlo39>;
+    "Module": Anonymize<Ifjm0arepnf0l6>;
     "ConsumerRemaining": undefined;
     "NoProviders": undefined;
     "TooManyConsumers": undefined;
@@ -25738,7 +25738,7 @@ export type I7goimdtpt105i = AnonymousEnum<{
     "Unavailable": undefined;
     "RootNotAllowed": undefined;
 }>;
-export type Idjeckgmfdlo39 = AnonymousEnum<{
+export type Ifjm0arepnf0l6 = AnonymousEnum<{
     "System": Anonymize<I5o0s7c8q1cc9b>;
     "Timestamp": undefined;
     "Aura": undefined;
@@ -25763,6 +25763,7 @@ export type Idjeckgmfdlo39 = AnonymousEnum<{
     "CasinoJamTournament": Anonymize<Ibcpk0l6cq8hng>;
     "CasinoJamSeasons": Anonymize<Ic3ldj0b7dus0b>;
     "CasinoJamSage": Anonymize<I8k67d2fnc1tie>;
+    "CasinoJamRandom": undefined;
 }>;
 export type Ic3ldj0b7dus0b = AnonymousEnum<{
     /**
@@ -25919,7 +25920,7 @@ export type I8k67d2fnc1tie = AnonymousEnum<{
      */
     "Transition": Anonymize<Ic2rqhn799ohav>;
 }>;
-export type I85ca87bfvmq2n = AnonymousEnum<{
+export type Ic6u8qmsq4sn6v = AnonymousEnum<{
     /**
      *A motion (given hash) has been proposed (by given account) with a threshold (given
      *`MemberCount`).
@@ -25941,26 +25942,26 @@ export type I85ca87bfvmq2n = AnonymousEnum<{
     /**
      *A motion was executed; result will be `Ok` if it returned without error.
      */
-    "Executed": Anonymize<I1srbfs9q0b5nk>;
+    "Executed": Anonymize<I8ejbun203spop>;
     /**
      *A single member did some action; result will be `Ok` if it returned without error.
      */
-    "MemberExecuted": Anonymize<I1srbfs9q0b5nk>;
+    "MemberExecuted": Anonymize<I8ejbun203spop>;
     /**
      *A proposal was closed because its threshold was reached or after its duration was up.
      */
     "Closed": Anonymize<Iak7fhrgb9jnnq>;
 }>;
-export type I1srbfs9q0b5nk = {
+export type I8ejbun203spop = {
     "proposal_hash": FixedSizeBinary<32>;
-    "result": Anonymize<I585aruspva0h0>;
+    "result": Anonymize<Iat2uq4hjic8fi>;
 };
-export type I585aruspva0h0 = ResultPayload<undefined, Anonymize<I7goimdtpt105i>>;
-export type I1vf63dpobgrb0 = AnonymousEnum<{
+export type Iat2uq4hjic8fi = ResultPayload<undefined, Anonymize<Iepp9k2sgb1cf8>>;
+export type I842r47k1uppbf = AnonymousEnum<{
     /**
      *A sudo call just took place.
      */
-    "Sudid": Anonymize<I3bobd53899cil>;
+    "Sudid": Anonymize<Ie9qvrvil655pa>;
     /**
      *The sudo key has been updated.
      */
@@ -25972,15 +25973,15 @@ export type I1vf63dpobgrb0 = AnonymousEnum<{
     /**
      *A [sudo_as](Pallet::sudo_as) call just took place.
      */
-    "SudoAsDone": Anonymize<I3bobd53899cil>;
+    "SudoAsDone": Anonymize<Ie9qvrvil655pa>;
 }>;
-export type I3bobd53899cil = {
+export type Ie9qvrvil655pa = {
     /**
      *The result of the call made by the sudo user.
      */
-    "sudo_result": Anonymize<I585aruspva0h0>;
+    "sudo_result": Anonymize<Iat2uq4hjic8fi>;
 };
-export type I5ibtcniu9bdjh = AnonymousEnum<{
+export type I22r92rqqvnrd9 = AnonymousEnum<{
     /**
      *Scheduled some task.
      */
@@ -25992,7 +25993,7 @@ export type I5ibtcniu9bdjh = AnonymousEnum<{
     /**
      *Dispatched some task.
      */
-    "Dispatched": Anonymize<Ib650v85c21m7>;
+    "Dispatched": Anonymize<I8c7hbegas2qm1>;
     /**
      *Set a retry configuration for some task.
      */
@@ -26019,16 +26020,16 @@ export type I5ibtcniu9bdjh = AnonymousEnum<{
      */
     "PermanentlyOverweight": Anonymize<Ienusoeb625ftq>;
 }>;
-export type Ib650v85c21m7 = {
+export type I8c7hbegas2qm1 = {
     "task": Anonymize<I9jd27rnpm8ttv>;
     "id"?: Anonymize<I4s6vifaf8k998>;
-    "result": Anonymize<I585aruspva0h0>;
+    "result": Anonymize<Iat2uq4hjic8fi>;
 };
-export type I7vut5421t445a = AnonymousEnum<{
+export type Ifmqn7r6c93mna = AnonymousEnum<{
     /**
      *A proxy was executed correctly, with the given.
      */
-    "ProxyExecuted": Anonymize<If6h3hhgqdpss>;
+    "ProxyExecuted": Anonymize<I82b4jsnuajnr>;
     /**
      *A pure account has been created by new proxy with given
      *disambiguation index and proxy type.
@@ -26047,10 +26048,10 @@ export type I7vut5421t445a = AnonymousEnum<{
      */
     "ProxyRemoved": Anonymize<I7f2f3co93gefl>;
 }>;
-export type If6h3hhgqdpss = {
-    "result": Anonymize<I585aruspva0h0>;
+export type I82b4jsnuajnr = {
+    "result": Anonymize<Iat2uq4hjic8fi>;
 };
-export type Ibj6l8ojv65btg = AnonymousEnum<{
+export type Id5nrl1ed9338q = AnonymousEnum<{
     /**
      *A new multisig operation has begun.
      */
@@ -26062,25 +26063,25 @@ export type Ibj6l8ojv65btg = AnonymousEnum<{
     /**
      *A multisig operation has been executed.
      */
-    "MultisigExecuted": Anonymize<Icgi0cqe69ln9d>;
+    "MultisigExecuted": Anonymize<I8dpgkn5vloves>;
     /**
      *A multisig operation has been cancelled.
      */
     "MultisigCancelled": Anonymize<I5qolde99acmd1>;
 }>;
-export type Icgi0cqe69ln9d = {
+export type I8dpgkn5vloves = {
     "approving": SS58String;
     "timepoint": Anonymize<Itvprrpb0nm3o>;
     "multisig": SS58String;
     "call_hash": FixedSizeBinary<32>;
-    "result": Anonymize<I585aruspva0h0>;
+    "result": Anonymize<Iat2uq4hjic8fi>;
 };
-export type I4f5v01l41eu3g = AnonymousEnum<{
+export type I3n6rjs4rmgadf = AnonymousEnum<{
     /**
      *Batch of dispatches did not complete fully. Index of first failing dispatch given, as
      *well as the error.
      */
-    "BatchInterrupted": Anonymize<I43qleb8tqoqvo>;
+    "BatchInterrupted": Anonymize<I8fjrqm26pcu7b>;
     /**
      *Batch of dispatches completed fully with no error.
      */
@@ -26096,18 +26097,18 @@ export type I4f5v01l41eu3g = AnonymousEnum<{
     /**
      *A single item within a Batch of dispatches has completed with error.
      */
-    "ItemFailed": Anonymize<I2cmpm947g385i>;
+    "ItemFailed": Anonymize<Ieicgb2ilc8h92>;
     /**
      *A call was dispatched.
      */
-    "DispatchedAs": Anonymize<If6h3hhgqdpss>;
+    "DispatchedAs": Anonymize<I82b4jsnuajnr>;
 }>;
-export type I43qleb8tqoqvo = {
+export type I8fjrqm26pcu7b = {
     "index": number;
-    "error": Anonymize<I7goimdtpt105i>;
+    "error": Anonymize<Iepp9k2sgb1cf8>;
 };
-export type I2cmpm947g385i = {
-    "error": Anonymize<I7goimdtpt105i>;
+export type Ieicgb2ilc8h92 = {
+    "error": Anonymize<Iepp9k2sgb1cf8>;
 };
 export type I9ldh56np3vm4t = AnonymousEnum<{
     "AccountMarkedAsAffiliatable": Anonymize<Ibbiemldf16hc1>;
@@ -27096,5 +27097,5 @@ export type Ie1eq20c5gl2kk = {
 export type Ielgh4t8o7rcvt = FixedSizeArray<3, number>;
 export type I85dfug3752car = [SS58String, Anonymize<I69r69eetdha7k>];
 export type I26468skq2k3rc = [number, Anonymize<I2ptvngfso215>];
-export type I8c33c0tigg288 = ResultPayload<Anonymize<I585aruspva0h0>, TransactionValidityError>;
+export type I43s16caq8eapu = ResultPayload<Anonymize<Iat2uq4hjic8fi>, TransactionValidityError>;
 export {};
