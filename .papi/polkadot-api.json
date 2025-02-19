@@ -21,6 +21,10 @@
     "ajudev": {
       "wsUrl": "ws://127.0.0.1:9944",
       "metadata": ".papi/metadata/ajudev.scale"
+    },
+    "casinojam": {
+      "wsUrl": "ws://127.0.0.1:9944",
+      "metadata": ".papi/metadata/casinojam.scale"
     }
   }
 }

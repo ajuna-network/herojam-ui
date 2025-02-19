@@ -1,6 +1,6 @@
 "use client";
 
-import { aju, ajudev, pas } from "@polkadot-api/descriptors";
+import { aju, ajudev, casinojam, pas } from "@polkadot-api/descriptors";
 
 // import { pas } from "@polkadot-api/descriptors";
 // import { createClient } from "polkadot-api";
@@ -14,12 +14,18 @@ import { aju, ajudev, pas } from "@polkadot-api/descriptors";
 export interface ChainConfig {
   key: string;
   name: string;
-  descriptors: typeof aju | typeof ajudev | typeof pas;
+  descriptors: typeof aju | typeof ajudev | typeof pas | typeof casinojam;
   endpoints: string[];
   explorerUrl?: string;
 }
 
 export const chainConfig: ChainConfig[] = [
+  {
+    key: "casinojam",
+    name: "CasinoJam",
+    descriptors: casinojam,
+    endpoints: ["ws://127.0.0.1:9944"],
+  },
   {
     key: "ajudev",
     name: "Ajuna Devnet (Local)",

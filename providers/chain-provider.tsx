@@ -1,7 +1,6 @@
 "use client";
 
-import { aju, ajudev, pas } from "@polkadot-api/descriptors";
-import { createClient, PolkadotClient, TypedApi } from "polkadot-api";
+import { createClient, PolkadotClient } from "polkadot-api";
 import {
   getWsProvider,
   StatusChange,
@@ -11,7 +10,7 @@ import { withPolkadotSdkCompat } from "polkadot-api/polkadot-sdk-compat";
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { chainConfig, ChainConfig } from "@/papi-config";
-import { setChainState } from "@/store/chain-store";
+import { AvailableApis } from "@/types";
 
 interface ChainProviderType {
   connectionStatus: StatusChange | undefined;
@@ -19,7 +18,7 @@ interface ChainProviderType {
   setActiveChain: (chain: ChainConfig) => void;
   client: PolkadotClient | null;
   wsProvider: WsJsonRpcProvider | null;
-  api: TypedApi<typeof aju | typeof pas | typeof ajudev> | null;
+  api: AvailableApis | null;
 }
 
 const ChainContext = createContext<ChainProviderType | undefined>(undefined);
@@ -29,13 +28,8 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
   const [activeChain, setActiveChain] = useState<ChainConfig | null>(
     chainConfig[0]
   );
-  const [activeApi, setActiveApi] = useState<TypedApi<
-    typeof aju | typeof pas | typeof ajudev
-  > | null>(null);
+  const [activeApi, setActiveApi] = useState<AvailableApis | null>(null);
   const clientRef = useRef<PolkadotClient | null>(null);
-
-  // const [pasApi, setPasApi] = useState<TypedApi<typeof pas> | null>(null);
-  // const [ajuApi, setAjuApi] = useState<TypedApi<typeof aju> | null>(null);
 
   const [connectionStatus, setConnectionStatus] = useState<
     StatusChange | undefined
@@ -52,10 +46,13 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
     console.log("Switching chain to", activeChain.name);
 
     try {
-      const _wsProvider = getWsProvider(
-        activeChain.endpoints,
-        setConnectionStatus
-      );
+      // Check for custom endpoint in URL, fallback to chain's default endpoints
+      const wsEndpoint = handleWsEndpoint({
+        defaultEndpoint: activeChain.endpoints[0],
+      });
+      const endpoints = [wsEndpoint, ...activeChain.endpoints.slice(1)];
+
+      const _wsProvider = getWsProvider(endpoints, setConnectionStatus);
 
       wsProviderRef.current = _wsProvider;
 
@@ -68,22 +65,6 @@ export function ChainProvider({ children }: { children: React.ReactNode }) {
       console.error("Error connecting to chain", error);
     }
   }, [activeChain]);
-
-  useEffect(() => {
-    const heroJamApi =
-      activeChain?.key === "ajudev"
-        ? (activeApi as TypedApi<typeof ajudev>)
-        : undefined;
-
-    setChainState({
-      connectionStatus: connectionStatus?.toString(),
-      activeChain,
-      client: clientRef.current,
-      wsProvider: wsProviderRef.current,
-      api: activeApi,
-      heroJamApi,
-    });
-  }, [connectionStatus, activeChain, activeApi]);
 
   return (
     <ChainContext.Provider
@@ -107,4 +88,32 @@ export function useChain() {
     throw new Error("useChain must be used within a ChainProvider");
   }
   return context;
+}
+
+/**
+ * Get or set the WebSocket endpoint from URL search params
+ * Default endpoint will be used if none is specified
+ */
+export function handleWsEndpoint({
+  defaultEndpoint = "wss://rpc.casinojam.io",
+}: {
+  defaultEndpoint?: string;
+} = {}) {
+  if (typeof window === "undefined") return defaultEndpoint;
+
+  const params = new URLSearchParams(window.location.search);
+  const wsEndpoint = params.get("rpc");
+
+  console.log("wsEndpoint", wsEndpoint);
+
+  if (!wsEndpoint) return defaultEndpoint;
+
+  // Validate endpoint is a valid WSS URL
+  try {
+    const url = new URL(wsEndpoint);
+    if (url.protocol !== "wss:") return defaultEndpoint;
+    return wsEndpoint;
+  } catch {
+    return defaultEndpoint;
+  }
 }

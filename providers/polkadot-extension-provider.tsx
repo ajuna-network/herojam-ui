@@ -63,9 +63,7 @@ export const PolkadotExtensionProvider = ({
 
     const timeout = setTimeout(() => {
       initializeExtensions();
-    }, 200);
-
-    if (window.injectedWeb3) initializeExtensions();
+    }, 300);
 
     return () => {
       clearTimeout(timeout);

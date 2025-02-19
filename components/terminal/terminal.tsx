@@ -8,15 +8,19 @@ import { executeCommand } from "@/lib/command-handler";
 import { useTxContext } from "@/providers/tx-provider";
 import { Spinner } from "./spinner";
 import { usePolkadotExtension } from "@/providers/polkadot-extension-provider";
+import { useChain } from "@/providers/chain-provider";
+import { cn } from "@/lib/utils";
 
-export default function Terminal() {
+export default function Terminal({ className }: { className?: string }) {
   const [history, setHistory] = useState<
     Array<{ command: string; output: string }>
   >([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const [processingOutput, setProcessingOutput] = useState<string>("");
   const historyRef = useRef<HTMLDivElement>(null);
   const { isProcessing, setIsProcessing } = useTxContext();
   const { activeSigner, selectedAccount } = usePolkadotExtension();
+  const { api, client } = useChain();
 
   useEffect(() => {
     // Handle initial welcome command
@@ -26,12 +30,23 @@ export default function Terminal() {
   }, []);
 
   const handleCommand = async (command: string) => {
-    setHistoryIndex(-1); // Reset history index when new command is executed
+    if (command === "") {
+      return;
+    }
+
+    setHistoryIndex(-1);
     setIsProcessing(true);
+    setProcessingOutput(""); // Reset processing output
+
     try {
       const output = await executeCommand(command, {
         activeSigner,
         selectedAccount,
+        onProcessing: (interimOutput: string) => {
+          setProcessingOutput(interimOutput);
+        },
+        api,
+        client,
       });
       setHistory((prev) => [...prev, { command, output }]);
     } catch (error) {
@@ -39,6 +54,7 @@ export default function Terminal() {
       console.error(error);
     } finally {
       setIsProcessing(false);
+      setProcessingOutput("");
     }
   };
 
@@ -64,7 +80,7 @@ export default function Terminal() {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
     }
-  }, [history]);
+  }, [history, processingOutput]);
 
   // Add resetInput handler
   const handleReset = () => {
@@ -78,13 +94,23 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-3xl text-sm dark:bg-black bg-amber-100 text-green-500 p-4 rounded-sm shadow-lg font-mono flex flex-col h-[80vh]">
+    <div
+      className={cn(
+        "w-full text-sm xl:max-w-5xl justify-self-start xl:justify-self-center dark:bg-black bg-amber-100 text-green-700 dark:text-green-400 p-4 rounded-sm shadow-lg font-mono flex flex-col",
+        className
+      )}
+    >
       <div ref={historyRef} className="flex-grow overflow-y-auto mb-4">
         {history.map((item, index) => (
           <div key={index}>
             <CommandOutput command={item.command} output={item.output} />
           </div>
         ))}
+        {isProcessing && processingOutput && (
+          <div>
+            <CommandOutput command="" output={processingOutput} />
+          </div>
+        )}
       </div>
       <div className="mt-auto">
         {!isProcessing ? (
