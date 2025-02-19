@@ -42,7 +42,7 @@ export const machines: Command = {
     return "Invalid argument. Use 'machines me' or 'machines all'";
   },
   help: {
-    command: "machines <me|all>",
+    command: "machines [me|all]",
     description: "Display your machine id or all machine ids",
   },
 };

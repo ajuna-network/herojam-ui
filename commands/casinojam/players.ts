@@ -43,7 +43,7 @@ export const players: Command = {
     return "Invalid argument. Use 'players me' or 'players all'";
   },
   help: {
-    command: "players <me|all>",
+    command: "players [me|all]",
     description: "Display your player id or all player ids",
   },
 };

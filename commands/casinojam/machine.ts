@@ -27,7 +27,7 @@ export const machine: Command = {
     return displayAsset(machine.value);
   },
   help: {
-    command: "machine <machine_id>",
+    command: "machine [machine_id]",
     description: "Display machine info",
   },
 };

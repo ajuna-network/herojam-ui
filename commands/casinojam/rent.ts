@@ -58,8 +58,8 @@ export const rent: Command = {
     }
   },
   help: {
-    command: "rent <machine_id> (<multiplier>)",
+    command: "rent [machine_id] ([multiplier])",
     description:
-      "Rent a machine with id <machine_id> (with a multiplier of <multiplier>)",
+      "Rent a machine with id [machine_id] (with a multiplier of [multiplier])",
   },
 };

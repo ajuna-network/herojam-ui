@@ -68,7 +68,7 @@ export const player: Command = {
     return "Player not found";
   },
   help: {
-    command: "player",
+    command: "player [player_id]",
     description: "Display player info",
   },
 };

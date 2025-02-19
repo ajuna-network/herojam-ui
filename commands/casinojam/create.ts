@@ -61,7 +61,7 @@ export const create: Command = {
     }
   },
   help: {
-    command: "create <player|machine>",
+    command: "create [player|machine]",
     description: "create a new player or machine asset",
   },
 };

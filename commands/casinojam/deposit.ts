@@ -81,8 +81,8 @@ export const deposit: Command = {
     }
   },
   help: {
-    command: "deposit <player|machine> <id> <token_type>",
+    command: "deposit [player|machine] [id] [token_type]",
     description:
-      "Deposit tokens of type <token_type> into the player or machine with id <id>",
+      "Deposit tokens of type [token_type] into the player or machine with id [id]",
   },
 };
