@@ -26,6 +26,6 @@ ${generalCommands.description}
   },
   help: {
     command: "help",
-    description: "display this help message",
+    description: "Display this help message",
   },
 };

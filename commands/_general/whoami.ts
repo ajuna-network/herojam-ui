@@ -27,5 +27,8 @@ Balance: ${formatBalance({
     })}
 `;
   },
-  help: "<span class='text-blue-500'>whoami</span> - Display the current user with user info",
+  help: {
+    command: "whoami",
+    description: "Display the current user with user info",
+  },
 };

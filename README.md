@@ -1,46 +1,47 @@
-# Ajuna HeroJam UI
+# Ajuna CasinoJam Frontend
+
+This is the react / next.js frontend for CasinoJAM SAGE playground. If you are
+looking for the node implementation, go here.
 
 ## Getting Started
 
-### backend
+### Generate Papi Types
 
-### frontend
+This repo uses [papi](https://papi.how) to connect to substrate nodes. In order
+to generate the [typescript types with papi](https://papi.how/codegen), you must
+first run the following commands, see
 
-1. generate the [papi types](https://papi.how/codegen) for ajuna testnet on
-   paseo
-
-````bash
+```bash
 pnpm papi add casinojam -w wss://rpc-paseo.ajuna.network
 ```
 
 or if you are running a substrate node locally
 
 ```bash
-pn`m papi add casinojam -w ws://127.0.0.1:9944
+pnpm papi add casinojam -w ws://127.0.0.1:9944
 ```
 
-This will generate the types for connecting papi to ajuna with the key `aju` / `ajudev`.
+This will generate the types for connecting papi to ajuna with the key
+`casinojam`
 
-ℹ️ If your node specifications change, you will have to rerun the command.
+> [!IMPORTANT] If your node specifications change, you will have to rerun the
+> command.
 
-2. run the development server:
+### Running the dev server
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
-````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
 
-3. If you are running your node with `--dev` you will have access to demo
-   accounts. The frontend uses Alice's account for demo purposes. Add it to your
-   wallet by importing
+### Working with dev accounts
+
+If you are running your node with the `--dev` flag, you will have access to demo
+accounts. You can add alices, bobs, ... accounts to your wallets with the
+following mnemonics
 
 ```bash
 # alice

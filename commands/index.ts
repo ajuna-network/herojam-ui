@@ -1,3 +1,5 @@
+import type { Command } from "@/types/command";
+
 import { echo } from "@/commands/_general/echo";
 import { help } from "@/commands/_general/help";
 import { welcome } from "@/commands/_general/welcome";
@@ -11,23 +13,23 @@ import { player } from "@/commands/casinojam/player";
 import { machine } from "@/commands/casinojam/machine";
 import { machines } from "@/commands/casinojam/machines";
 import { create } from "@/commands/casinojam/create";
-
-import type { Command } from "@/types/command";
+import { deposit } from "@/commands/casinojam/deposit";
 
 export const commands: Record<string, Command> = {
-  // general commands
-  echo,
-  help,
-  welcome,
-  whoami,
-  transfer,
-
   // casinojam commands
   create,
+  deposit,
   gamble,
   season,
   organizer,
   player,
   machines,
   machine,
+
+  // general commands
+  echo,
+  help,
+  welcome,
+  whoami,
+  transfer,
 };

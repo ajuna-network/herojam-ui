@@ -2,27 +2,11 @@ import Link from "next/link";
 
 const footerLinks = [
   {
-    title: "Company",
-    links: [
-      { name: "About", href: "/about" },
-      { name: "Careers", href: "/careers" },
-      { name: "Press", href: "/press" },
-    ],
-  },
-  {
     title: "Resources",
     links: [
-      { name: "Blog", href: "/blog" },
-      { name: "Newsletter", href: "/newsletter" },
+      { name: "SAGE playground", href: "/blog" },
+      { name: "SAGE docs", href: "/newsletter" },
       { name: "Events", href: "/events" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { name: "Terms", href: "/terms" },
-      { name: "Privacy", href: "/privacy" },
-      { name: "Cookies", href: "/cookies" },
     ],
   },
 ];
@@ -32,17 +16,17 @@ export default function Footer() {
     <footer className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <div>
+          <div className="col-span-3">
             <Link href="/" className="text-2xl font-bold dark:text-white">
               CasinoJam
             </Link>
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 max-w-lg">
               CasinoJams runs on SAGE (Substrate Asset Game Engine) - a platform
               for building and playing games on the Polkadot Network.
             </p>
           </div>
           {footerLinks.map((category) => (
-            <div key={category.title}>
+            <div key={category.title} className="text-right">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
                 {category.title}
               </h3>
@@ -63,11 +47,15 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-8 text-center">
           <p className="text-sm text-gray-400 dark:text-gray-500">
-            © {new Date().getFullYear()} CasinoJam, powered by{" "}
+            © {new Date().getFullYear()}{" "}
+            <Link href="https://ajuna.io" target="_blank" className="underline">
+              Ajuna
+            </Link>
+            , powered by{" "}
             <Link
               href="https://polkadot.network"
               target="_blank"
-              className="text-pink-600 dark:text-pink-400"
+              className="text-pink-600 dark:text-pink-500"
             >
               Polkadot
             </Link>

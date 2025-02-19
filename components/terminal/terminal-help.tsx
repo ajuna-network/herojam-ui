@@ -9,7 +9,7 @@ export function TerminalHelp({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-2 bg-gray-800 rounded-md text-sm overflow-hidden relative",
+        "flex flex-col gap-2 max-w-lg bg-gray-800/40 backdrop-blur-md rounded-md text-xs overflow-hidden relative max-h-[75vh] overflow-y-auto",
         className
       )}
     >
@@ -17,15 +17,14 @@ export function TerminalHelp({ className }: { className?: string }) {
         <h2 className="text-lg font-bold mb-2">Available Commands</h2>
         <div className="flex flex-col gap-1">
           {Object.entries(commands).map(([command, commandInfo]) => (
-            <div key={command}>
-              <h3 className="text-md font-bold bg-cyan-500 px-1 py-0.5 rounded-sm inline-block">
-                {command}
+            <div
+              key={command}
+              className="flex flex-col border border-green-700 mb-1"
+            >
+              <h3 className="font-bold bg-green-800 text-green-100 px-1 py-0.5 rounded-sm inline-block">
+                {commandInfo.help.command}
               </h3>
-              <p className="text-sm inline-block">{commandInfo.help.command}</p>
-              <p className="text-sm inline-block">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam, quos.
-              </p>
+              <p className="text-xs px-1 p-1">{commandInfo.help.description}</p>
             </div>
           ))}
         </div>
