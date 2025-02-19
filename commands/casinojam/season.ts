@@ -21,5 +21,8 @@ export const season: Command = {
       2
     )}`;
   },
-  help: "<span class='text-blue-500'>season</span> - Display the season info",
+  help: {
+    command: "season",
+    description: "Display the season info",
+  },
 };
