@@ -1,8 +1,5 @@
 import { Command } from "@/types/command";
 import {
-  generateSlotMachine,
-  type SlotSymbol,
-  symbols,
   isCasinoJamApi,
   formatTransitionError,
   MULTIPLIER_VALUES,
