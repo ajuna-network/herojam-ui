@@ -59,9 +59,9 @@ export const player: Command = {
       return displayObject({
         ...player.value[1],
         funds: assetFundsEntries?.[0]?.value.toString() ?? 0,
-        seat: playerSeat?.[0]?.value?.[1]?.id,
+        seat: playerSeat?.[0]?.value?.[1]?.id ?? "none",
         machines: playerMachines.map(({ value: [, asset] }) => asset.id),
-        tracker: trackerMe?.[0]?.value?.[1]?.id,
+        tracker: trackerMe?.[0]?.value?.[1]?.id ?? "none",
       });
     }
 

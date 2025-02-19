@@ -156,14 +156,37 @@ export function displayObject(obj: Record<string, unknown>) {
     .join("\n");
 }
 
-export function displayAsset(asset: AssetWithKey) {
-  const uiAsset = {
+export function displayMachineEntry({
+  machine,
+  funds,
+  seats,
+}: {
+  machine: AssetWithKey;
+  funds: bigint;
+  seats: number[];
+}) {
+  return displayAsset(machine, {
+    funds: funds.toString(),
+    seats: seats.join(", "),
+  });
+}
+
+export function displayAsset(
+  asset: AssetWithKey,
+  ...extra: Record<string, unknown>[]
+) {
+  let uiAsset = {
     id: asset[1].id,
     owner: asset[0],
     genesis: asset[1].genesis,
     variant: asset[1].variant.type,
     ...asset[1].variant.value,
   };
+
+  // Merge any extra properties at the end
+  extra.forEach((obj) => {
+    uiAsset = { ...uiAsset, ...obj };
+  });
 
   return Object.entries(uiAsset)
     .map(([key, value]) => {
