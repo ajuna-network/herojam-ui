@@ -1,6 +1,5 @@
 import type { Command, CommandContext } from "@/types/command";
 import { displayMachineEntry, isCasinoJamApi } from "./util";
-import { MachineType } from "./types";
 
 export const machine: Command = {
   execute: async (args: string[], context: CommandContext) => {

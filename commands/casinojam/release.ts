@@ -1,9 +1,5 @@
 import type { Command, CommandContext } from "@/types/command";
-import {
-  formatTransitionError,
-  isCasinoJamApi,
-  validateMultiplierType,
-} from "./util";
+import { formatTransitionError, isCasinoJamApi } from "./util";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 
 export const DEFAULT_MULTIPLIER = "V1";
