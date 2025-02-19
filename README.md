@@ -53,5 +53,10 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk//Bob
 
 ## Learn More
 
-- This project is build on [Next.js](https://nextjs.org/docs), make sure you
-  understand what it is and how to use it
+- You can also use the Substrate Portal (Polkadot JS APPs) frontend to connect
+  to your local node via
+  [https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics).
+  This will help you understand SAGE transitions better.
+- This frontend is build on [Next.js](https://nextjs.org/docs) and
+  [react](https://react.dev), make sure you understand what it is and how to use
+  it
