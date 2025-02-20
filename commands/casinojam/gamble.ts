@@ -6,7 +6,7 @@ import {
   unpackSlotResult,
   displaySlotMachine,
 } from "./util";
-import { PlayerTrackerType, SeatType } from "./types";
+import { PlayerTrackerType, PlayerType, SeatType } from "./types";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 import { gambleInfo } from "./gamble-info";
 import { animateSpinning } from "@/lib/animate-spinning";
@@ -114,13 +114,15 @@ export const gamble: Command = {
 
         console.log("tracker", tracker);
 
-        const trackerValue = tracker?.value[1] as PlayerTrackerType;
+        const playerValue = tracker?.value[1].variant.value as PlayerType;
+
+        const trackerValue = playerValue.value as PlayerTrackerType;
 
         const slotResults = [
-          unpackSlotResult(trackerValue.variant.value.value.slot_a_result),
-          unpackSlotResult(trackerValue.variant.value.value.slot_b_result),
-          unpackSlotResult(trackerValue.variant.value.value.slot_c_result),
-          unpackSlotResult(trackerValue.variant.value.value.slot_d_result),
+          unpackSlotResult(trackerValue.slot_a_result),
+          unpackSlotResult(trackerValue.slot_b_result),
+          unpackSlotResult(trackerValue.slot_c_result),
+          unpackSlotResult(trackerValue.slot_d_result),
         ];
 
         return displaySlotMachine({

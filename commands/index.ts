@@ -12,9 +12,10 @@ import { deposit } from "@/commands/casinojam/deposit";
 import { rent } from "@/commands/casinojam/rent";
 import { reserve } from "@/commands/casinojam/reserve";
 import { release } from "@/commands/casinojam/release";
-import { gambleInfo } from "./casinojam/gamble-info";
+import { kick } from "@/commands/casinojam/kick";
 import { gamble } from "@/commands/casinojam/gamble";
 
+import { gambleInfo } from "./casinojam/gamble-info";
 import { players } from "./casinojam/players";
 import { player } from "@/commands/casinojam/player";
 import { machines } from "@/commands/casinojam/machines";
@@ -29,6 +30,7 @@ export const commands: Record<string, Command> = {
   rent,
   reserve,
   release,
+  kick,
   gamble,
 
   // casinojam info commands

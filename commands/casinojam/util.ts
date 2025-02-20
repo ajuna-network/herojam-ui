@@ -248,14 +248,6 @@ export function displayAsset(
     .join("\n");
 }
 
-interface UnpackedSlotResult {
-  slot1: number;
-  slot2: number;
-  slot3: number;
-  bonus1: number;
-  bonus2: number;
-}
-
 export function unpackSlotResult(packedResult: number): UnpackedSlotResult {
   const value = Number(packedResult) >>> 0;
 

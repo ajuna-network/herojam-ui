@@ -11,6 +11,8 @@ export function TerminalHelp({ className }: { className?: string }) {
     commands.deposit.help,
     commands.rent.help,
     commands.reserve.help,
+    commands.release.help,
+    commands.kick.help,
     commands.gamble.help,
   ];
 
