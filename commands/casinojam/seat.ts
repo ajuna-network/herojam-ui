@@ -28,7 +28,7 @@ export const seat: Command = {
     return displayAsset(seat.value);
   },
   help: {
-    command: "seat <seat_id>",
+    command: "seat [seat_id]",
     description: "Display seat info",
   },
 };

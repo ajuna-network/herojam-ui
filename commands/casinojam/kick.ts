@@ -1,14 +1,11 @@
 import type { Command, CommandContext } from "@/types/command";
-import {
-  formatTransitionError,
-  isCasinoJamApi,
-  validateMultiplierType,
-} from "./util";
+import { formatTransitionError, isCasinoJamApi } from "./util";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
+import { SeatType } from "./types";
 
 export const DEFAULT_MULTIPLIER = "V1";
 
-export const rent: Command = {
+export const kick: Command = {
   execute: async (args: string[], context: CommandContext) => {
     const { api, activeSigner, selectedAccount } = context;
 
@@ -20,30 +17,41 @@ export const rent: Command = {
       return "Error: The syntax is 'rent [machine_id] or rent [machine_id] [multiplier]'";
     }
 
-    const machineIdArg = args[0];
-    const multiplierArg = args[1] ?? DEFAULT_MULTIPLIER;
+    const seatIdArg = args[0];
 
     // does the asset exist?
     const casinoJamAssets = await api.query.CasinoJamSage.Assets.getEntries();
-    const machine = casinoJamAssets.find(
+    const seat = casinoJamAssets.find(
       ({ value: [, asset] }) =>
-        asset.variant.type === "Machine" && asset.id === parseInt(machineIdArg)
+        asset.variant.type === "Seat" && asset.id === parseInt(seatIdArg)
     );
 
-    if (!machine) {
-      return "Error: Machine not found";
+    if (!seat) {
+      return "Error: Seat not found";
     }
 
-    // is the multiplier valid?
-    const multiplier = validateMultiplierType(multiplierArg);
+    const playerOnSeatId = (seat.value[1].variant.value as SeatType).player_id;
+
+    if (!playerOnSeatId) {
+      return "Error: No player on seat";
+    }
+
+    // sniperId is the calling account's player id
+    const sniperId = casinoJamAssets.find(
+      ({ value: [owner] }) => owner === selectedAccount.address
+    )?.value[1].id;
+
+    if (!sniperId) {
+      return "Error: Sniper not found";
+    }
 
     // execute the call to SAGE
     const tx = await api.tx.CasinoJamSage.state_transition({
       transition_id: {
-        type: "Rent",
-        value: multiplier,
+        type: "Kick",
+        value: undefined,
       },
-      asset_ids: [parseInt(machineIdArg)], // this is safe because we checked for existence above
+      asset_ids: [sniperId, playerOnSeatId, parseInt(seatIdArg)], // this is safe because we checked for existence above
       payment_kind: undefined,
     });
 
@@ -51,15 +59,14 @@ export const rent: Command = {
     console.info("result machine deposit", result);
 
     if (result.ok) {
-      return `✅ Machine ${machineIdArg} rented with multiplier ${multiplierArg}`;
+      return `✅ Seat ${seatIdArg} kicked`;
     } else {
       const err = result.dispatchError.value as CasinojamDispatchError;
       return formatTransitionError(err);
     }
   },
   help: {
-    command: "rent [machine_id] ([multiplier])",
-    description:
-      "Rent a machine with id [machine_id] (with a multiplier of [multiplier])",
+    command: "kick [seat_id]",
+    description: "Kick the player from the seat with [seat_id]",
   },
 };

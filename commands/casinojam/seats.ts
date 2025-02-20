@@ -42,7 +42,7 @@ export const seats: Command = {
     return "Invalid argument. Use 'seats me' or 'seats all'";
   },
   help: {
-    command: "seats <me|all>",
+    command: "seats [me|all]",
     description: "Display your seat id or all seat ids",
   },
 };

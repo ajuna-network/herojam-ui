@@ -1,75 +1,44 @@
 import { Command } from "@/types/command";
 import {
-  generateSlotMachine,
-  type SlotSymbol,
-  symbols,
   isCasinoJamApi,
   formatTransitionError,
-  MULTIPLIER_VALUES,
+  validateMultiplierType,
+  unpackSlotResult,
+  displaySlotMachine,
 } from "./util";
-import { Enum } from "polkadot-api";
-import { MultiplierType, MultiplierValuesType, SeatType } from "./types";
+import { PlayerTrackerType, PlayerType, SeatType } from "./types";
 import { CasinojamDispatchError } from "@polkadot-api/descriptors";
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function animateSpinning(
-  onProcessing: (output: string) => void,
-  stopSignal: { shouldStop: boolean }
-) {
-  if (!onProcessing) return;
-
-  try {
-    while (!stopSignal.shouldStop) {
-      // Generate random symbols for this frame
-      const spinningWheels: SlotSymbol[] = Array(4)
-        .fill(null)
-        .map(() => symbols[Math.floor(Math.random() * symbols.length)]);
-
-      const spinningDisplay = generateSlotMachine({
-        wheels: spinningWheels,
-        spinning: true,
-      });
-
-      onProcessing(`${spinningDisplay}\n\n`);
-      await sleep(100);
-    }
-  } catch (error) {
-    console.error("Animation error:", error);
-  }
-}
+import { gambleInfo } from "./gamble-info";
+import { animateSpinning } from "@/lib/animate-spinning";
 
 export const gamble: Command = {
   execute: async (
     args: string[],
-    { onProcessing, api, activeSigner, selectedAccount }
+    { onProcessing, api, activeSigner, selectedAccount, client }
   ) => {
     if (!onProcessing) return "Error: Processing callback not available";
+
+    if (args[0] === "info") {
+      return gambleInfo.execute(args, {
+        onProcessing,
+        api,
+        activeSigner,
+        selectedAccount,
+      });
+    }
 
     if (!api || !isCasinoJamApi(api))
       return "Error: API or client not available";
 
-    if (!activeSigner) return "No active signer";
-    if (!selectedAccount) return "No selected account";
+    if (!activeSigner || !selectedAccount)
+      return "Please connect and select an account first";
 
     if (args.length === 1) {
       // COMMAND: gamble
+      const chainInfo = await client?.getChainSpecData();
 
       const multiplierArg = args[0].toUpperCase();
-
-      console.log("multiplierArg", multiplierArg);
-
-      if (!MULTIPLIER_VALUES.includes(multiplierArg as MultiplierValuesType)) {
-        return `Invalid multiplier. Valid values are: ${MULTIPLIER_VALUES.join(
-          ", "
-        )}`;
-      }
-
-      const multiplier: MultiplierType = Enum(
-        multiplierArg as MultiplierValuesType
-      );
+      const multiplier = validateMultiplierType(multiplierArg);
 
       // retrieve all required assets for the gamble extrinsic:
       // player, tracker, seat, machine
@@ -113,12 +82,20 @@ export const gamble: Command = {
       // craft the gamble params
       const tx = api.tx.CasinoJamSage.state_transition({
         transition_id: { type: "Gamble", value: multiplier },
-        asset_ids: [playerId, meTrackerId, currentSeatId, currentMachineId], //player, tracker, seat, machine,
+        asset_ids: [playerId, meTrackerId, currentSeatId, currentMachineId],
         payment_kind: undefined,
       });
 
+      const multiplierDisplay = `${multiplierArg
+        .toUpperCase()
+        .replace("V", "")}x`;
+
       const stopSignal = { shouldStop: false };
-      const animationPromise = animateSpinning(onProcessing, stopSignal);
+      const animationPromise = animateSpinning(
+        onProcessing,
+        stopSignal,
+        multiplierDisplay
+      );
 
       const result = await tx.signAndSubmit(activeSigner);
       stopSignal.shouldStop = true;
@@ -127,37 +104,36 @@ export const gamble: Command = {
       console.info("result gamble", result);
 
       if (result.ok) {
-        return "✅ You won";
+        // get the results from the tracker
+        const tracker = casinoJamAssets.find(
+          ({ value: [owner, asset] }) =>
+            asset.variant.type === "Player" &&
+            asset.variant.value.type === "Tracker" &&
+            owner === selectedAccount.address
+        );
+
+        console.log("tracker", tracker);
+
+        const playerValue = tracker?.value[1].variant.value as PlayerType;
+
+        const trackerValue = playerValue.value as PlayerTrackerType;
+
+        const slotResults = [
+          unpackSlotResult(trackerValue.slot_a_result),
+          unpackSlotResult(trackerValue.slot_b_result),
+          unpackSlotResult(trackerValue.slot_c_result),
+          unpackSlotResult(trackerValue.slot_d_result),
+        ];
+
+        return displaySlotMachine({
+          multiplier: multiplierDisplay,
+          wheels: slotResults,
+          rewardUnit: chainInfo?.properties.tokenSymbol,
+        });
       } else {
         const err = result.dispatchError.value as CasinojamDispatchError;
         return formatTransitionError(err);
       }
-
-      // console.log("result", result);
-
-      // try {
-      //   // Animate the spinning
-
-      //   // Generate final result
-      //   const finalWheels = generateRandomWheels();
-      //   const finalDisplay = generateSlotMachine({
-      //     wheels: finalWheels,
-      //     spinning: false,
-      //   });
-
-      //   // Check if all symbols match
-      //   const isWinner = finalWheels.every(
-      //     (symbol) => symbol === finalWheels[0]
-      //   );
-      //   const resultMessage = isWinner
-      //     ? " . 🎉 JACKPOT! 🎉"
-      //     : "  😫 Try again! 😫";
-
-      //   return `${finalDisplay}\n${resultMessage}`;
-      // } catch (error) {
-      //   console.error("Gamble error:", error);
-      //   return "An error occurred while gambling";
-      // }
     }
 
     return "Invalid command, use gamble &lt;multiplier&gt;";

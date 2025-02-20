@@ -8,8 +8,8 @@ export const transfer: Command = {
     { activeSigner, selectedAccount, api, client }
   ) => {
     if (!api) return "No chain connection available";
-    if (!activeSigner) return "No active signer";
-    if (!selectedAccount) return "No selected account";
+    if (!activeSigner || !selectedAccount)
+      return "Please connect and select an account first";
 
     const chainInfo = await client?.getChainSpecData();
 
@@ -23,9 +23,6 @@ export const transfer: Command = {
     const amount =
       BigInt(whole) * BigInt(10 ** decimals) +
       BigInt(fraction.padEnd(decimals, "0").slice(0, decimals));
-
-    console.log("dest", dest);
-    console.log("amount", amount);
 
     const tx = api.tx.Balances.transfer_keep_alive({
       dest: MultiAddress.Id(dest),

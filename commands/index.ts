@@ -7,37 +7,44 @@ import { season } from "@/commands/casinojam/season";
 import { whoami } from "@/commands/_general/whoami";
 import { transfer } from "@/commands/_general/transfer";
 
-import { gamble } from "@/commands/casinojam/gamble";
-import { player } from "@/commands/casinojam/player";
-import { machine } from "@/commands/casinojam/machine";
-
 import { create } from "@/commands/casinojam/create";
 import { deposit } from "@/commands/casinojam/deposit";
 import { rent } from "@/commands/casinojam/rent";
 import { reserve } from "@/commands/casinojam/reserve";
+import { release } from "@/commands/casinojam/release";
+import { kick } from "@/commands/casinojam/kick";
+import { gamble } from "@/commands/casinojam/gamble";
 
-import { players } from "@/commands/casinojam/players";
+import { gambleInfo } from "./casinojam/gamble-info";
+import { players } from "./casinojam/players";
+import { player } from "@/commands/casinojam/player";
 import { machines } from "@/commands/casinojam/machines";
+import { machine } from "@/commands/casinojam/machine";
 import { seats } from "@/commands/casinojam/seats";
 import { seat } from "./casinojam/seat";
 
 export const commands: Record<string, Command> = {
-  // casinojam commands
+  // casinojam transition commands
   create,
   deposit,
   rent,
   reserve,
+  release,
+  kick,
   gamble,
 
+  // casinojam info commands
+  gambleInfo,
   players,
+  player,
   machines,
   machine,
   seats,
   seat,
 
+  // casinojam season commands
   season,
   organizer,
-  player,
 
   // general commands
   help,

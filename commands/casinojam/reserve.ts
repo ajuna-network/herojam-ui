@@ -77,6 +77,7 @@ export const reserve: Command = {
     });
 
     const result = await tx.signAndSubmit(activeSigner, { at: "best" });
+    console.info("result reserve", result);
 
     if (result.ok) {
       return `✅ Seat ${seatToReserveId} reserved for player ${playerMeId} on machine ${machineIdArg}`;
@@ -84,32 +85,10 @@ export const reserve: Command = {
       const err = result.dispatchError.value as CasinojamDispatchError;
       return formatTransitionError(err);
     }
-    // // is the multiplier valid?
-    // const multiplier = validateMultiplierType(multiplierArg);
-
-    // // execute the call to SAGE
-    // const tx = await api.tx.CasinoJamSage.state_transition({
-    //   transition_id: {
-    //     type: "Rent",
-    //     value: multiplier,
-    //   },
-    //   asset_ids: [parseInt(machineIdArg)], // this is safe because we checked for existence above
-    //   payment_kind: undefined,
-    // });
-
-    // const result = await tx.signAndSubmit(activeSigner, { at: "best" });
-    // console.info("result machine deposit", result);
-
-    // if (result.ok) {
-    //   return `✅ Machine ${machineIdArg} rented with multiplier ${multiplierArg}`;
-    // } else {
-    //   const err = result.dispatchError.value as CasinojamDispatchError;
-    //   return formatTransitionError(err);
-    // }
   },
   help: {
-    command: "reserve <machine_id> (<multiplier>)",
+    command: "reserve [machine_id] ([multiplier])",
     description:
-      "Reserve a seat on a machine with id <machine_id> (with a multiplier of <multiplier>)",
+      "Reserve a seat on a machine with id [machine_id] (with a multiplier of [multiplier])",
   },
 };
