@@ -50,3 +50,11 @@ export type MachineUI = {
   seats: number[];
   funds?: bigint;
 };
+
+export interface UnpackedSlotResult {
+  slot1: number;
+  slot2: number;
+  slot3: number;
+  bonus1: number;
+  bonus2: number;
+}

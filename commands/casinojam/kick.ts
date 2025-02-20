@@ -8,13 +8,13 @@ import { CasinojamDispatchError } from "@polkadot-api/descriptors";
 
 export const DEFAULT_MULTIPLIER = "V1";
 
-export const rent: Command = {
+export const kick: Command = {
   execute: async (args: string[], context: CommandContext) => {
     const { api, activeSigner, selectedAccount } = context;
 
     if (!api || !isCasinoJamApi(api)) return "No CasinoJam API available";
-    if (!activeSigner || !selectedAccount)
-      return "Please connect and select an account first";
+    if (!activeSigner) return "No active signer";
+    if (!selectedAccount) return "No selected account";
 
     if (args.length !== 2 && args.length !== 1) {
       return "Error: The syntax is 'rent [machine_id] or rent [machine_id] [multiplier]'";
@@ -58,8 +58,7 @@ export const rent: Command = {
     }
   },
   help: {
-    command: "rent [machine_id] ([multiplier])",
-    description:
-      "Rent a machine with id [machine_id] (with a multiplier of [multiplier])",
+    command: "kick [machine_id]",
+    description: "Kick a player from a machine with id [machine_id]",
   },
 };

@@ -8,8 +8,8 @@ export const transfer: Command = {
     { activeSigner, selectedAccount, api, client }
   ) => {
     if (!api) return "No chain connection available";
-    if (!activeSigner) return "No active signer";
-    if (!selectedAccount) return "No selected account";
+    if (!activeSigner || !selectedAccount)
+      return "Please connect and select an account first";
 
     const chainInfo = await client?.getChainSpecData();
 
