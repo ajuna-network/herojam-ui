@@ -51,6 +51,20 @@ bottom drive obey lake curtain smoke basket hold race lonely fit walk//Alice
 bottom drive obey lake curtain smoke basket hold race lonely fit walk//Bob
 ```
 
+### Adding new commands
+
+All commands the cli accepts are in the `/commands` folder. Add a new command by
+
+1. Creating a new file, e.g. `/commands/new-command.ts`.
+1. Returning a function that exends the `Command` type
+1. Add the exported `Command` to the `commands` array in `/commands/index.ts` it
+   is used to tell the terminal what commands are available and what to do when
+   called.
+
+In the command's `execute` function you will have access to `CommandContext`
+which includes the active api, client, signer, selected account. Take a look at
+existing commands to see how to use the context variables.
+
 ## Learn More
 
 - You can also use the Substrate Portal (Polkadot JS APPs) frontend to connect
